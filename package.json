@@ -1,0 +1,26 @@
+{
+  "name": "cindicator-contracts",
+  "version": "1.0.0",
+  "description": "Contribution Sale Tokens",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "yarn truffle compile",
+    "deploy": "yarn truffle migrate",
+    "test": "yarn truffle test"
+  },
+  "repository": "git+https://github.com/",
+  "author": "Roman Storm <rstormsf@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/"
+  },
+  "homepage": "https://github.com/",
+  "dependencies": {
+    "chai": "^4.1.1",
+    "ethereumjs-abi": "^0.6.4",
+    "truffle": "^3.4.9"
+  }
+}

@@ -1,0 +1,340 @@
+{
+  "contract_name": "Tier",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "endTime",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "cap",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "exchangeRate",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newController",
+          "type": "address"
+        }
+      ],
+      "name": "changeController",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "finalize",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "maxInvestorCap",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "startTime",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_wei",
+          "type": "uint256"
+        }
+      ],
+      "name": "increaseInvestedWei",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalInvestedWei",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isCapReached",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "minInvestorCap",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "controller",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "initializedTime",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "IS_TIER_CONTRACT_MAGIC_NUMBER",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "finalizedTime",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_cap",
+          "type": "uint256"
+        },
+        {
+          "name": "_minInvestorCap",
+          "type": "uint256"
+        },
+        {
+          "name": "_maxInvestorCap",
+          "type": "uint256"
+        },
+        {
+          "name": "_exchangeRate",
+          "type": "uint256"
+        },
+        {
+          "name": "_startTime",
+          "type": "uint256"
+        },
+        {
+          "name": "_endTime",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_cap",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_minInvestorCap",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_maxInvestorCap",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_startTime",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_endTime",
+          "type": "uint256"
+        }
+      ],
+      "name": "InitializedTier",
+      "type": "event"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b60405160c0806106228339810160405280805191906020018051919060200180519190602001805191906020018051919060200180519150505b5b60008054600160a060020a03191633600160a060020a03161790555b60005433600160a060020a0390811691161461008157600080fd5b6007541561008e57600080fd5b6100a364010000000061042c61019782021704565b8210156100ac57fe5b8082106100b857600080fd5b60058290556006819055600086116100cf57600080fd5b8386116100db57600080fd5b600186905583851080156100ef5750600084115b15156100fa57600080fd5b600385905560048490556000831161011157600080fd5b600283905561012b64010000000061042c61019782021704565b6007819055507f52f46769cef95cc0d095b2770034273b8693994469cc0c7303dc27372d11bc8886866004548585604051808681526020018581526020018481526020018381526020018281526020019550505050505060405180910390a15b5b50505050505061019c565b425b90565b610477806101ab6000396000f300606060405236156100d85763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633197cbb681146100dd578063355274ea146101025780633ba0b9a9146101275780633cebb8231461014c5780634bb278f31461016d5780635fd8d3d11461018257806378e97925146101a75780638dfb015f146101cc578063cdf32cab146101e4578063d7e25c3614610209578063f766cd3e14610230578063f77c479114610255578063f81f810114610284578063fa50b335146102a9578063fe67a189146102ce575b600080fd5b34156100e857600080fd5b6100f06102f3565b60405190815260200160405180910390f35b341561010d57600080fd5b6100f06102f9565b60405190815260200160405180910390f35b341561013257600080fd5b6100f06102ff565b60405190815260200160405180910390f35b341561015757600080fd5b61016b600160a060020a0360043516610305565b005b341561017857600080fd5b61016b61034d565b005b341561018d57600080fd5b6100f06103a4565b60405190815260200160405180910390f35b34156101b257600080fd5b6100f06103aa565b60405190815260200160405180910390f35b34156101d757600080fd5b61016b6004356103b0565b005b34156101ef57600080fd5b6100f06103f4565b60405190815260200160405180910390f35b341561021457600080fd5b61021c6103fa565b604051901515815260200160405180910390f35b341561023b57600080fd5b6100f0610405565b60405190815260200160405180910390f35b341561026057600080fd5b61026861040b565b604051600160a060020a03909116815260200160405180910390f35b341561028f57600080fd5b6100f061041a565b60405190815260200160405180910390f35b34156102b457600080fd5b6100f0610420565b60405190815260200160405180910390f35b34156102d957600080fd5b6100f0610426565b60405190815260200160405180910390f35b60065481565b60015481565b60025481565b60005433600160a060020a0390811691161461032057600080fd5b6000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b5b50565b6008546000901561035d57600080fd5b61036561042c565b9050600954600154148061037a575060065481115b80610393575060005433600160a060020a039081169116145b151561039b57fe5b60088190555b50565b60045481565b60055481565b60005433600160a060020a039081169116146103cb57600080fd5b600854156103d857600080fd5b6009546103eb908263ffffffff61043116565b6009555b5b5b50565b60095481565b600154600954145b90565b60035481565b600054600160a060020a031681565b60075481565b61133781565b60085481565b425b90565b60008282018381101561044057fe5b8091505b50929150505600a165627a7a7230582090e7559788e9ae927a5b97e4906532d746110123c7cc732072098e8223dd0ec20029",
+  "networks": {
+    "42": {
+      "events": {
+        "0x52f46769cef95cc0d095b2770034273b8693994469cc0c7303dc27372d11bc88": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "_cap",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_minInvestorCap",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_maxInvestorCap",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_startTime",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_endTime",
+              "type": "uint256"
+            }
+          ],
+          "name": "InitializedTier",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x7250a3615f57eaee28ce989a785743314b3e802d",
+      "updated_at": 1504252273327
+    },
+    "1504248496354": {
+      "events": {
+        "0x52f46769cef95cc0d095b2770034273b8693994469cc0c7303dc27372d11bc88": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "_cap",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_minInvestorCap",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_maxInvestorCap",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_startTime",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_endTime",
+              "type": "uint256"
+            }
+          ],
+          "name": "InitializedTier",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x1f7d82e1c64bacf971a4b86f573486bb4a32fd95",
+      "updated_at": 1504252136712
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1504252273327
+}
