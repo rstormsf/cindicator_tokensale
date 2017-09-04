@@ -2,7 +2,10 @@
 
 ## Recommendations
 
-* Use the same Solidity version number `pragma solidity ^0.4.15;` across the different .sol files
+* **LOW IMPORTANCE** Use the same Solidity version number `pragma solidity ^0.4.15;` across the different .sol files
+* **MEDIUM IMPORTANCE** Consider whether `MiniMeToken.claimTokens(...)` should be a *public* function
+* **LOW IMPORTANCE** `Contribution.function()` has an incorrect comment *If anybody sends Ether directly to this contract,
+  consider he is getting CND*
 
 <br />
 
@@ -18,14 +21,14 @@
   * [ ] contract DebugContribution is Contribution 
 * [ ] [code-review/MiniMeToken.md](code-review/MiniMeToken.md)
   * [ ] contract TokenController 
-  * [ ] contract Controlled 
+  * [x] contract Controlled 
   * [ ] contract ApproveAndCallFallBack 
   * [ ] contract MiniMeToken is Controlled 
   * [ ] contract MiniMeTokenFactory 
 * [x] [code-review/SafeMath.md](code-review/SafeMath.md)
   * [x] library SafeMath
-* [ ] [code-review/Tier.md](code-review/Tier.md)
-  * [ ] contract Tier is Controlled 
+* [x] [code-review/Tier.md](code-review/Tier.md)
+  * [x] contract Tier is Controlled 
 
 <br />
 
