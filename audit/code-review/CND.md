@@ -7,9 +7,11 @@ Source file [../../contracts/CND.sol](../../contracts/CND.sol).
 <hr />
 
 ```javascript
+// BK Ok
 pragma solidity ^0.4.15;
 
 
+// BK Ok
 import "./MiniMeToken.sol";
 
 
@@ -18,11 +20,14 @@ import "./MiniMeToken.sol";
  *
  * @dev Simple ERC20 Token
  */
+// BK Ok
 contract CND is MiniMeToken {
   /**
     * @dev Constructor
   */
+  // BK Ok
   uint256 public constant IS_CND_CONTRACT_MAGIC_NUMBER = 0x1338;
+  // BK Ok
   function CND(address _tokenFactory)
     MiniMeToken(
       _tokenFactory,
@@ -35,7 +40,9 @@ contract CND is MiniMeToken {
     ) 
     {}
 
+    // BK Ok - Reject all ETH payments
     function() payable {
+      // BK Ok
       require(false);
     }
 }
