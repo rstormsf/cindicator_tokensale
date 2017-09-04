@@ -9,8 +9,15 @@ module.exports = {
     testrpc: {
       host: 'localhost',
       port: 8545,
-      network_id: "*"
-      // gas: 6010000 // Match any network id
+      network_id: "*",
+      gas: 6010000 // Match any network id
+    },
+
+    debug: {
+      host: 'localhost',
+      port: 8545,
+      network_id: "*",
+      gasPrice: 100000000000
     }
   }
 };

@@ -22,5 +22,9 @@
     "chai": "^4.1.1",
     "ethereumjs-abi": "^0.6.4",
     "truffle": "^3.4.9"
+  },
+  "devDependencies": {
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^2.0.1"
   }
 }

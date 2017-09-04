@@ -88,6 +88,16 @@ camelcase@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
+chai-as-promised@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/chai-as-promised/-/chai-as-promised-7.1.1.tgz#08645d825deb8696ee61725dbf590c012eb00ca0"
+  dependencies:
+    check-error "^1.0.2"
+
+chai-bignumber@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/chai-bignumber/-/chai-bignumber-2.0.1.tgz#8e336afc5d56ab16c27f95e2f59b25e0a0afc81c"
+
 chai@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/chai/-/chai-4.1.1.tgz#66e21279e6f3c6415ff8231878227900e2171b39"
@@ -99,7 +109,7 @@ chai@^4.1.1:
     pathval "^1.0.0"
     type-detect "^4.0.0"
 
-check-error@^1.0.1:
+check-error@^1.0.1, check-error@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/check-error/-/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
 

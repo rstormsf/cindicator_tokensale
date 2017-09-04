@@ -7,9 +7,7 @@ import "./MiniMeToken.sol";
 /**
  * @title Cindicator Token
  *
- * @dev Simple ERC20 Token, with pre-sale logic
- * @dev IMPORTANT NOTE: do not use or deploy this contract as-is. It needs some changes to be
- * production ready.
+ * @dev Simple ERC20 Token
  */
 contract CND is MiniMeToken {
   /**
@@ -25,5 +23,10 @@ contract CND is MiniMeToken {
       18,                       // Decimals
       "CND",                    // Symbol
       true                      // Enable transfers
-    ) {}
+    ) 
+    {}
+
+    function() payable {
+      require(false);
+    }
 }

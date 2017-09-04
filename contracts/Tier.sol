@@ -65,8 +65,10 @@ contract Tier is Controlled {
       finalizedTime = currentTime;
   }
 
-  function increaseInvestedWei(uint256 _wei) external onlyController notFinished{
+  function increaseInvestedWei(uint256 _wei) external onlyController notFinished {
+      IncreaseInvestedWeiAmount(_wei, totalInvestedWei);
       totalInvestedWei = totalInvestedWei.add(_wei);
+      IncreaseInvestedWeiAmount(_wei, totalInvestedWei);
   }
 
   event InitializedTier(
@@ -80,5 +82,6 @@ contract Tier is Controlled {
   function () public {
       require(false);
   }
+  event IncreaseInvestedWeiAmount(uint256 _amount, uint256 _newWei);
 
 }

@@ -21,14 +21,22 @@ contract Contribution is Controlled, TokenController {
   MiniMeToken public cnd;
   bool public transferable;
   address public contributionWallet;
+  address public foundersWallet;
+  address public advisorsWallet;
+  address public bountyWallet;
+  bool public finalAllocation;
 
-  uint256 public totalSold;                 // How much tokens have been sold
+  uint256 public totalTokensSold;                 // How much tokens have been sold
 
-  bool public paused;
+  bool public paused = false;
 
-  modifier capNotReached() {
-    Tier tier = tiers[tierCount];
-    assert(tier.cap() > tier.totalInvestedWei());
+  modifier notAllocated() {
+    require(finalAllocation == false);
+    _;
+  }
+
+  modifier endedSale() {
+    require(tierCount == 4); //when last one finished it should be equal to 4
     _;
   }
 
@@ -50,11 +58,17 @@ contract Contribution is Controlled, TokenController {
     _;
   }
 
-  function Contribution(address _cnd, address _contributionWallet) {
+  function Contribution(address _cnd, address _contributionWallet, address _foundersWallet, address _advisorsWallet, address _bountyWallet) {
     require(_contributionWallet != 0x0);
+    require(_foundersWallet != 0x0);
+    require(_advisorsWallet != 0x0);
+    require(_bountyWallet != 0x0);
     assert(CND(_cnd).IS_CND_CONTRACT_MAGIC_NUMBER() == 0x1338);
     require(_cnd != 0x0);
     contributionWallet = _contributionWallet;
+    foundersWallet = _foundersWallet;
+    advisorsWallet =_advisorsWallet;
+    bountyWallet = _bountyWallet;
     cnd = CND(_cnd);
     tierCount = 0;
   }
@@ -66,6 +80,7 @@ contract Contribution is Controlled, TokenController {
   {
     Tier tier = Tier(_tierAddress);
     assert(tier.controller() == address(this));
+    //cannot be more than 4 tiers
     require(_tierNumber >= 0 && _tierNumber <= 3);
     assert(tier.IS_TIER_CONTRACT_MAGIC_NUMBER() == 0x1337);
     // check if tier is not defined
@@ -76,19 +91,21 @@ contract Contribution is Controlled, TokenController {
 
   /// @notice If anybody sends Ether directly to this contract, consider he is
   /// getting CND.
-  function () public payable notPaused {
-    proxyPayment(msg.sender);
+  function () public {
+    require(false);
   }
 
-  function investorAmountTokensToBuy(address _investor) public returns(uint256) {
-       WhitelistedInvestor investor = investors[_investor];
+  function investorAmountTokensToBuy(address _investor) public constant returns(uint256) {
+       WhitelistedInvestor memory investor = investors[_investor];
        Tier tier = tiers[tierCount];
-       uint256 leftToBuy = tier.maxInvestorCap().sub(investor.contributedAmount);
+
+
+       uint256 leftToBuy = tier.maxInvestorCap().sub(investor.contributedAmount).mul(tier.exchangeRate());
        return leftToBuy;
   }
 
   function isWhitelisted(address _investor, uint256 _tier) public constant returns(bool) {
-       WhitelistedInvestor investor = investors[_investor];
+       WhitelistedInvestor memory investor = investors[_investor];
        return (investor.tier <= _tier && investor.status);
   }
 
@@ -99,34 +116,47 @@ contract Contribution is Controlled, TokenController {
             investors[investorAddress] = WhitelistedInvestor(_tier, _status, 0);
        }
    }
-
-  /// @notice This method will generally be called by the CND token contract to
-  ///  acquire CNDs. Or directly from third parties that want to acquire AIXs in
-  ///  behalf of a token holder.
-  /// @param _th CND holder where the CNDs will be minted.
-  function proxyPayment(address _th) public payable 
+// since we disable fallback functions, we have to have this param in order to satisfy TokenController inheritance
+  function proxyPayment(address _sender) public payable 
       notPaused
       initialized
-      capNotReached 
       returns (bool) 
   {
+    _sender = msg.sender;
+    assert(isCurrentTierCapReached() == false);
     assert(contributionOpen());
-    require(isWhitelisted(_th, tierCount));
-    require(_th != 0x0);
-    doBuy(_th);
+    require(isWhitelisted(msg.sender, tierCount));
+    doBuy();
     return true;
   }
 
-  function onTransfer(address, address, uint256) public returns (bool) {
-    return transferable;
-  }
 
-  function onApprove(address, address, uint256) public returns (bool) {
-    return transferable;
-  }
+    /// @notice Notifies the controller about a token transfer allowing the
+    ///  controller to react if desired
+    /// @param _from The origin of the transfer
+    /// @param _to The destination of the transfer
+    /// @param _amount The amount of the transfer
+    /// @return False if the controller does not authorize the transfer
+    function onTransfer(address _from, address _to, uint256 _amount) returns(bool) {
+      Log(_from, _to, _amount);
+      return transferable;
+    } 
+
+    /// @notice Notifies the controller about an approval allowing the
+    ///  controller to react if desired
+    /// @param _owner The address that calls `approve()`
+    /// @param _spender The spender in the `approve()` call
+    /// @param _amount The amount in the `approve()` call
+    /// @return False if the controller does not authorize the approval
+    function onApprove(address _owner, address _spender, uint _amount) returns(bool) {
+      Log(_owner, _spender, _amount);
+      return transferable;
+    }
+
 
   function allowTransfers(bool _transferable) onlyController {
     transferable = _transferable;
+    cnd.enableTransfers(_transferable);
   }
 
   function leftForSale() public constant returns(uint256) {
@@ -136,25 +166,24 @@ contract Contribution is Controlled, TokenController {
     return tokensLeft;
   }
 
-  function doBuy(address _th) internal {
+  function doBuy() internal {
     Tier tier = tiers[tierCount];
-    assert(msg.value >= tier.minInvestorCap());
+    assert(msg.value >= tier.minInvestorCap() && msg.value <= tier.maxInvestorCap());
     // Antispam mechanism
     address caller;
-    if (msg.sender == address(cnd)) {
-      caller = _th;
-    } else {
-      caller = msg.sender;
-    }
+    caller = msg.sender;
     assert(!isContract(caller));
-    WhitelistedInvestor investor = investors[caller];
+    WhitelistedInvestor storage investor = investors[caller];
     uint256 investorTokenBP = investorAmountTokensToBuy(caller);
+
     require(investorTokenBP > 0);
 
     uint256 toFund = msg.value;  
+
     uint256 tokensGenerated = toFund.mul(tier.exchangeRate());
-    
-    uint256 tokensleftForSale = leftForSale();
+
+    uint256 tokensleftForSale = leftForSale();    
+
     if(tokensleftForSale > investorTokenBP ) {
         if(tokensGenerated > investorTokenBP) {
           tokensGenerated = investorTokenBP;
@@ -169,23 +198,37 @@ contract Contribution is Controlled, TokenController {
       }
 
     }
+
     investor.contributedAmount = investor.contributedAmount.add(toFund);
     tier.increaseInvestedWei(toFund);
     if (tokensGenerated == tokensleftForSale) {
       tier.finalize();
-      tierCount++;
     }
     
-    assert(cnd.generateTokens(_th, tokensGenerated));
-    totalSold = totalSold.add(tokensGenerated);
+    assert(cnd.generateTokens(caller, tokensGenerated));
+    totalTokensSold = totalTokensSold.add(tokensGenerated);
+
     contributionWallet.transfer(toFund);
-    NewSale(_th, toFund, tokensGenerated);
+    NewSale(caller, toFund, tokensGenerated);
     uint256 toReturn = msg.value.sub(toFund);
     if (toReturn > 0) {
       caller.transfer(toReturn);
+      Refund(toReturn);
     }
   }
+  function allocate() public notAllocated endedSale returns(bool) {
+    finalAllocation = true;
+    uint256 totalSupplyCDN = totalTokensSold.mul(100).div(75); // calculate 100%
+    uint256 foundersAllocation = totalSupplyCDN.div(5); // 20% goes to founders
+    assert(cnd.generateTokens(foundersWallet, foundersAllocation));
+    
+    uint256 advisorsAllocation = totalSupplyCDN.mul(38).div(1000); // 3.8% goes to advisors
+    assert(cnd.generateTokens(advisorsWallet, advisorsAllocation));
+    uint256 bountyAllocation = totalSupplyCDN.mul(12).div(1000); // 1.2% goes to  bounty program
+    assert(cnd.generateTokens(bountyWallet, bountyAllocation));
+    return true;
 
+  }
   /// @dev Internal function to determine if an address is a contract
   /// @param _addr The address being queried
   /// @return True if `_addr` is a contract
@@ -209,6 +252,7 @@ contract Contribution is Controlled, TokenController {
     assert(msg.sender == controller || getBlockTimestamp() > tier.endTime() || isCurrentTierCapReached());
 
     tier.finalize();
+    tierCount++;
 
     FinalizedTier(tierCount, tier.finalizedTime());
   }
@@ -259,7 +303,9 @@ contract Contribution is Controlled, TokenController {
 
   event ClaimedTokens(address indexed _token, address indexed _controller, uint256 _amount);
   event NewSale(address indexed _th, uint256 _amount, uint256 _tokens);
-   
+  event Log(address _one, address _two, uint256 _three);
   event InitializedTier(uint256 _tierNumber, address _tierAddress);
   event FinalizedTier(uint256 _tierCount, uint256 _now);
+  event Refund(uint256 _amount);
+  
 }

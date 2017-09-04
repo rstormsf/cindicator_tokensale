@@ -1,33 +1,15 @@
 const MiniMeTokenFactory = artifacts.require("MiniMeTokenFactory");
 const CND = artifacts.require("CND");
-const Contribution = artifacts.require("Contribution");
+let Contribution = artifacts.require("Contribution");
 const MultiSigWallet = artifacts.require("MultiSigWallet");
 const Tier = artifacts.require("Tier");
 const abiEncoder = require('ethereumjs-abi');
+const assert = require('chai').assert;
 
 function latestTime() {
   return web3.eth.getBlock('latest').timestamp;
 }
 const BigNumber = web3.BigNumber;
-
-function toFixed(x) {
-  if (Math.abs(x) < 1.0) {
-    var e = parseInt(x.toString().split('e-')[1]);
-    if (e) {
-        x *= Math.pow(10,e-1);
-        x = '0.' + (new Array(e)).join('0') + x.toString().substring(2);
-    }
-  } else {
-    var e = parseInt(x.toString().split('+')[1]);
-    if (e > 20) {
-        e -= 20;
-        x /= Math.pow(10,e);
-        x += (new Array(e+1)).join('0');
-    }
-  }
-  return x;
-}
-
 
 const duration = {
   seconds: function(val) { return val},
@@ -38,7 +20,14 @@ const duration = {
   years:   function(val) { return val * this.days(365)} 
 };
 
+
+const FOUNDERS_WALLET_ADDRESS = "0x123";
+const ADVISORS_WALLET_ADDRESS = "0x456";
+const BOUNTY_WALLET_ADDRESS = "0x321";
 module.exports = function(deployer, chain, accounts) {
+  if(chain === "debug") {
+    let Contribution = artifacts.require("DebugContribution");
+  }
   return deployer.deploy(MiniMeTokenFactory).then(async () => {
     const tokenFactory = await MiniMeTokenFactory.deployed();
     const encodedParamsCND = abiEncoder.rawEncode(['address'], [tokenFactory.address]);
@@ -48,39 +37,36 @@ module.exports = function(deployer, chain, accounts) {
     const cnd = await CND.deployed();
     
     await deployMultisig(deployer, accounts);
-    const multiSig = await MultiSigWallet.deployed();
+    const contributionWallet = await MultiSigWallet.deployed();
     
-    await deployer.deploy(Contribution, cnd.address, multiSig.address);
-    const encodedParamsContribution = abiEncoder.rawEncode(['address', 'address'], [cnd.address, multiSig.address]);
+    await deployer.deploy(Contribution, cnd.address, contributionWallet.address, FOUNDERS_WALLET_ADDRESS, ADVISORS_WALLET_ADDRESS, BOUNTY_WALLET_ADDRESS);
+    const encodedParamsContribution = abiEncoder.rawEncode(['address', 'address', 'address', 'address', 'address'], [cnd.address, contributionWallet.address, FOUNDERS_WALLET_ADDRESS, ADVISORS_WALLET_ADDRESS, BOUNTY_WALLET_ADDRESS]);
     console.log('CONTRIBUTION ENCODED: \n', encodedParamsContribution.toString('hex'));
 
     const contribution = await Contribution.deployed();
     await cnd.changeController(contribution.address);
-    
-    const totalCap = new BigNumber(10**18 * 2);
-    const minimum = new BigNumber(10**18 * 0.01);
-    const maxInvestorCap = new BigNumber(10**18 * 0.2);
-    const exchangeRate = 10;
-    const startTime = latestTime() + duration.minutes(5);
-    const endTime = latestTime() + duration.weeks(5);
-    
-    await deployer.deploy(Tier, totalCap, minimum, maxInvestorCap, exchangeRate, startTime, endTime);
-    const valuesTier1 = [totalCap.toString(10), minimum.toString(10), maxInvestorCap.toString(10), exchangeRate, startTime, endTime];
-    const encodedParamsTier1 = abiEncoder.rawEncode(['uint256', 'uint256', 'uint256', 'uint256', 'uint256', 'uint256'], valuesTier1);
-    console.log(encodedParamsTier1.toString('hex'));
-    const tier1 = await Tier.deployed();
-    await tier1.changeController(contribution.address);
-    
-    await deployer.deploy(Tier, totalCap, minimum, maxInvestorCap, exchangeRate, startTime, endTime);
-    const tier2 = await Tier.deployed();
 
-    await tier2.changeController(contribution.address);
+    const tierCount = await contribution.tierCount();
+    const paused = await contribution.paused();
+    assert(tierCount.toNumber(10) == 0, 'tier count should be 0');
+    assert(paused === false, 'paused should be false');
+    
+    const tier1 = {
+      totalCap : new BigNumber(10**18 * 2),
+      minimum : new BigNumber(10**18 * 0.01),
+      maxInvestorCap : new BigNumber(10**18 * 0.2),
+      exchangeRate : 1000,
+      startTime : latestTime() + duration.minutes(5),
+      endTime : latestTime() + duration.weeks(1),
+      contributionAddress: contribution.address
+    }
+    const tier1Address = await deployTier(deployer, tier1);
 
     let tierNumber = 0;
-    await contribution.initializeTier(tierNumber, tier1.address);
-    await contribution.initializeTier(tierNumber + 1, tier2.address);
+    await contribution.initializeTier(tierNumber, tier1Address);
+    const tiers1 = await contribution.tiers(0);
+    assert(tiers1 === tier1Address, 'tier1 address wasnot initialized properly');
     
-
   });
 };
 
@@ -94,4 +80,25 @@ async function deployMultisig(deployer, accounts) {
   const encodedParams = abiEncoder.rawEncode(['address[]', 'uint256'], values);
   console.log('MULTISIG PARAMS : \n', encodedParams.toString('hex'));
   return deployer.deploy(MultiSigWallet, [owner1, owner2], 1);
+}
+
+async function deployTier(deployer, {
+          totalCap, 
+          minimum,
+          maxInvestorCap, 
+          exchangeRate, 
+          startTime, 
+          endTime,
+          contributionAddress
+         }) {
+
+
+  await deployer.deploy(Tier, totalCap, minimum, maxInvestorCap, exchangeRate, startTime, endTime);
+  const valuesTier = [totalCap.toString(10), minimum.toString(10), maxInvestorCap.toString(10), exchangeRate, startTime, endTime];
+  const encodedParamsTier = abiEncoder.rawEncode(['uint256', 'uint256', 'uint256', 'uint256', 'uint256', 'uint256'], valuesTier);
+  console.log(encodedParamsTier.toString('hex'));
+  const tier = await Tier.deployed();
+  await tier.changeController(contributionAddress);
+  return tier.address;
+
 }
