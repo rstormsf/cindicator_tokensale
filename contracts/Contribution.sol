@@ -159,9 +159,7 @@ contract Contribution is Controlled, TokenController {
   function doBuy() internal {
     Tier tier = tiers[tierCount];
     assert(msg.value >= tier.minInvestorCap() && msg.value <= tier.maxInvestorCap());
-    address caller;
-    caller = msg.sender;
-    assert(!isContract(caller));
+    address caller = msg.sender;
     WhitelistedInvestor storage investor = investors[caller];
     uint256 investorTokenBP = investorAmountTokensToBuy(caller);
 
@@ -172,10 +170,10 @@ contract Contribution is Controlled, TokenController {
     uint256 tokensleftForSale = leftForSale();    
 
     if(tokensleftForSale > investorTokenBP ) {
-        if(tokensGenerated > investorTokenBP) {
-          tokensGenerated = investorTokenBP;
-          toFund = investorTokenBP.div(tier.exchangeRate());
-        }
+      if(tokensGenerated > investorTokenBP) {
+        tokensGenerated = investorTokenBP;
+        toFund = investorTokenBP.div(tier.exchangeRate());
+      }
     }
 
     if(investorTokenBP > tokensleftForSale) {
@@ -217,18 +215,6 @@ contract Contribution is Controlled, TokenController {
     assert(cnd.generateTokens(bountyWallet, bountyAllocation));
     return true;
   }
-  /// @dev Internal function to determine if an address is a contract
-  /// @param _addr The address being queried
-  /// @return True if `_addr` is a contract
-  function isContract(address _addr) constant internal returns (bool) {
-    if (_addr == 0) return false;
-    uint256 size;
-    assembly {
-      size := extcodesize(_addr)
-    }
-    return (size > 0);
-  }
-
   /// @notice This method will can be called by the controller before the contribution period
   ///  end or by anybody after the `endTime`. This method finalizes the contribution period
   ///  by creating the remaining tokens and transferring the controller to the configured

@@ -22,5 +22,12 @@
         "uppercase": true,
         "variable-declarations": true,
         "whitespace": true
-    }
+    },
+    "editor.renderWhitespace": true,
+    "editor.tabSize": 2,
+    
+    // Insert spaces when pressing Tab. This setting is overriden
+    // based on the file contents when `editor.detectIndentation` is true.
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
 }
