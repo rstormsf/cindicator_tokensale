@@ -283,7 +283,7 @@ contract("Contribution", ([miner, owner, contributionWallet, foundersWallet, adv
         assert.equal(balance.toNumber(), userShouldReceiveTokens.toNumber(), 'balanceOf doesnot have right amout of tokens');
       })
 
-      it.only('allows to buy with multisig contract', async function(){
+      it('allows to buy with multisig contract', async function(){
 
         const multiSig = await MultiSigWallet.new([miner, owner], 1);
         await web3.eth.sendTransaction({from: miner, to: multiSig.address, value: tier1_params.maxInvestorCap.mul(2)});
