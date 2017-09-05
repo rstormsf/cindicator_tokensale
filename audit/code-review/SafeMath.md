@@ -8,7 +8,7 @@ Source file [../../contracts/SafeMath.sol](../../contracts/SafeMath.sol).
 
 ```javascript
 // BK Ok
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.15;
 
 
 /**

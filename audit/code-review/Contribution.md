@@ -21,9 +21,9 @@ contract Contribution is Controlled, TokenController {
   using SafeMath for uint256;
 
   struct WhitelistedInvestor {
-      uint256 tier;
-      bool status;
-      uint256 contributedAmount;
+    uint256 tier;
+    bool status;
+    uint256 contributedAmount;
   }
 
   mapping(address => WhitelistedInvestor) investors;
@@ -31,7 +31,8 @@ contract Contribution is Controlled, TokenController {
   uint256 public tierCount;
 
   MiniMeToken public cnd;
-  bool public transferable;
+  bool public transferable = false;
+  uint256 public October12_2017 = 1507830400;
   address public contributionWallet;
   address public foundersWallet;
   address public advisorsWallet;
@@ -39,7 +40,7 @@ contract Contribution is Controlled, TokenController {
   // BK Ok
   bool public finalAllocation;
 
-  uint256 public totalTokensSold;                 // How much tokens have been sold
+  uint256 public totalTokensSold;
 
   // BK Ok
   bool public paused = false;
@@ -98,8 +99,8 @@ contract Contribution is Controlled, TokenController {
 
   // BK Ok - Only controller can execute
   function initializeTier(
-      uint256 _tierNumber,
-      address _tierAddress
+    uint256 _tierNumber,
+    address _tierAddress
   ) public onlyController 
   {
     // BK Ok
@@ -120,8 +121,8 @@ contract Contribution is Controlled, TokenController {
     InitializedTier(_tierNumber, _tierAddress);
   }
 
-  /// @notice If anybody sends Ether directly to this contract, consider he is
-  /// getting CND.
+  /// @notice If anybody sends Ether directly to this contract, consider the sender will
+  /// be rejected.
   // BK NOTE - Comment above is incorrect
   // BK Ok - Tx with ETH will be rejected
   function () public {
@@ -130,32 +131,31 @@ contract Contribution is Controlled, TokenController {
   }
 
   function investorAmountTokensToBuy(address _investor) public constant returns(uint256) {
-       WhitelistedInvestor memory investor = investors[_investor];
-       Tier tier = tiers[tierCount];
+    WhitelistedInvestor memory investor = investors[_investor];
+    Tier tier = tiers[tierCount];
 
-
-       uint256 leftToBuy = tier.maxInvestorCap().sub(investor.contributedAmount).mul(tier.exchangeRate());
-       return leftToBuy;
+    uint256 leftToBuy = tier.maxInvestorCap().sub(investor.contributedAmount).mul(tier.exchangeRate());
+    return leftToBuy;
   }
 
   function isWhitelisted(address _investor, uint256 _tier) public constant returns(bool) {
-       WhitelistedInvestor memory investor = investors[_investor];
-       return (investor.tier <= _tier && investor.status);
+    WhitelistedInvestor memory investor = investors[_investor];
+    return (investor.tier <= _tier && investor.status);
   }
 
   function whitelistAddresses(address[] _addresses, uint256 _tier, bool _status) public onlyController {
-        for (uint256 i = 0; i < _addresses.length; i++) {
-            address investorAddress = _addresses[i];
-            require(investors[investorAddress].contributedAmount == 0);
-            investors[investorAddress] = WhitelistedInvestor(_tier, _status, 0);
-       }
+    for (uint256 i = 0; i < _addresses.length; i++) {
+        address investorAddress = _addresses[i];
+        require(investors[investorAddress].contributedAmount == 0);
+        investors[investorAddress] = WhitelistedInvestor(_tier, _status, 0);
+    }
    }
 // since we disable fallback functions, we have to have this param in order to satisfy TokenController inheritance
   // BK Ok
   function proxyPayment(address _sender) public payable 
-      notPaused
-      initialized
-      returns (bool) 
+    notPaused
+    initialized
+    returns (bool) 
   {
     // BK CHECK - Normally the sender should not be overwritten
     _sender = msg.sender;
@@ -174,30 +174,20 @@ contract Contribution is Controlled, TokenController {
 
     /// @notice Notifies the controller about a token transfer allowing the
     ///  controller to react if desired
-    /// @param _from The origin of the transfer
-    /// @param _to The destination of the transfer
-    /// @param _amount The amount of the transfer
     /// @return False if the controller does not authorize the transfer
-    // BK Ok
-    function onTransfer(address _from, address _to, uint256 _amount) returns(bool) {
-      // BK CHECK - The following line will generate a lot of additional event logs
-      Log(_from, _to, _amount);
-      return transferable;
-    } 
+  // BK Ok
+  function onTransfer(address /* _from */, address /* _to */, uint256 /* _amount */) returns(bool) {
+    return (transferable || getBlockTimestamp() >= October12_2017 );
+  } 
 
     /// @notice Notifies the controller about an approval allowing the
     ///  controller to react if desired
-    /// @param _owner The address that calls `approve()`
-    /// @param _spender The spender in the `approve()` call
-    /// @param _amount The amount in the `approve()` call
     /// @return False if the controller does not authorize the approval
+  // BK Ok
+  function onApprove(address /* _owner */, address /* _spender */, uint /* _amount */) returns(bool) {
     // BK Ok
-    function onApprove(address _owner, address _spender, uint _amount) returns(bool) {
-      // BK CHECK - The following line will generate a lot of additional event logs
-      Log(_owner, _spender, _amount);
-      // BK Ok
-      return transferable;
-    }
+    return (transferable || getBlockTimestamp() >= October12_2017);
+  }
 
 
   // BK NOTE - The controller can suspend and resume token transfers anytime
@@ -226,7 +216,6 @@ contract Contribution is Controlled, TokenController {
   function doBuy() internal {
     Tier tier = tiers[tierCount];
     assert(msg.value >= tier.minInvestorCap() && msg.value <= tier.maxInvestorCap());
-    // Antispam mechanism
     address caller;
     caller = msg.sender;
     assert(!isContract(caller));
@@ -236,9 +225,7 @@ contract Contribution is Controlled, TokenController {
     require(investorTokenBP > 0);
 
     uint256 toFund = msg.value;  
-
     uint256 tokensGenerated = toFund.mul(tier.exchangeRate());
-
     uint256 tokensleftForSale = leftForSale();    
 
     if(tokensleftForSale > investorTokenBP ) {
@@ -253,7 +240,6 @@ contract Contribution is Controlled, TokenController {
         tokensGenerated = tokensleftForSale;
         toFund = tokensleftForSale.div(tier.exchangeRate());
       }
-
     }
 
     investor.contributedAmount = investor.contributedAmount.add(toFund);
@@ -266,13 +252,16 @@ contract Contribution is Controlled, TokenController {
     totalTokensSold = totalTokensSold.add(tokensGenerated);
 
     contributionWallet.transfer(toFund);
+
     NewSale(caller, toFund, tokensGenerated);
+
     uint256 toReturn = msg.value.sub(toFund);
     if (toReturn > 0) {
       caller.transfer(toReturn);
       Refund(toReturn);
     }
   }
+
   // BK Ok - Anyone can call
   function allocate() public notAllocated endedSale returns(bool) {
     // BK Ok
@@ -294,7 +283,6 @@ contract Contribution is Controlled, TokenController {
     assert(cnd.generateTokens(bountyWallet, bountyAllocation));
     // BK Ok
     return true;
-
   }
   /// @dev Internal function to determine if an address is a contract
   /// @param _addr The address being queried
@@ -404,7 +392,6 @@ contract Contribution is Controlled, TokenController {
   // BK Next 6 Ok
   event ClaimedTokens(address indexed _token, address indexed _controller, uint256 _amount);
   event NewSale(address indexed _th, uint256 _amount, uint256 _tokens);
-  event Log(address _one, address _two, uint256 _three);
   event InitializedTier(uint256 _tierNumber, address _tierAddress);
   event FinalizedTier(uint256 _tierCount, uint256 _now);
   event Refund(uint256 _amount);

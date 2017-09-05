@@ -1,11 +1,21 @@
 # Cindicator Crowdsale Contract Audit
 
+## Summary
+
+Commits [4f9ea74](https://github.com/rstormsf/cindicator_backup/commit/4f9ea745087665f626d0305f45ababa2962f380c),
+[ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd)
+
 ## Recommendations
 
 * **LOW IMPORTANCE** Use the same Solidity version number `pragma solidity ^0.4.15;` across the different .sol files
-* **MEDIUM IMPORTANCE** Consider whether `MiniMeToken.claimTokens(...)` should be a *public* function
+  * [x] Fixed in [ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd)
+* **LOW IMPORTANCE** Consider whether `MiniMeToken.claimTokens(...)` should be a *public* function
+  * [x] Fixed in [ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd)
 * **LOW IMPORTANCE** `Contribution.function()` has an incorrect comment *If anybody sends Ether directly to this contract,
   consider he is getting CND*
+  * [x] Fixed in [ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd)
+* **LOW IMPORTANCE** Format and indentation of code, especially in *Contributions*
+  * [x] Fixed some in [ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd)
 
 <br />
 

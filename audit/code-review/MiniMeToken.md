@@ -553,7 +553,7 @@ contract MiniMeToken is Controlled {
     ///  set to 0 in case you want to extract ether.
     // BK NOTE - Should this be a public function?
     // BK Ok
-    function claimTokens(address _token) onlyController {
+    function claimTokens(address _token) public onlyController {
         // BK Ok - Claim ethers
         if (_token == 0x0) {
             // BK Ok - Sending to the controller
