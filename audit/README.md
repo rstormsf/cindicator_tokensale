@@ -3,11 +3,13 @@
 ## Summary
 
 Commits [4f9ea74](https://github.com/rstormsf/cindicator_backup/commit/4f9ea745087665f626d0305f45ababa2962f380c),
-[ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd)
+[ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd) and
+[199b13d](https://github.com/rstormsf/cindicator_backup/commit/199b13de72d589599b150f7f1c967a7fd0889361).
 
 ## Recommendations
 
 * **MEDIUM IMPORTANCE** The Tier constructor does not need the `onlyController` modifier
+  * [x] Fixed in [199b13d](https://github.com/rstormsf/cindicator_backup/commit/199b13de72d589599b150f7f1c967a7fd0889361)
 * **LOW IMPORTANCE** Use the same Solidity version number `pragma solidity ^0.4.15;` across the different .sol files
   * [x] Fixed in [ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd)
 * **LOW IMPORTANCE** Consider whether `MiniMeToken.claimTokens(...)` should be a *public* function
