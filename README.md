@@ -3,15 +3,15 @@
 cindicator Ethereum smart contracts
 
 
-##To Run tests:
+## To Run tests:
 
 ```
 yarn test
 ```
 
-##To Deploy in mainnet: 
+## To Deploy in mainnet: 
 
-Change 
+1. Change 
 ```
 const FOUNDERS_WALLET_ADDRESS = "0x0039F22efB07A647557C7C5d17854CFD6D489eF3";
 const ADVISORS_WALLET_ADDRESS = "0x456";
