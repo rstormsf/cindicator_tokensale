@@ -9,7 +9,6 @@ const assert = require('chai')
     .use(require('chai-bignumber')(BigNumber))
     .assert;
 
-
 function getTime() {
     return Math.floor(Date.now() / 1000);
 }
@@ -353,20 +352,20 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
                 await assert.isRejected(contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap }));
             })
 
-            it('throws if non-owner calls it', async function(){
+            it('throws if non-owner calls it', async function () {
                 await contribution.initializeTier(
                     0, tier1_deployed.address
                 );
-                await assert.isRejected(contribution.pauseContribution(true, {from: advisorsWallet}));
+                await assert.isRejected(contribution.pauseContribution(true, { from: advisorsWallet }));
             });
         });
 
-        describe('#allocate', async function(){
-            it('happy path', async function(){
+        describe('#allocate', async function () {
+            it('happy path', async function () {
                 const should = require('chai')
-                .use(require('chai-as-promised'))
-                .use(require('chai-bignumber')(BigNumber))
-                .should()
+                    .use(require('chai-as-promised'))
+                    .use(require('chai-bignumber')(BigNumber))
+                    .should()
                 await contribution.initializeTier(
                     0, tier1_deployed.address
                 );
@@ -381,7 +380,7 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
                 );
                 await contribution.setBlockTimestamp(tier4_params.startTime);
                 await contribution.whitelistAddresses([owner], 0, true);
-                
+
                 await contribution.finalize();
                 await contribution.finalize();
                 await contribution.finalize();
@@ -393,7 +392,7 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
                 const advisorsAmount = totalSupply.mul(38).div(1000);
                 const bountyAmount = totalSupply.mul(12).div(1000);
                 await contribution.finalize();
-                
+
                 await assert.isFulfilled(contribution.allocate());
                 await assert.isRejected(contribution.allocate());
                 const balanceFounders = await cnd.balanceOf(foundersWallet);
@@ -404,6 +403,47 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
                 advisorsAmount.should.be.bignumber.equal(advisorsAmount, 0, BigNumber.ROUND_DOWN, 'balanceAdvisors failed');
                 bountyAmount.should.be.bignumber.equal(balanceBounty, 0, BigNumber.ROUND_DOWN, 'balanceBounty failed');
 
+            })
+        })
+
+        describe('#allowTransfers', async function () {
+            it('sets transferrable', async function () {
+                await contribution.initializeTier(
+                    0, tier1_deployed.address
+                );
+                await contribution.setBlockTimestamp(tier1_params.startTime);
+                await contribution.whitelistAddresses([owner], 0, true);
+                await contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap });
+
+                let transferable = await contribution.transferable();
+                assert.equal(transferable, false);
+                await contribution.allowTransfers(true);
+                transferable = await contribution.transferable();
+                assert.equal(transferable, true);
+
+                let balanceOwner = await cnd.balanceOf(owner);
+                const userShouldReceiveTokens = tier1_params.maxInvestorCap.mul(tier1_params.exchangeRate);
+                assert.equal(balanceOwner.toNumber(), userShouldReceiveTokens.toNumber(), 'balanceOf doesnot have right amout of tokens');
+                await assert.isFulfilled(cnd.transfer(foundersWallet, userShouldReceiveTokens));
+                const balanceFounder = await cnd.balanceOf(foundersWallet);
+                assert.equal(balanceFounder.toNumber(), userShouldReceiveTokens.toNumber());
+                balanceOwner = await cnd.balanceOf(owner);
+                assert.equal(balanceOwner.toNumber(), 0);
+                
+            })
+
+            it('always allows to transfer after October 12', async function(){
+                await contribution.initializeTier(
+                    0, tier1_deployed.address
+                );
+                await contribution.setBlockTimestamp(tier1_params.startTime);
+                await contribution.whitelistAddresses([owner], 0, true);
+                await contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap });
+                
+                await assert.isRejected(cnd.transfer(foundersWallet, tier1_params.maxInvestorCap));
+                const October12_2017 = 1507830400;
+                await contribution.setBlockTimestamp(October12_2017 + 1);
+                await assert.isFulfilled(cnd.transfer(foundersWallet, tier1_params.maxInvestorCap));
             })
         })
 
