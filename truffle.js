@@ -6,24 +6,13 @@ module.exports = {
       network_id: "*",
       // gas: 5010000 // Match any network id
     },
-    testrpc: {
-      host: 'localhost',
-      port: 8545,
-      network_id: "*",
-      gas: 6010000 // Match any network id
-    },
-
-    debug: {
-      host: 'localhost',
-      port: 8545,
-      network_id: "*",
-      gasPrice: 100000000000
-    },
-
     geth: {
       host: 'localhost',
       port: 8646,
       network_id: "*"
     }
+  },
+  mocha: {
+    reporter: 'mochawesome'
   }
 };
