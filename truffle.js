@@ -18,6 +18,12 @@ module.exports = {
       port: 8545,
       network_id: "*",
       gasPrice: 100000000000
+    },
+
+    geth: {
+      host: 'localhost',
+      port: 8646,
+      network_id: "*"
     }
   }
 };

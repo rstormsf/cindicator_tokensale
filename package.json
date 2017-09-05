@@ -9,7 +9,7 @@
   "scripts": {
     "build": "yarn truffle compile",
     "deploy": "yarn truffle migrate",
-    "test": "yarn truffle test"
+    "test": "gethPrivate/01_runTruffleGeth.sh"
   },
   "repository": "git+https://github.com/",
   "author": "Roman Storm <rstormsf@gmail.com>",

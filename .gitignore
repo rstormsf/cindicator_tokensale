@@ -1,1 +1,3 @@
 node_modules
+gethPrivate/testchain/
+!gethPrivate/testchain/keystore

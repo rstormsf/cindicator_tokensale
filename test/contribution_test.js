@@ -27,7 +27,7 @@ const duration = {
     years: function (val) { return val * this.days(365) }
 };
 
-contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWallet, bountyWallet]) => {
+contract("Contribution", ([miner, owner, contributionWallet, foundersWallet, advisorsWallet, bountyWallet]) => {
     it("#constructor accepts MiniMe instance", async function () {
         const tokenFactory = await MiniMeTokenFactory.new();
         const cnd = await CND.new(tokenFactory.address);
@@ -38,6 +38,7 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
             advisorsWallet,
             bountyWallet
         );
+        // await contribution.changeController(owner);
         const miniMe = await contribution.cnd();
         const contributionWalletAddress = await contribution.contributionWallet();
         const foundersWalletAddress = await contribution.foundersWallet();
@@ -84,29 +85,7 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
         let tier4_params;
         let tier4_deployed;
 
-        beforeEach(async function () {
-            const tokenFactory = await MiniMeTokenFactory.new();
-            cnd = await CND.new(tokenFactory.address);
-            contribution = await Contribution.new(
-                cnd.address,
-                contributionWallet,
-                foundersWallet,
-                advisorsWallet,
-                bountyWallet
-            );
-            await cnd.changeController(contribution.address);
-            tier1_params = {
-                totalCap: new BigNumber(10 ** 18 * 2),
-                minimum: new BigNumber(10 ** 18 * 0.5),
-                maxInvestorCap: new BigNumber(10 ** 18 * 1.5),
-                exchangeRate: 3,
-                startTime: latestTime() + duration.minutes(5),
-                endTime: latestTime() + duration.weeks(1),
-                contributionAddress: contribution.address
-            }
-            tier1_deployed = await Tier.new(tier1_params.totalCap, tier1_params.minimum, tier1_params.maxInvestorCap, tier1_params.exchangeRate, tier1_params.startTime, tier1_params.endTime);
-            await tier1_deployed.changeController(contribution.address);
-
+        async function deployThreeTiers() {
             tier2_params = {
                 totalCap: new BigNumber(10 ** 18 * 2),
                 minimum: new BigNumber(10 ** 18 * 0.01),
@@ -142,9 +121,40 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
             }
             tier4_deployed = await Tier.new(tier4_params.totalCap, tier4_params.minimum, tier4_params.maxInvestorCap, tier4_params.exchangeRate, tier4_params.startTime, tier4_params.endTime);
             await tier4_deployed.changeController(contribution.address);
+        }
+
+        beforeEach(async function () {
+            function unlockAccounts(password) {
+                for (var i = 0; i < web3.eth.accounts.length; i++) {
+                    web3.personal.unlockAccount(web3.eth.accounts[i], password, 100000);
+                }
+            }
+            unlockAccounts('testtest');
+            const tokenFactory = await MiniMeTokenFactory.new();
+            cnd = await CND.new(tokenFactory.address);
+            contribution = await Contribution.new(
+                cnd.address,
+                contributionWallet,
+                foundersWallet,
+                advisorsWallet,
+                bountyWallet
+            );
+            await cnd.changeController(contribution.address);
+            tier1_params = {
+                totalCap: new BigNumber(10 ** 18 * 2),
+                minimum: new BigNumber(10 ** 18 * 0.5),
+                maxInvestorCap: new BigNumber(10 ** 18 * 1.5),
+                exchangeRate: 3,
+                startTime: latestTime() + duration.minutes(5),
+                endTime: latestTime() + duration.weeks(1),
+                contributionAddress: contribution.address
+            }
+            tier1_deployed = await Tier.new(tier1_params.totalCap, tier1_params.minimum, tier1_params.maxInvestorCap, tier1_params.exchangeRate, tier1_params.startTime, tier1_params.endTime);
+            await tier1_deployed.changeController(contribution.address);
         });
 
         it("can intialize 4 tiers", async function () {
+            await deployThreeTiers();
             await contribution.initializeTier(
                 0, tier1_deployed.address
             );
@@ -176,11 +186,13 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
             await contribution.initializeTier(
                 0, tier1_deployed.address
             );
-            await assert.isRejected(contribution.initializeTier(0, tier1_deployed.address), "invalid opcode");
-
+            const txReceipt = await contribution.initializeTier(0, "0x999");
+            const tier = await contribution.tiers(0);
+            assert.equal(tier, tier1_deployed.address);
         });
 
         it("throws when you try to initialize 5 tiers", async function () {
+            await deployThreeTiers();
             await contribution.initializeTier(
                 0, tier1_deployed.address
             );
@@ -193,14 +205,18 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
             await contribution.initializeTier(
                 3, tier4_deployed.address
             );
-            await assert.isRejected(contribution.initializeTier(4, tier1_deployed.address), "invalid opcode");
+            await contribution.initializeTier(4, tier1_deployed.address);
+            const tier = await contribution.tiers(4);
+            assert.equal(tier, "0x");
         });
 
         describe('fallback', async function () {
             it('throws when called', async function () {
-                await assert.isRejected(contribution.send(tier1_params.minimum));
-                await assert.isRejected(tier1_deployed.send(tier1_params.minimum));
-                await assert.isRejected(cnd.send(tier1_params.minimum));
+                await contribution.send(tier1_params.minimum);
+                await tier1_deployed.send(tier1_params.minimum);
+                await cnd.send(tier1_params.minimum);
+                const totalInvested = await tier1_deployed.totalInvestedWei();
+                assert.equal(totalInvested, 0);
             })
         });
 
@@ -219,12 +235,11 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
                 const weiToSend = tier1_params.minimum.mul(2);
                 const contWallBalanceBefore = await web3.eth.getBalance(contributionWallet);
                 const txReceipt = await contribution.proxyPayment(owner, { from: owner, value: weiToSend });
-                const post = await web3.eth.getBalance(owner);
 
-                // cant figure out how to calculate precisely the new balance.
-                // I thought that:  `pre - txReceipt.gasUsed * gasPrice + weiToSend` would work
-                // assert.equal(post.toNumber(), pre.sub(weiToSend).toNumber(), 'owner balance should have changed');
-                assert(post.toNumber() < pre.toNumber());
+                const post = await web3.eth.getBalance(owner);
+                const postCon = await web3.eth.getBalance(contributionWallet);
+
+                assert(post.toNumber() < pre.toNumber(), 'post is more than pre');
                 const contWallBalanceAfter = await web3.eth.getBalance(contributionWallet);
                 assert.equal(contWallBalanceAfter.sub(contWallBalanceBefore).toNumber(), weiToSend.toNumber(), 'contributionWallet balance is not equal to weiToSend');
                 let totalNow = await tier1_deployed.totalInvestedWei();
@@ -269,23 +284,36 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
 
             it('throws if maxCapInvestor is reached', async function () {
                 await contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap });
-                await assert.isRejected(contribution.proxyPayment(owner, { from: owner, value: 1 }));
+                const totalInvestedBefore = await tier1_deployed.totalInvestedWei();
+                await contribution.proxyPayment(owner, { from: owner, value: 1 });
+                const totalInvestedAfter = await tier1_deployed.totalInvestedWei();
+                assert.equal(totalInvestedAfter.toNumber(), totalInvestedBefore.toNumber());
             });
 
             it('throws if tier cap is reached', async function () {
                 await contribution.whitelistAddresses([advisorsWallet], 0, true);
                 await contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap });
                 await contribution.proxyPayment(advisorsWallet, { from: advisorsWallet, value: tier1_params.minimum });
-                await assert.isRejected(contribution.proxyPayment(advisorsWallet, { from: advisorsWallet, value: tier1_params.minimum }));
+
+                const totalInvestedBefore = await tier1_deployed.totalInvestedWei();
+                await contribution.proxyPayment(advisorsWallet, { from: advisorsWallet, value: tier1_params.minimum });
+                const totalInvestedAfter = await tier1_deployed.totalInvestedWei();
+                assert.equal(totalInvestedAfter.toNumber(), totalInvestedBefore.toNumber());
             });
 
             it('throws if not whitelisted', async function () {
-                await assert.isRejected(contribution.proxyPayment(advisorsWallet, { from: advisorsWallet, value: tier1_params.minimum }));
+                const totalInvestedBefore = await tier1_deployed.totalInvestedWei();
+                await contribution.proxyPayment(advisorsWallet, { from: advisorsWallet, value: tier1_params.minimum });
+                const totalInvestedAfter = await tier1_deployed.totalInvestedWei();
+                assert.equal(totalInvestedAfter.toNumber(), totalInvestedBefore.toNumber());
             });
 
             it('throws if endTime is passed', async function () {
                 await contribution.setBlockTimestamp(tier1_params.endTime + 1);
-                await assert.isRejected(contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap }));
+                const totalInvestedBefore = await tier1_deployed.totalInvestedWei();
+                await contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap });
+                const totalInvestedAfter = await tier1_deployed.totalInvestedWei();
+                assert.equal(totalInvestedAfter.toNumber(), totalInvestedBefore.toNumber());
             });
 
             it('reach totalCap happy path', async function () {
@@ -327,7 +355,10 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
 
             });
             it('throws when you call finalize on non-existed tier', async function () {
-                await assert.isRejected(contribution.finalize());
+                const tierCountBefore = await contribution.tierCount();
+                await contribution.finalize();
+                const tierCountAfter = await contribution.tierCount();
+                assert.equal(tierCountBefore.toNumber(), tierCountAfter.toNumber());
             });
         });
 
@@ -349,14 +380,21 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
                 await contribution.pauseContribution(true);
                 await contribution.setBlockTimestamp(tier1_params.startTime);
                 await contribution.whitelistAddresses([owner], 0, true);
-                await assert.isRejected(contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap }));
+
+                const totalInvestedBefore = await tier1_deployed.totalInvestedWei();
+                await contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap });
+                const totalInvestedAfter = await tier1_deployed.totalInvestedWei();
+                assert.equal(totalInvestedAfter.toNumber(), totalInvestedBefore.toNumber());
             })
 
             it('throws if non-owner calls it', async function () {
                 await contribution.initializeTier(
                     0, tier1_deployed.address
                 );
-                await assert.isRejected(contribution.pauseContribution(true, { from: advisorsWallet }));
+                const before = await contribution.paused();
+                await contribution.pauseContribution(true, { from: advisorsWallet });
+                const after = await contribution.paused();
+                assert.equal(before, after);
             });
         });
 
@@ -366,6 +404,8 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
                     .use(require('chai-as-promised'))
                     .use(require('chai-bignumber')(BigNumber))
                     .should()
+
+                await deployThreeTiers();
                 await contribution.initializeTier(
                     0, tier1_deployed.address
                 );
@@ -393,8 +433,10 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
                 const bountyAmount = totalSupply.mul(12).div(1000);
                 await contribution.finalize();
 
-                await assert.isFulfilled(contribution.allocate());
-                await assert.isRejected(contribution.allocate());
+                //will be succesful
+                await contribution.allocate();
+                // will be rejected
+                await contribution.allocate();
                 const balanceFounders = await cnd.balanceOf(foundersWallet);
                 const balanceAdvisors = await cnd.balanceOf(advisorsWallet);
                 const balanceBounty = await cnd.balanceOf(bountyWallet);
@@ -424,26 +466,33 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
                 let balanceOwner = await cnd.balanceOf(owner);
                 const userShouldReceiveTokens = tier1_params.maxInvestorCap.mul(tier1_params.exchangeRate);
                 assert.equal(balanceOwner.toNumber(), userShouldReceiveTokens.toNumber(), 'balanceOf doesnot have right amout of tokens');
-                await assert.isFulfilled(cnd.transfer(foundersWallet, userShouldReceiveTokens));
+                await cnd.transfer(foundersWallet, userShouldReceiveTokens, { from: owner });
                 const balanceFounder = await cnd.balanceOf(foundersWallet);
-                assert.equal(balanceFounder.toNumber(), userShouldReceiveTokens.toNumber());
+                assert.equal(balanceFounder.toNumber(), userShouldReceiveTokens.toNumber(), 'founderwallet did not receive tokens');
                 balanceOwner = await cnd.balanceOf(owner);
                 assert.equal(balanceOwner.toNumber(), 0);
-                
             })
 
-            it('always allows to transfer after October 12', async function(){
+            it('always allows to transfer after October 12', async function () {
                 await contribution.initializeTier(
                     0, tier1_deployed.address
                 );
                 await contribution.setBlockTimestamp(tier1_params.startTime);
                 await contribution.whitelistAddresses([owner], 0, true);
                 await contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap });
-                
-                await assert.isRejected(cnd.transfer(foundersWallet, tier1_params.maxInvestorCap));
+
+                const balanceBeforeMiner = await cnd.balanceOf(miner);
+                await cnd.transfer(foundersWallet, tier1_params.maxInvestorCap);
+                let balanceAfterMiner = await cnd.balanceOf(miner);
+                assert.equal(balanceAfterMiner.toNumber(), balanceBeforeMiner.toNumber());
+
                 const October12_2017 = 1507830400;
                 await contribution.setBlockTimestamp(October12_2017 + 1);
-                await assert.isFulfilled(cnd.transfer(foundersWallet, tier1_params.maxInvestorCap));
+                await cnd.transfer(foundersWallet, tier1_params.maxInvestorCap);
+                balanceAfterMiner = await cnd.balanceOf(miner);
+                assert.equal(balanceAfterMiner, 0);
+                const balanceFounder = await cnd.balanceOf(foundersWallet);
+                assert.equal(balanceFounder.toNumber(), balanceBeforeMiner.toNumber());
             })
         })
 
@@ -482,10 +531,7 @@ contract("Contribution", ([owner, contributionWallet, foundersWallet, advisorsWa
                 assert(finalizedTime.toNumber() > 0);
                 contributionOpen = await contribution.contributionOpen();
                 assert.equal(contributionOpen, false);
-                await assert.isRejected(tier1_deployed.finalize());
             });
-
-
         })
 
     });
