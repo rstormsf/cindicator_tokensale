@@ -30,10 +30,8 @@ Commits [4f9ea74](https://github.com/rstormsf/cindicator_backup/commit/4f9ea7450
 
 * [x] [code-review/CND.md](code-review/CND.md)
   * [x] contract CND is MiniMeToken 
-* [ ] [code-review/Contribution.md](code-review/Contribution.md)
-  * [ ] contract Contribution is Controlled, TokenController 
-* [ ] [code-review/DebugContribution.md](code-review/DebugContribution.md)
-  * [ ] contract DebugContribution is Contribution 
+* [x] [code-review/Contribution.md](code-review/Contribution.md)
+  * [x] contract Contribution is Controlled, TokenController 
 * [ ] [code-review/MiniMeToken.md](code-review/MiniMeToken.md)
   * [ ] contract TokenController 
   * [x] contract Controlled 
@@ -51,5 +49,7 @@ Commits [4f9ea74](https://github.com/rstormsf/cindicator_backup/commit/4f9ea7450
 
 * [ ] [code-review/Migrations.md](code-review/Migrations.md)
   * [ ] contract Migrations 
+* [ ] [code-review/DebugContribution.md](code-review/DebugContribution.md)
+  * [ ] contract DebugContribution is Contribution 
 * [ ] [code-review/MultiSigWallet.md](code-review/MultiSigWallet.md)
   * [ ] contract MultiSigWallet 

@@ -1,6 +1,6 @@
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        5.000000000000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       15.000000000000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433        0.000000000000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Tier0-3
@@ -19,10 +19,10 @@
 
 
 Deploy MiniMeTokenFactory
-mmtfAddress=0x24ad1371437980d21a8ebf2e46a824b860a6d47c gas=4000000 gasUsed=2375369 costETH=0.042756642 costUSD=12.88407271707 @ ETH/USD=301.335 gasPrice=18000000000 block=1582 txId=0x13bb243da0bfef1e866918b03c85ed8589916525b1bbcb2c097b4af5dbc8f5f6
+mmtfAddress=0xd53380f36e665634cf48ec4745c7095cde2c9d7f gas=4000000 gasUsed=2375369 costETH=0.042756642 costUSD=12.88407271707 @ ETH/USD=301.335 gasPrice=18000000000 block=153 txId=0xd81b5b057ef539eaa3064798fa01096b1f1f8dcbffbef612387e502c16d071bb
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       15.042756642000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       25.042756642000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.042756642000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Tier0-3
@@ -35,7 +35,7 @@ mmtfAddress=0x24ad1371437980d21a8ebf2e46a824b860a6d47c gas=4000000 gasUsed=23753
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -43,10 +43,10 @@ mmtfAddress=0x24ad1371437980d21a8ebf2e46a824b860a6d47c gas=4000000 gasUsed=23753
 PASS Deploy MiniMeTokenFactory
 
 Deploy CND
-cndAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef gas=4000000 gasUsed=2177659 costETH=0.039197862 costUSD=11.81168774577 @ ETH/USD=301.335 gasPrice=18000000000 block=1584 txId=0x689f1a477e17458349c0e5a2e077a8a4addf5b42b25263c9d0bfbd88ad6cec66
+cndAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae gas=4000000 gasUsed=2177659 costETH=0.039197862 costUSD=11.81168774577 @ ETH/USD=301.335 gasPrice=18000000000 block=155 txId=0x9a2f2128ed6790536e46dbaae77ca8ad8eaf74c26721760ee5ae12199b513416
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       25.081954504000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       35.081954504000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.081954504000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Tier0-3
@@ -59,14 +59,14 @@ cndAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef gas=4000000 gasUsed=217765
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Deploy CND
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 token.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 token.symbol=CND
 token.name=Cindicator Token
@@ -74,10 +74,10 @@ token.decimals=18
 token.totalSupply=0
 
 Deploy Contribution
-contribAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4 gas=4000000 gasUsed=2406842 costETH=0.043323156 costUSD=13.05478321326 @ ETH/USD=301.335 gasPrice=18000000000 block=1586 txId=0xc05d22a61e35704abeb6b60b8c7ab206fab486509a1c18a8e5606213e93b2757
+contribAddress=0x350234335cedaaa09260790c8167f85004828a32 gas=4000000 gasUsed=2406842 costETH=0.043323156 costUSD=13.05478321326 @ ETH/USD=301.335 gasPrice=18000000000 block=158 txId=0x8a15e1582bebdeb7fd81b5461b591276d21e67f2c038d4fa66b7fa37f7949474
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       35.125277660000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       50.125277660000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.125277660000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Tier0-3
@@ -90,18 +90,18 @@ contribAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4 gas=4000000 gasUsed=24
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Deploy Contribution
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=0
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -115,7 +115,7 @@ tiers[0]=0x0000000000000000000000000000000000000000
 tiers[1]=0x0000000000000000000000000000000000000000
 tiers[2]=0x0000000000000000000000000000000000000000
 tiers[3]=0x0000000000000000000000000000000000000000
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 token.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 token.symbol=CND
 token.name=Cindicator Token
@@ -123,13 +123,13 @@ token.decimals=18
 token.totalSupply=0
 
 Whitelist Addresses
-whitelistAddresse0Tx gas=2000000 gasUsed=54805 costETH=0.00098649 costUSD=0.29726396415 @ ETH/USD=301.335 gasPrice=18000000000 block=1588 txId=0xdfadfec24e13d57c818317c2ff6a966a9fb6d39741102134ddeb6749cb47c3c2
-whitelistAddresse1Tx gas=2000000 gasUsed=69869 costETH=0.001257642 costUSD=0.37897155207 @ ETH/USD=301.335 gasPrice=18000000000 block=1588 txId=0x92b3b6d7163e4cab45c11076cf72b164a58395dc16bf87e21f0c37f1d0cf0b6d
-whitelistAddresse2Tx gas=2000000 gasUsed=69869 costETH=0.001257642 costUSD=0.37897155207 @ ETH/USD=301.335 gasPrice=18000000000 block=1588 txId=0x066cb227236a0139bf340aa81f8e0c804aa55f66ad5c5fd0977d3dbf6f79ebd7
-whitelistAddresse3Tx gas=2000000 gasUsed=69869 costETH=0.001257642 costUSD=0.37897155207 @ ETH/USD=301.335 gasPrice=18000000000 block=1588 txId=0x3eb38e6f123722657e77780fcb401ab9afcb36794607aa365dc411215c0134da
+whitelistAddresse0Tx gas=2000000 gasUsed=54805 costETH=0.00098649 costUSD=0.29726396415 @ ETH/USD=301.335 gasPrice=18000000000 block=161 txId=0x1b2892422b727014fcc7fcd9ca5beedcb085a0482ce970f0173736331c723c03
+whitelistAddresse1Tx gas=2000000 gasUsed=69869 costETH=0.001257642 costUSD=0.37897155207 @ ETH/USD=301.335 gasPrice=18000000000 block=161 txId=0xbbbfdcbf3218581c847b1e9278aa01ab59a27090190fa2a98202724f6f54f6b8
+whitelistAddresse2Tx gas=2000000 gasUsed=69869 costETH=0.001257642 costUSD=0.37897155207 @ ETH/USD=301.335 gasPrice=18000000000 block=161 txId=0x88b083c488b4835a21c9b4394d01171cd845690fb94ddfe2ddd0f92612b04f09
+whitelistAddresse3Tx gas=2000000 gasUsed=69869 costETH=0.001257642 costUSD=0.37897155207 @ ETH/USD=301.335 gasPrice=18000000000 block=161 txId=0x38ba1ebadd5fb56298ec3bc9ec0a10b100d278423b70cb0a339d4862e7416abb
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       45.130037076000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       65.130037076000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.130037076000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Tier0-3
@@ -142,9 +142,9 @@ whitelistAddresse3Tx gas=2000000 gasUsed=69869 costETH=0.001257642 costUSD=0.378
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -153,10 +153,10 @@ PASS Whitelist Addresses - Tier0 - ac3
 PASS Whitelist Addresses - Tier1 - ac3+ac4
 PASS Whitelist Addresses - Tier2 - ac3+ac4+ac5
 PASS Whitelist Addresses - Tier3 - ac4+ac4+ac5+ac6
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=0
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -170,7 +170,7 @@ tiers[0]=0x0000000000000000000000000000000000000000
 tiers[1]=0x0000000000000000000000000000000000000000
 tiers[2]=0x0000000000000000000000000000000000000000
 tiers[3]=0x0000000000000000000000000000000000000000
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 token.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 token.symbol=CND
 token.name=Cindicator Token
@@ -178,13 +178,13 @@ token.decimals=18
 token.totalSupply=0
 
 Deploy Tiers
-tier0Address=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f gas=4000000 gasUsed=565513 costETH=0.010179234 costUSD=3.06735947739 @ ETH/USD=301.335 gasPrice=18000000000 block=1590 txId=0x6fa98b12077a0f09a58f3d4183daa6ec2e3816c121370d22e84135e13a44bfca
-tier1Address=0x0b53e5ec7b91526f737b93200ba0a43797763f33 gas=4000000 gasUsed=565513 costETH=0.010179234 costUSD=3.06735947739 @ ETH/USD=301.335 gasPrice=18000000000 block=1590 txId=0x3c616e9eba397bee4da84141d0d4641c86791a7280d8ed87b179396c2319c7cc
-tier2Address=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec gas=4000000 gasUsed=565449 costETH=0.010178082 costUSD=3.06701233947 @ ETH/USD=301.335 gasPrice=18000000000 block=1590 txId=0x74314f387a8d1d73a2449b88953218c298af96cb2ff564bb53b10e9e77a5ef78
-tier3Address=0x2e49c7f02a6639bebb7906930125c66d9ffbc161 gas=4000000 gasUsed=565449 costETH=0.010178082 costUSD=3.06701233947 @ ETH/USD=301.335 gasPrice=18000000000 block=1590 txId=0x2a5a833942217047f38d88d529c1d77615b3ff05b90580c2f8d7f2e8f955a206
+tier0Address=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603 gas=4000000 gasUsed=565513 costETH=0.010179234 costUSD=3.06735947739 @ ETH/USD=301.335 gasPrice=18000000000 block=163 txId=0x5a68044330f7df3406d36cf8b1a37d2c03f7cc9beedc51bb87585839a68f9b83
+tier1Address=0x5029cacf1799deb161dc3ab611b2b368c06f15e8 gas=4000000 gasUsed=565513 costETH=0.010179234 costUSD=3.06735947739 @ ETH/USD=301.335 gasPrice=18000000000 block=163 txId=0xa476275226f7b59a416774140f5499df279dd29295e0e38346945cd4924b929f
+tier2Address=0x332ceb425309f4ab99839300329a9626983323be gas=4000000 gasUsed=565449 costETH=0.010178082 costUSD=3.06701233947 @ ETH/USD=301.335 gasPrice=18000000000 block=163 txId=0x28950b02078ae8f216c4a791828379081c5ec16b5bc983a10a42ffd214fe04f3
+tier3Address=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87 gas=4000000 gasUsed=565449 costETH=0.010178082 costUSD=3.06701233947 @ ETH/USD=301.335 gasPrice=18000000000 block=163 txId=0x9c7d56dd1db4fc2fd8b4e1abbcf5a486b7c360ca983523bbeeed649e7da3cbcc
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       55.170751708000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       75.170751708000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.170751708000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Tier0-3
@@ -197,13 +197,13 @@ tier3Address=0x2e49c7f02a6639bebb7906930125c66d9ffbc161 gas=4000000 gasUsed=5654
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -212,10 +212,10 @@ PASS Deploy Tiers - Tier0
 PASS Deploy Tiers - Tier1
 PASS Deploy Tiers - Tier2
 PASS Deploy Tiers - Tier3
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=0
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -229,7 +229,7 @@ tiers[0]=0x0000000000000000000000000000000000000000
 tiers[1]=0x0000000000000000000000000000000000000000
 tiers[2]=0x0000000000000000000000000000000000000000
 tiers[3]=0x0000000000000000000000000000000000000000
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 token.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 token.symbol=CND
 token.name=Cindicator Token
@@ -237,14 +237,14 @@ token.decimals=18
 token.totalSupply=0
 
 Change Controller
-changeTier0ControllerTx gas=2000000 gasUsed=28142 costETH=0.000506556 costUSD=0.15264305226 @ ETH/USD=301.335 gasPrice=18000000000 block=1592 txId=0xdf1400da53390ef6b216a78b3d2f68804c56249ee09ad9bcbdce76359cc6bd27
-changeTier1ControllerTx gas=2000000 gasUsed=28142 costETH=0.000506556 costUSD=0.15264305226 @ ETH/USD=301.335 gasPrice=18000000000 block=1592 txId=0x21316fd5f525507eee12ed51636a9b4fb977ddbe0c4499e82fd3d3ecfd784472
-changeTier2ControllerTx gas=2000000 gasUsed=28142 costETH=0.000506556 costUSD=0.15264305226 @ ETH/USD=301.335 gasPrice=18000000000 block=1592 txId=0xde7a9617162c6d0a9f1628ae9e144c42aecac29ec2d799910a0f8cef3902f923
-changeTier3ControllerTx gas=2000000 gasUsed=28142 costETH=0.000506556 costUSD=0.15264305226 @ ETH/USD=301.335 gasPrice=18000000000 block=1592 txId=0x04c44174c9836128897f64ebc1a34d162c6b57f77482ec6463dfcd1d31d026a5
-changeCndControllerTx gas=2000000 gasUsed=28231 costETH=0.000508158 costUSD=0.15312579093 @ ETH/USD=301.335 gasPrice=18000000000 block=1592 txId=0xf61971e115f55c4b204a0a1a993c1b42e596b320d499cde0e90b9039557b098d
+changeTier0ControllerTx gas=2000000 gasUsed=28142 costETH=0.000506556 costUSD=0.15264305226 @ ETH/USD=301.335 gasPrice=18000000000 block=167 txId=0x3c0b65fe9e51f2693330cb6b57ca938cf6c53fadb350848867b0a655569199b2
+changeTier1ControllerTx gas=2000000 gasUsed=28142 costETH=0.000506556 costUSD=0.15264305226 @ ETH/USD=301.335 gasPrice=18000000000 block=167 txId=0x5bd616c2a3cf2a947caf7c568a5e3b3bf0e28e58b28732e645dcbb888d1ed117
+changeTier2ControllerTx gas=2000000 gasUsed=28142 costETH=0.000506556 costUSD=0.15264305226 @ ETH/USD=301.335 gasPrice=18000000000 block=167 txId=0x76392d28b206a206dfd229191e26b92057e4e248c95b5c28eb294215dfbcdfd2
+changeTier3ControllerTx gas=2000000 gasUsed=28142 costETH=0.000506556 costUSD=0.15264305226 @ ETH/USD=301.335 gasPrice=18000000000 block=167 txId=0x702584c584431418c86534f8936dd3acd4117fafaaced9c672b741293643dc96
+changeCndControllerTx gas=2000000 gasUsed=28231 costETH=0.000508158 costUSD=0.15312579093 @ ETH/USD=301.335 gasPrice=18000000000 block=167 txId=0x5a074e392435fe7391355283deb6b82fdcdf7bdbc02be9bf1273cfa0ea8cfd4b
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       65.173286090000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       95.173286090000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.173286090000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Tier0-3
@@ -257,13 +257,13 @@ changeCndControllerTx gas=2000000 gasUsed=28231 costETH=0.000508158 costUSD=0.15
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -273,10 +273,10 @@ PASS Change Controller - Tier1
 PASS Change Controller - Tier2
 PASS Change Controller - Tier3
 PASS Change Controller - CND
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=0
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -290,22 +290,22 @@ tiers[0]=0x0000000000000000000000000000000000000000
 tiers[1]=0x0000000000000000000000000000000000000000
 tiers[2]=0x0000000000000000000000000000000000000000
 tiers[3]=0x0000000000000000000000000000000000000000
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=0
 
 Initialise Tiers
-initialiseTier0Tx gas=2000000 gasUsed=46813 costETH=0.000842634 costUSD=0.25391511639 @ ETH/USD=301.335 gasPrice=18000000000 block=1595 txId=0x84f10824dc4dde8c92f195eed75fc5ec22cd1b754770f971fe950f74b9f1f995
-initialiseTier1Tx gas=2000000 gasUsed=46877 costETH=0.000843786 costUSD=0.25426225431 @ ETH/USD=301.335 gasPrice=18000000000 block=1595 txId=0xc569e4847f9622fec5009eb9a46fb264655c25e054f8d76bb8867f7f92b9e46d
-initialiseTier2Tx gas=2000000 gasUsed=46877 costETH=0.000843786 costUSD=0.25426225431 @ ETH/USD=301.335 gasPrice=18000000000 block=1595 txId=0xe09ad9d73f2b8b8a7fa8406c8a56b81fd861ba52464410dfb6dace8228114847
-initialiseTier3Tx gas=2000000 gasUsed=46877 costETH=0.000843786 costUSD=0.25426225431 @ ETH/USD=301.335 gasPrice=18000000000 block=1595 txId=0xccac03c0f813db6e078b4c4f4f42cec16e3822671aa3f6479c1f0634e4b469a0
+initialiseTier0Tx gas=2000000 gasUsed=46813 costETH=0.000842634 costUSD=0.25391511639 @ ETH/USD=301.335 gasPrice=18000000000 block=172 txId=0xb3bd56e7904c74039bd97458b369a4344261344ec1e5d92cd90f29da38de272e
+initialiseTier1Tx gas=2000000 gasUsed=46877 costETH=0.000843786 costUSD=0.25426225431 @ ETH/USD=301.335 gasPrice=18000000000 block=172 txId=0x1206b7ae94fc6a129da58d8c92d0e7f43476686004e7a7e5bcdb1278e1ad5de2
+initialiseTier2Tx gas=2000000 gasUsed=46813 costETH=0.000842634 costUSD=0.25391511639 @ ETH/USD=301.335 gasPrice=18000000000 block=172 txId=0x7b5d24175e1a7093dd018076191990aa546bdbf5173fc30392c5c25bd52d370b
+initialiseTier3Tx gas=2000000 gasUsed=46877 costETH=0.000843786 costUSD=0.25426225431 @ ETH/USD=301.335 gasPrice=18000000000 block=172 txId=0x8eb5834b864827e844bfdd5e966fbe53950a64cdf76aa788868295be1358364b
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       80.176660082000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.176660082000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      120.176658930000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.176658930000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4 - Tier1-3
@@ -317,13 +317,13 @@ initialiseTier3Tx gas=2000000 gasUsed=46877 costETH=0.000843786 costUSD=0.254262
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -332,10 +332,10 @@ PASS Initialise Tiers - Tier0
 PASS Initialise Tiers - Tier1
 PASS Initialise Tiers - Tier2
 PASS Initialise Tiers - Tier3
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=0
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -345,63 +345,67 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=false
 crowdsale.totalTokensSold=0
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+InitializedTier 0 #172: {"_tierAddress":"0x27daa9fe81944d721dc95e09f54c8bd3a90a5603","_tierNumber":"0"}
+InitializedTier 1 #172: {"_tierAddress":"0x5029cacf1799deb161dc3ab611b2b368c06f15e8","_tierNumber":"1"}
+InitializedTier 2 #172: {"_tierAddress":"0x332ceb425309f4ab99839300329a9626983323be","_tierNumber":"2"}
+InitializedTier 3 #172: {"_tierAddress":"0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87","_tierNumber":"3"}
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=0
 
-Waiting until startTime at 1504686623 Wed, 06 Sep 2017 18:30:23 AEST currentDate=Wed, 06 Sep 2017 18:30:33 AEST
-Waited until startTime at 1504686623 Wed, 06 Sep 2017 18:30:23 AEST currentDate=Wed, 06 Sep 2017 18:30:33 AEST
+Waiting until startTime at 1504690015 Wed, 06 Sep 2017 19:26:55 AEST currentDate=Wed, 06 Sep 2017 19:26:49 AEST
+Waited until startTime at 1504690015 Wed, 06 Sep 2017 19:26:55 AEST currentDate=Wed, 06 Sep 2017 19:26:55 AEST
 
 Contribute Tier0
-contribute0_1Tx gas=400000 gasUsed=192364 costETH=0.003462552 costUSD=1.04338810692 @ ETH/USD=301.335 gasPrice=18000000000 block=1598 txId=0x01ace55756317f1a9082b6cceab6c7d57a02a822497531d746cd19458a35016a
-contribute0_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/USD=301.335 gasPrice=18000000000 block=1598 txId=0x1ef5229b0f36a4febd3b36ee0c7bb9ce6024bd6716df1036cfb696af2366285f
+contribute0_1Tx gas=400000 gasUsed=192364 costETH=0.003462552 costUSD=1.04338810692 @ ETH/USD=301.335 gasPrice=18000000000 block=175 txId=0xaead7e0c95db0ce37989dc1e047f9db2c980cb18c3951f8b5299b5140f3b2e95
+contribute0_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/USD=301.335 gasPrice=18000000000 block=176 txId=0xfa33cf3022d8120631665ad4a32799abe06db87fa0a716b4fede63d2e9c60ef4
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       95.187322634000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.176660082000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      140.187321482000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.176658930000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976      100.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0     -100.003462552000000000       40000.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844       -0.007200000000000000           0.000000000000000000 Account #4 - Tier1-3
@@ -413,23 +417,23 @@ contribute0_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                 40000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Contribute Tier0 ac3 100 ETH
 PASS Contribute Tier0 ac4 100 ETH - Expecting failure
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=0
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -439,63 +443,63 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=false
 crowdsale.totalTokensSold=40000
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-NewSale 0 #1598: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+NewSale 0 #175: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=40000
-totalSupplyHistory(0) = 1598 => 40000
-balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 1598 => 40000
-Transfer 0 #1598: _from=0x0000000000000000000000000000000000000000 _to=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 _amount=40000
+totalSupplyHistory(0) = 175 => 40000
+balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 175 => 40000
+Transfer 0 #175: _from=0x0000000000000000000000000000000000000000 _to=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 _amount=40000
 
 Finalise Tier0
-finalise0Tx gas=4000000 gasUsed=67538 costETH=0.001215684 costUSD=0.36632813814 @ ETH/USD=301.335 gasPrice=18000000000 block=1600 txId=0x3d5915cf0c8d2b49eced4fb9e14748ad310cd3242326d5a030288da768a03441
+finalise0Tx gas=4000000 gasUsed=67538 costETH=0.001215684 costUSD=0.36632813814 @ ETH/USD=301.335 gasPrice=18000000000 block=182 txId=0x59569836caa42a721089d9fdd6afb9323ec9f2b1be3a3c09fc59a07620133f93
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      105.188538318000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.177875766000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      170.188537166000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.177874614000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976      100.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0     -100.003462552000000000       40000.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844       -0.007200000000000000           0.000000000000000000 Account #4 - Tier1-3
@@ -507,22 +511,22 @@ finalise0Tx gas=4000000 gasUsed=67538 costETH=0.001215684 costUSD=0.36632813814 
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                 40000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Finalise Tier0
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=1
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -532,63 +536,63 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=false
 crowdsale.totalTokensSold=40000
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686648 Wed, 06 Sep 2017 08:30:48 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690028 Wed, 06 Sep 2017 09:27:08 UTC
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-NewSale 0 #1598: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+FinalizedTier 0 #182: {"_now":"1504690028","_tierCount":"1"}
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=40000
-totalSupplyHistory(0) = 1598 => 40000
-balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 1598 => 40000
+totalSupplyHistory(0) = 175 => 40000
+balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 175 => 40000
 
 Contribute Tier1
-contribute1_1Tx gas=400000 gasUsed=163449 costETH=0.002942082 costUSD=0.88655227947 @ ETH/USD=301.335 gasPrice=18000000000 block=1603 txId=0x09011ed3d99abadf8cc3be45a3a927200bee6cf25581fb26e76bfb226e222259
-contribute1_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/USD=301.335 gasPrice=18000000000 block=1603 txId=0xe3430c064a2e6d7745a7ea86f9ad5ecb40a6c029db176b9e0f5a281f20059aac
+contribute1_1Tx gas=400000 gasUsed=163449 costETH=0.002942082 costUSD=0.88655227947 @ ETH/USD=301.335 gasPrice=18000000000 block=187 txId=0x5089bda331a55280d1cac8760cf5f65828ae48aa4401dc08f07a2294ae9037b2
+contribute1_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/USD=301.335 gasPrice=18000000000 block=187 txId=0x2d97c2612468808ffcdbbf4217ffef126d3563a3309365d776f2d84152d99be7
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      120.198680400000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.177875766000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      195.198679248000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.177874614000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976      200.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0     -100.003462552000000000       40000.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844     -100.010142082000000000       30000.000000000000000000 Account #4 - Tier1-3
@@ -600,23 +604,23 @@ contribute1_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                 70000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Contribute Tier1 ac4 100 ETH
 PASS Contribute Tier1 ac5 100 ETH - Expecting failure
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=1
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -626,66 +630,65 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=false
 crowdsale.totalTokensSold=70000
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686648 Wed, 06 Sep 2017 08:30:48 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690028 Wed, 06 Sep 2017 09:27:08 UTC
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-NewSale 0 #1598: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
-NewSale 1 #1603: {"_amount":"100000000000000000000","_th":"0xa44a08d3f6933c69212114bb66e2df1813651844","_tokens":"3e+22"}
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+NewSale 0 #187: {"_amount":"100000000000000000000","_th":"0xa44a08d3f6933c69212114bb66e2df1813651844","_tokens":"3e+22"}
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=70000
-totalSupplyHistory(0) = 1598 => 40000
-totalSupplyHistory(1) = 1603 => 70000
-balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 1598 => 40000
-balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 1603 => 30000
-Transfer 0 #1603: _from=0x0000000000000000000000000000000000000000 _to=0xa44a08d3f6933c69212114bb66e2df1813651844 _amount=30000
+totalSupplyHistory(0) = 175 => 40000
+totalSupplyHistory(1) = 187 => 70000
+balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 175 => 40000
+balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 187 => 30000
+Transfer 0 #187: _from=0x0000000000000000000000000000000000000000 _to=0xa44a08d3f6933c69212114bb66e2df1813651844 _amount=30000
 
 Finalise Tier1
-finalise1Tx gas=4000000 gasUsed=52538 costETH=0.000945684 costUSD=0.28496768814 @ ETH/USD=301.335 gasPrice=18000000000 block=1607 txId=0xd86f03019f8b2e8962a48864d53e4f8146113871b4f29332684f3670b2e2d6e9
+finalise1Tx gas=4000000 gasUsed=52538 costETH=0.000945684 costUSD=0.28496768814 @ ETH/USD=301.335 gasPrice=18000000000 block=189 txId=0x653946cced79f949154f188e59f17349eb3b9f9c9c5e59d460dd63d14a112ef3
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      140.199626084000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.178821450000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      205.199624932000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.178820298000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976      200.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0     -100.003462552000000000       40000.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844     -100.010142082000000000       30000.000000000000000000 Account #4 - Tier1-3
@@ -697,22 +700,22 @@ finalise1Tx gas=4000000 gasUsed=52538 costETH=0.000945684 costUSD=0.28496768814 
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                 70000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Finalise Tier1
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=2
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -722,66 +725,65 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=false
 crowdsale.totalTokensSold=70000
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686648 Wed, 06 Sep 2017 08:30:48 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690028 Wed, 06 Sep 2017 09:27:08 UTC
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686684 Wed, 06 Sep 2017 08:31:24 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690069 Wed, 06 Sep 2017 09:27:49 UTC
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-NewSale 0 #1598: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
-NewSale 1 #1603: {"_amount":"100000000000000000000","_th":"0xa44a08d3f6933c69212114bb66e2df1813651844","_tokens":"3e+22"}
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+FinalizedTier 0 #189: {"_now":"1504690069","_tierCount":"2"}
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=70000
-totalSupplyHistory(0) = 1598 => 40000
-totalSupplyHistory(1) = 1603 => 70000
-balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 1598 => 40000
-balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 1603 => 30000
+totalSupplyHistory(0) = 175 => 40000
+totalSupplyHistory(1) = 187 => 70000
+balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 175 => 40000
+balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 187 => 30000
 
 Contribute Tier2
-contribute2_1Tx gas=400000 gasUsed=163449 costETH=0.002942082 costUSD=0.88655227947 @ ETH/USD=301.335 gasPrice=18000000000 block=1610 txId=0xc46b52b9fd725cc63dec54200066c32df20d7025f0b11f84df5200c6eaa3ee13
-contribute2_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/USD=301.335 gasPrice=18000000000 block=1610 txId=0xe54e34279cc9f6c99f8714043b5558477a07312b87772abfb4a483d74af84fa2
+contribute2_1Tx gas=400000 gasUsed=163449 costETH=0.002942082 costUSD=0.88655227947 @ ETH/USD=301.335 gasPrice=18000000000 block=194 txId=0xabcd114497101c4b063b7c50e88193f778eb5dcdbfd9c5d330c0eb66b57ecc64
+contribute2_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/USD=301.335 gasPrice=18000000000 block=194 txId=0x54a1828d0821fcdee90f02f09e16391119fdf7a953e9c800cb2348c959b76d3b
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      155.209768166000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.178821450000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      230.209767014000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.178820298000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976      300.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0     -100.003462552000000000       40000.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844     -100.010142082000000000       30000.000000000000000000 Account #4 - Tier1-3
@@ -793,23 +795,23 @@ contribute2_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                 90000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Contribute Tier2 ac5 100 ETH
 PASS Contribute Tier2 ac6 100 ETH - Expecting failure
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=2
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -819,69 +821,67 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=false
 crowdsale.totalTokensSold=90000
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686648 Wed, 06 Sep 2017 08:30:48 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690028 Wed, 06 Sep 2017 09:27:08 UTC
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686684 Wed, 06 Sep 2017 08:31:24 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690069 Wed, 06 Sep 2017 09:27:49 UTC
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-NewSale 0 #1598: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
-NewSale 1 #1603: {"_amount":"100000000000000000000","_th":"0xa44a08d3f6933c69212114bb66e2df1813651844","_tokens":"3e+22"}
-NewSale 2 #1610: {"_amount":"100000000000000000000","_th":"0xa55a151eb00fded1634d27d1127b4be4627079ea","_tokens":"2e+22"}
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+NewSale 0 #194: {"_amount":"100000000000000000000","_th":"0xa55a151eb00fded1634d27d1127b4be4627079ea","_tokens":"2e+22"}
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=90000
-totalSupplyHistory(0) = 1598 => 40000
-totalSupplyHistory(1) = 1603 => 70000
-totalSupplyHistory(2) = 1610 => 90000
-balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 1598 => 40000
-balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 1603 => 30000
-balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 1610 => 20000
-Transfer 0 #1610: _from=0x0000000000000000000000000000000000000000 _to=0xa55a151eb00fded1634d27d1127b4be4627079ea _amount=20000
+totalSupplyHistory(0) = 175 => 40000
+totalSupplyHistory(1) = 187 => 70000
+totalSupplyHistory(2) = 194 => 90000
+balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 175 => 40000
+balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 187 => 30000
+balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 194 => 20000
+Transfer 0 #194: _from=0x0000000000000000000000000000000000000000 _to=0xa55a151eb00fded1634d27d1127b4be4627079ea _amount=20000
 
 Finalise Tier2
-finalise2Tx gas=4000000 gasUsed=52538 costETH=0.000945684 costUSD=0.28496768814 @ ETH/USD=301.335 gasPrice=18000000000 block=1612 txId=0xbc23bcbf56604570ed38640cffd5aa286cc6637bcb1b1f5bdcff73e8aa18df36
+finalise2Tx gas=4000000 gasUsed=52538 costETH=0.000945684 costUSD=0.28496768814 @ ETH/USD=301.335 gasPrice=18000000000 block=197 txId=0xd31f82de731081b6629985034bf6db2edb87aeb0b5a6e2a3b586124435c1ec10
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      165.210713850000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.179767134000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      245.210712698000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.179765982000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976      300.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0     -100.003462552000000000       40000.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844     -100.010142082000000000       30000.000000000000000000 Account #4 - Tier1-3
@@ -893,22 +893,22 @@ finalise2Tx gas=4000000 gasUsed=52538 costETH=0.000945684 costUSD=0.28496768814 
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                 90000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Finalise Tier2
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=3
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -918,69 +918,67 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=false
 crowdsale.totalTokensSold=90000
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686648 Wed, 06 Sep 2017 08:30:48 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690028 Wed, 06 Sep 2017 09:27:08 UTC
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686684 Wed, 06 Sep 2017 08:31:24 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690069 Wed, 06 Sep 2017 09:27:49 UTC
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686739 Wed, 06 Sep 2017 08:32:19 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690090 Wed, 06 Sep 2017 09:28:10 UTC
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=0
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-NewSale 0 #1598: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
-NewSale 1 #1603: {"_amount":"100000000000000000000","_th":"0xa44a08d3f6933c69212114bb66e2df1813651844","_tokens":"3e+22"}
-NewSale 2 #1610: {"_amount":"100000000000000000000","_th":"0xa55a151eb00fded1634d27d1127b4be4627079ea","_tokens":"2e+22"}
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+FinalizedTier 0 #197: {"_now":"1504690090","_tierCount":"3"}
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=90000
-totalSupplyHistory(0) = 1598 => 40000
-totalSupplyHistory(1) = 1603 => 70000
-totalSupplyHistory(2) = 1610 => 90000
-balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 1598 => 40000
-balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 1603 => 30000
-balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 1610 => 20000
+totalSupplyHistory(0) = 175 => 40000
+totalSupplyHistory(1) = 187 => 70000
+totalSupplyHistory(2) = 194 => 90000
+balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 175 => 40000
+balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 187 => 30000
+balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 194 => 20000
 
 Contribute Tier3
-contribute3_1Tx gas=400000 gasUsed=163449 costETH=0.002942082 costUSD=0.88655227947 @ ETH/USD=301.335 gasPrice=18000000000 block=1615 txId=0xacb9627a9f6dc00a1b33f7d74dccaba3ae312e0f393412fc370ef62de7408594
-contribute3_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/USD=301.335 gasPrice=18000000000 block=1615 txId=0x1af102896953b77de9787423ef97d69a3bf94ee68a1fec7f36cab957ae713f65
+contribute3_1Tx gas=400000 gasUsed=163449 costETH=0.002942082 costUSD=0.88655227947 @ ETH/USD=301.335 gasPrice=18000000000 block=201 txId=0xa6963d066c9a22d3ee74e5c941680671e50f33a3a36a5b910272dfbf70b2b203
+contribute3_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/USD=301.335 gasPrice=18000000000 block=201 txId=0xf8e953dce0ec79fe8c368f1ec3bcba4165caa604413dd367a271bde0f23616bc
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      180.220855932000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.179767134000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      265.220854780000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.179765982000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976      400.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0     -100.003462552000000000       40000.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844     -100.010142082000000000       30000.000000000000000000 Account #4 - Tier1-3
@@ -992,23 +990,23 @@ contribute3_2Tx gas=400000 gasUsed=400000 costETH=0.0072 costUSD=2.169612 @ ETH/
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                100000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Contribute Tier3 ac6 100 ETH
 PASS Contribute Tier3 ac7 100 ETH - Expecting failure
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=3
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -1018,72 +1016,69 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=false
 crowdsale.totalTokensSold=100000
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686648 Wed, 06 Sep 2017 08:30:48 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690028 Wed, 06 Sep 2017 09:27:08 UTC
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686684 Wed, 06 Sep 2017 08:31:24 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690069 Wed, 06 Sep 2017 09:27:49 UTC
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686739 Wed, 06 Sep 2017 08:32:19 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690090 Wed, 06 Sep 2017 09:28:10 UTC
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
   .finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-NewSale 0 #1598: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
-NewSale 1 #1603: {"_amount":"100000000000000000000","_th":"0xa44a08d3f6933c69212114bb66e2df1813651844","_tokens":"3e+22"}
-NewSale 2 #1610: {"_amount":"100000000000000000000","_th":"0xa55a151eb00fded1634d27d1127b4be4627079ea","_tokens":"2e+22"}
-NewSale 3 #1615: {"_amount":"100000000000000000000","_th":"0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","_tokens":"1e+22"}
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+NewSale 0 #201: {"_amount":"100000000000000000000","_th":"0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","_tokens":"1e+22"}
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=100000
-totalSupplyHistory(0) = 1598 => 40000
-totalSupplyHistory(1) = 1603 => 70000
-totalSupplyHistory(2) = 1610 => 90000
-totalSupplyHistory(3) = 1615 => 100000
-balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 1598 => 40000
-balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 1603 => 30000
-balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 1610 => 20000
-balanceHistory(0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9, 0) = 1615 => 10000
-Transfer 0 #1615: _from=0x0000000000000000000000000000000000000000 _to=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 _amount=10000
+totalSupplyHistory(0) = 175 => 40000
+totalSupplyHistory(1) = 187 => 70000
+totalSupplyHistory(2) = 194 => 90000
+totalSupplyHistory(3) = 201 => 100000
+balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 175 => 40000
+balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 187 => 30000
+balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 194 => 20000
+balanceHistory(0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9, 0) = 201 => 10000
+Transfer 0 #201: _from=0x0000000000000000000000000000000000000000 _to=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 _amount=10000
 
 Finalise Tier3
-finalise3Tx gas=4000000 gasUsed=52538 costETH=0.000945684 costUSD=0.28496768814 @ ETH/USD=301.335 gasPrice=18000000000 block=1617 txId=0x9c7ad8e8fd9090a8a3d0d814ba633f8eb68958fb0870973d3d774849f4055265
+finalise3Tx gas=4000000 gasUsed=52538 costETH=0.000945684 costUSD=0.28496768814 @ ETH/USD=301.335 gasPrice=18000000000 block=205 txId=0x940233493a1e7a08830ead5848ea00738f8bcee1e85905c71b19fb8eee1dc48b
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      190.221801616000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.180712818000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      285.221800464000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.180711666000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976      400.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0     -100.003462552000000000       40000.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844     -100.010142082000000000       30000.000000000000000000 Account #4 - Tier1-3
@@ -1095,22 +1090,22 @@ finalise3Tx gas=4000000 gasUsed=52538 costETH=0.000945684 costUSD=0.28496768814 
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                100000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Finalise Tier3
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=4
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=false
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -1120,72 +1115,69 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=false
 crowdsale.totalTokensSold=100000
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686648 Wed, 06 Sep 2017 08:30:48 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690028 Wed, 06 Sep 2017 09:27:08 UTC
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686684 Wed, 06 Sep 2017 08:31:24 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690069 Wed, 06 Sep 2017 09:27:49 UTC
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686739 Wed, 06 Sep 2017 08:32:19 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690090 Wed, 06 Sep 2017 09:28:10 UTC
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686775 Wed, 06 Sep 2017 08:32:55 UTC
-NewSale 0 #1598: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
-NewSale 1 #1603: {"_amount":"100000000000000000000","_th":"0xa44a08d3f6933c69212114bb66e2df1813651844","_tokens":"3e+22"}
-NewSale 2 #1610: {"_amount":"100000000000000000000","_th":"0xa55a151eb00fded1634d27d1127b4be4627079ea","_tokens":"2e+22"}
-NewSale 3 #1615: {"_amount":"100000000000000000000","_th":"0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","_tokens":"1e+22"}
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690129 Wed, 06 Sep 2017 09:28:49 UTC
+FinalizedTier 0 #205: {"_now":"1504690129","_tierCount":"4"}
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=100000
-totalSupplyHistory(0) = 1598 => 40000
-totalSupplyHistory(1) = 1603 => 70000
-totalSupplyHistory(2) = 1610 => 90000
-totalSupplyHistory(3) = 1615 => 100000
-balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 1598 => 40000
-balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 1603 => 30000
-balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 1610 => 20000
-balanceHistory(0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9, 0) = 1615 => 10000
+totalSupplyHistory(0) = 175 => 40000
+totalSupplyHistory(1) = 187 => 70000
+totalSupplyHistory(2) = 194 => 90000
+totalSupplyHistory(3) = 201 => 100000
+balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 175 => 40000
+balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 187 => 30000
+balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 194 => 20000
+balanceHistory(0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9, 0) = 201 => 10000
 
 Close Crowdsale
-allocateTx gas=4000000 gasUsed=202192 costETH=0.003639456 costUSD=1.09669547376 @ ETH/USD=301.335 gasPrice=18000000000 block=1620 txId=0x99667f8106520b536b64af3207aaf35db8314343f70ba2e9ecb891530d19f824
-allowTransfersTx gas=4000000 gasUsed=33505 costETH=0.00060309 costUSD=0.18173212515 @ ETH/USD=301.335 gasPrice=18000000000 block=1620 txId=0x07e2c94f19d5f7612794d319fd14edc251910876482ecaf852471d23ed3d6706
+allocateTx gas=4000000 gasUsed=202192 costETH=0.003639456 costUSD=1.09669547376 @ ETH/USD=301.335 gasPrice=18000000000 block=207 txId=0x5586b3e227c635ed2956d0c6a85e1ac73fbeb61975ffb9e827d8f2d38fad8aa2
+allowTransfersTx gas=4000000 gasUsed=33505 costETH=0.00060309 costUSD=0.18173212515 @ ETH/USD=301.335 gasPrice=18000000000 block=207 txId=0x17565b5d4355c473eecf9b89e5a58a38b767591ec2e8e5b1fe4b77a3abda97d5
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      205.226044162000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.184955364000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      295.226043010000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.184954212000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976      400.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0     -100.003462552000000000       40000.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844     -100.010142082000000000       30000.000000000000000000 Account #4 - Tier1-3
@@ -1197,23 +1189,23 @@ allowTransfersTx gas=4000000 gasUsed=33505 costETH=0.00060309 costUSD=0.18173212
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000       26666.666666666666666666 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000        5066.666666666666666666 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000        1599.999999999999999999 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                133333.333333333333333331 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Close Crowdsale - Allocate Tokens
 PASS Close Crowdsale - Allow Transfers
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=4
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=true
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -1223,77 +1215,73 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=true
 crowdsale.totalTokensSold=100000
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686648 Wed, 06 Sep 2017 08:30:48 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690028 Wed, 06 Sep 2017 09:27:08 UTC
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686684 Wed, 06 Sep 2017 08:31:24 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690069 Wed, 06 Sep 2017 09:27:49 UTC
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686739 Wed, 06 Sep 2017 08:32:19 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690090 Wed, 06 Sep 2017 09:28:10 UTC
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686775 Wed, 06 Sep 2017 08:32:55 UTC
-NewSale 0 #1598: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
-NewSale 1 #1603: {"_amount":"100000000000000000000","_th":"0xa44a08d3f6933c69212114bb66e2df1813651844","_tokens":"3e+22"}
-NewSale 2 #1610: {"_amount":"100000000000000000000","_th":"0xa55a151eb00fded1634d27d1127b4be4627079ea","_tokens":"2e+22"}
-NewSale 3 #1615: {"_amount":"100000000000000000000","_th":"0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","_tokens":"1e+22"}
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690129 Wed, 06 Sep 2017 09:28:49 UTC
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=133333.333333333333333331
-totalSupplyHistory(0) = 1598 => 40000
-totalSupplyHistory(1) = 1603 => 70000
-totalSupplyHistory(2) = 1610 => 90000
-totalSupplyHistory(3) = 1615 => 100000
-totalSupplyHistory(4) = 1620 => 133333.333333333333333331
-balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 1598 => 40000
-balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 1603 => 30000
-balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 1610 => 20000
-balanceHistory(0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9, 0) = 1615 => 10000
-Transfer 0 #1620: _from=0x0000000000000000000000000000000000000000 _to=0xaaaa9de1e6c564446ebca0fd102d8bd92093c756 _amount=26666.666666666666666666
-Transfer 1 #1620: _from=0x0000000000000000000000000000000000000000 _to=0xabba43e7594e3b76afb157989e93c6621497fd4b _amount=5066.666666666666666666
-Transfer 2 #1620: _from=0x0000000000000000000000000000000000000000 _to=0xacca534c9f62ab495bd986e002ddf0f054caae4f _amount=1599.999999999999999999
+totalSupplyHistory(0) = 175 => 40000
+totalSupplyHistory(1) = 187 => 70000
+totalSupplyHistory(2) = 194 => 90000
+totalSupplyHistory(3) = 201 => 100000
+totalSupplyHistory(4) = 207 => 133333.333333333333333331
+balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 175 => 40000
+balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 187 => 30000
+balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 194 => 20000
+balanceHistory(0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9, 0) = 201 => 10000
+Transfer 0 #207: _from=0x0000000000000000000000000000000000000000 _to=0xaaaa9de1e6c564446ebca0fd102d8bd92093c756 _amount=26666.666666666666666666
+Transfer 1 #207: _from=0x0000000000000000000000000000000000000000 _to=0xabba43e7594e3b76afb157989e93c6621497fd4b _amount=5066.666666666666666666
+Transfer 2 #207: _from=0x0000000000000000000000000000000000000000 _to=0xacca534c9f62ab495bd986e002ddf0f054caae4f _amount=1599.999999999999999999
 
 Transfers
-transfer1Tx gas=100000 gasUsed=82377 costETH=0.001482786 costUSD=0.44681531931 @ ETH/USD=301.335 gasPrice=18000000000 block=1622 txId=0x56274d364c8360264b2c4947ae2c096f4ccba598d21131d5d76dddae3fa1fd86
-transfer2Tx gas=100000 gasUsed=47404 costETH=0.000853272 costUSD=0.25712071812 @ ETH/USD=301.335 gasPrice=18000000000 block=1622 txId=0x36e4694fc51c19b9f83523bcda7f9deeb26e50ad32d7760badaaa70d0ee6a695
-transfer3Tx gas=200000 gasUsed=87941 costETH=0.001582938 costUSD=0.47699462223 @ ETH/USD=301.335 gasPrice=18000000000 block=1624 txId=0xba36ec232ecff25abd2ef68ecdab22bc51e2dd4a04aad4c7abb1dcdbb7ff9e01
+transfer1Tx gas=100000 gasUsed=82377 costETH=0.001482786 costUSD=0.44681531931 @ ETH/USD=301.335 gasPrice=18000000000 block=210 txId=0x3da4461c933e522f0a83fd921ef1efaaf41c282c31e9f45c498e81d604b03ff8
+transfer2Tx gas=100000 gasUsed=47404 costETH=0.000853272 costUSD=0.25712071812 @ ETH/USD=301.335 gasPrice=18000000000 block=210 txId=0xd61f689a7dcd663187f0b6cdae136c1f58ea48c8f9a7682ec3476f958fa3edce
+transfer3Tx gas=200000 gasUsed=87941 costETH=0.001582938 costUSD=0.47699462223 @ ETH/USD=301.335 gasPrice=18000000000 block=212 txId=0xc390590055a56d313bc8dad21e62531b8f6fdfbd992a2cf669c97d70776cf640
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      225.229963158000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.184955364000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      320.229962006000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.184954212000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976      400.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0     -100.003462552000000000       40000.000000000000000000 Account #3 - Tier0-3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844     -100.011624868000000000       29999.999999000000000000 Account #4 - Tier1-3
@@ -1305,13 +1293,13 @@ transfer3Tx gas=200000 gasUsed=87941 costETH=0.001582938 costUSD=0.47699462223 @
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000       26666.666666666666666666 Account #10 - Founders
 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000        5066.666666666666666666 Account #11 - Advisors
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000        1599.999999999999999999 Account #12 - Bounty
-13 0x24ad1371437980d21a8ebf2e46a824b860a6d47c        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-14 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 CND
-15 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Contribution
-16 0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f        0.000000000000000000           0.000000000000000000 Tier0
-17 0x0b53e5ec7b91526f737b93200ba0a43797763f33        0.000000000000000000           0.000000000000000000 Tier1
-18 0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec        0.000000000000000000           0.000000000000000000 Tier2
-19 0x2e49c7f02a6639bebb7906930125c66d9ffbc161        0.000000000000000000           0.000000000000000000 Tier3
+13 0xd53380f36e665634cf48ec4745c7095cde2c9d7f        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+14 0x12322cf0575d3ce515765d134d7dd9d2725530ae        0.000000000000000000           0.000000000000000000 CND
+15 0x350234335cedaaa09260790c8167f85004828a32        0.000000000000000000           0.000000000000000000 Contribution
+16 0x27daa9fe81944d721dc95e09f54c8bd3a90a5603        0.000000000000000000           0.000000000000000000 Tier0
+17 0x5029cacf1799deb161dc3ab611b2b368c06f15e8        0.000000000000000000           0.000000000000000000 Tier1
+18 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000 Tier2
+19 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000 Tier3
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                133333.333333333333333331 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -1319,10 +1307,10 @@ transfer3Tx gas=200000 gasUsed=87941 costETH=0.001582938 costUSD=0.47699462223 @
 PASS Transfers - transfer 0.000001 tokens ac4 -> ac6. CHECK for movement
 PASS Transfers - approve 0.03 tokens ac5 -> ac7
 PASS Transfers - transferFrom 0.03 tokens ac5 -> ac8 by ac7. CHECK for movement
-crowdsaleContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+crowdsaleContractAddress=0x350234335cedaaa09260790c8167f85004828a32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 crowdsale.tierCount=4
-crowdsale.cnd=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+crowdsale.cnd=0x12322cf0575d3ce515765d134d7dd9d2725530ae
 crowdsale.transferable=true
 crowdsale.October12_2017=1507830400
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
@@ -1332,69 +1320,65 @@ crowdsale.bountyWallet=0xacca534c9f62ab495bd986e002ddf0f054caae4f
 crowdsale.finalAllocation=true
 crowdsale.totalTokensSold=100000
 crowdsale.paused=false
-tiers[0]=0x9fbfccdaf54799741c8ec053f6bcaf520fc53d4f
+tiers[0]=0x27daa9fe81944d721dc95e09f54c8bd3a90a5603
   .cap=1000
   .exchangeRate=400
   .minInvestorCap=1
   .maxInvestorCap=500
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686648 Wed, 06 Sep 2017 08:30:48 UTC
-tiers[1]=0x0b53e5ec7b91526f737b93200ba0a43797763f33
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690028 Wed, 06 Sep 2017 09:27:08 UTC
+tiers[1]=0x5029cacf1799deb161dc3ab611b2b368c06f15e8
   .cap=1000
   .exchangeRate=300
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686684 Wed, 06 Sep 2017 08:31:24 UTC
-tiers[2]=0x3605208ab7eeb9f905ab1f9615fb4915fd2453ec
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690069 Wed, 06 Sep 2017 09:27:49 UTC
+tiers[2]=0x332ceb425309f4ab99839300329a9626983323be
   .cap=1000
   .exchangeRate=200
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686739 Wed, 06 Sep 2017 08:32:19 UTC
-tiers[3]=0x2e49c7f02a6639bebb7906930125c66d9ffbc161
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690090 Wed, 06 Sep 2017 09:28:10 UTC
+tiers[3]=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
   .cap=1000
   .exchangeRate=100
   .minInvestorCap=1
   .maxInvestorCap=200
   .totalInvestedWei=100
-  .startTime=1504686623 Wed, 06 Sep 2017 08:30:23 UTC
-  .endTime=1504686863 Wed, 06 Sep 2017 08:34:23 UTC
-  .initializedTime=1504686594 Wed, 06 Sep 2017 08:29:54 UTC
-  .finalizedTime=1504686775 Wed, 06 Sep 2017 08:32:55 UTC
-NewSale 0 #1598: {"_amount":"100000000000000000000","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"4e+22"}
-NewSale 1 #1603: {"_amount":"100000000000000000000","_th":"0xa44a08d3f6933c69212114bb66e2df1813651844","_tokens":"3e+22"}
-NewSale 2 #1610: {"_amount":"100000000000000000000","_th":"0xa55a151eb00fded1634d27d1127b4be4627079ea","_tokens":"2e+22"}
-NewSale 3 #1615: {"_amount":"100000000000000000000","_th":"0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","_tokens":"1e+22"}
-tokenContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
-token.controller=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+  .startTime=1504690015 Wed, 06 Sep 2017 09:26:55 UTC
+  .endTime=1504690255 Wed, 06 Sep 2017 09:30:55 UTC
+  .initializedTime=1504689974 Wed, 06 Sep 2017 09:26:14 UTC
+  .finalizedTime=1504690129 Wed, 06 Sep 2017 09:28:49 UTC
+tokenContractAddress=0x12322cf0575d3ce515765d134d7dd9d2725530ae
+token.controller=0x350234335cedaaa09260790c8167f85004828a32
 token.symbol=CND
 token.name=Cindicator Token
 token.decimals=18
 token.totalSupply=133333.333333333333333331
-totalSupplyHistory(0) = 1598 => 40000
-totalSupplyHistory(1) = 1603 => 70000
-totalSupplyHistory(2) = 1610 => 90000
-totalSupplyHistory(3) = 1615 => 100000
-totalSupplyHistory(4) = 1620 => 133333.333333333333333331
-balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 1598 => 40000
-balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 1603 => 30000
-balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 1) = 1622 => 29999.999999
-balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 1610 => 20000
-balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 1) = 1624 => 19999.97
-balanceHistory(0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9, 0) = 1615 => 10000
-balanceHistory(0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9, 1) = 1622 => 10000.000001
-Approval 0 #1622 _owner=0xa55a151eb00fded1634d27d1127b4be4627079ea _spender=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec _amount=0.03
-Transfer 0 #1622: _from=0xa44a08d3f6933c69212114bb66e2df1813651844 _to=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 _amount=0.000001
-Transfer 1 #1624: _from=0xa55a151eb00fded1634d27d1127b4be4627079ea _to=0xa88a05d2b88283ce84c8325760b72a64591279a2 _amount=0.03
+totalSupplyHistory(0) = 175 => 40000
+totalSupplyHistory(1) = 187 => 70000
+totalSupplyHistory(2) = 194 => 90000
+totalSupplyHistory(3) = 201 => 100000
+totalSupplyHistory(4) = 207 => 133333.333333333333333331
+balanceHistory(0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0, 0) = 175 => 40000
+balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 0) = 187 => 30000
+balanceHistory(0xa44a08d3f6933c69212114bb66e2df1813651844, 1) = 210 => 29999.999999
+balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 0) = 194 => 20000
+balanceHistory(0xa55a151eb00fded1634d27d1127b4be4627079ea, 1) = 212 => 19999.97
+balanceHistory(0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9, 0) = 201 => 10000
+balanceHistory(0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9, 1) = 210 => 10000.000001
+Approval 0 #210 _owner=0xa55a151eb00fded1634d27d1127b4be4627079ea _spender=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec _amount=0.03
+Transfer 0 #210: _from=0xa44a08d3f6933c69212114bb66e2df1813651844 _to=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 _amount=0.000001
+Transfer 1 #212: _from=0xa55a151eb00fded1634d27d1127b4be4627079ea _to=0xa88a05d2b88283ce84c8325760b72a64591279a2 _amount=0.03
 

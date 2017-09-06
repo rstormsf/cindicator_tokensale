@@ -202,10 +202,6 @@ function printCrowdsaleContractDetails() {
   if (crowdsaleContractAddress != null && crowdsaleContractAbi != null) {
     var contract = eth.contract(crowdsaleContractAbi).at(crowdsaleContractAddress);
     console.log("RESULT: crowdsale.controller=" + contract.controller());
-    // console.log("RESULT: crowdsale.tiers[0]=" + contract.tiers(0));
-    // console.log("RESULT: crowdsale.tiers[1]=" + contract.tiers(1));
-    // console.log("RESULT: crowdsale.tiers[2]=" + contract.tiers(2));
-    // console.log("RESULT: crowdsale.tiers[3]=" + contract.tiers(3));
     console.log("RESULT: crowdsale.tierCount=" + contract.tierCount());
     console.log("RESULT: crowdsale.cnd=" + contract.cnd());
     console.log("RESULT: crowdsale.transferable=" + contract.transferable());
@@ -238,6 +234,13 @@ function printCrowdsaleContractDetails() {
       }
     }
 
+    var claimedTokensEvents = contract.ClaimedTokens({}, { fromBlock: crowdsaleFromBlock, toBlock: latestBlock });
+    i = 0;
+    claimedTokensEvents.watch(function (error, result) {
+      console.log("RESULT: ClaimedTokens " + i++ + " #" + result.blockNumber + ": " + JSON.stringify(result.args));
+    });
+    claimedTokensEvents.stopWatching();
+
     var newSaleEvents = contract.NewSale({}, { fromBlock: crowdsaleFromBlock, toBlock: latestBlock });
     i = 0;
     newSaleEvents.watch(function (error, result) {
@@ -245,55 +248,28 @@ function printCrowdsaleContractDetails() {
     });
     newSaleEvents.stopWatching();
 
-//     var initializedEvents = contract.Initialized({}, { fromBlock: crowdsaleFromBlock, toBlock: latestBlock });
-//     i = 0;
-//     initializedEvents.watch(function (error, result) {
-//       console.log("RESULT: Initialized " + i++ + " #" + result.blockNumber + ": " + JSON.stringify(result.args));
-//     });
-//     initializedEvents.stopWatching();
-
-    var finalizedEvents = contract.Finalized({}, { fromBlock: crowdsaleFromBlock, toBlock: latestBlock });
+    var initializedTierEvents = contract.InitializedTier({}, { fromBlock: crowdsaleFromBlock, toBlock: latestBlock });
     i = 0;
-    finalizedEvents.watch(function (error, result) {
-      console.log("RESULT: Finalized " + i++ + " #" + result.blockNumber + ": " + JSON.stringify(result.args));
+    initializedTierEvents.watch(function (error, result) {
+      console.log("RESULT: InitializedTier " + i++ + " #" + result.blockNumber + ": " + JSON.stringify(result.args));
     });
-    finalizedEvents.stopWatching();
+    initializedTierEvents.stopWatching();
+
+    var finalizedTierEvents = contract.FinalizedTier({}, { fromBlock: crowdsaleFromBlock, toBlock: latestBlock });
+    i = 0;
+    finalizedTierEvents.watch(function (error, result) {
+      console.log("RESULT: FinalizedTier " + i++ + " #" + result.blockNumber + ": " + JSON.stringify(result.args));
+    });
+    finalizedTierEvents.stopWatching();
+
+    var refundEvents = contract.Refund({}, { fromBlock: crowdsaleFromBlock, toBlock: latestBlock });
+    i = 0;
+    refundEvents.watch(function (error, result) {
+      console.log("RESULT: Refund " + i++ + " #" + result.blockNumber + ": " + JSON.stringify(result.args));
+    });
+    refundEvents.stopWatching();
 
     crowdsaleFromBlock = parseInt(latestBlock) + 1;
-  }
-}
-
-
-//-----------------------------------------------------------------------------
-// PlaceHolder Contract
-//-----------------------------------------------------------------------------
-var placeHolderContractAddress = null;
-var placeHolderContractAbi = null;
-
-function addPlaceHolderContractAddressAndAbi(address, abi) {
-  placeHolderContractAddress = address;
-  placeHolderContractAbi = abi;
-}
-
-var placeHolderFromBlock = 0;
-function printPlaceHolderContractDetails() {
-  console.log("RESULT: placeHolderContractAddress=" + placeHolderContractAddress);
-  // console.log("RESULT: placeHolderContractAbi=" + JSON.stringify(placeHolderContractAbi));
-  if (placeHolderContractAddress != null && placeHolderContractAbi != null) {
-    var contract = eth.contract(placeHolderContractAbi).at(placeHolderContractAddress);
-    console.log("RESULT: placeHolder.controller=" + contract.controller());
-    console.log("RESULT: placeHolder.transferable=" + contract.transferable());
-    var latestBlock = eth.blockNumber;
-    var i;
-
-    var claimedTokensEvents = contract.ClaimedTokens({}, { fromBlock: placeHolderFromBlock, toBlock: latestBlock });
-    i = 0;
-    claimedTokensEvents.watch(function (error, result) {
-      console.log("RESULT: ClaimedTokens " + i++ + " #" + result.blockNumber + ": " + JSON.stringify(result.args));
-    });
-    claimedTokensEvents.stopWatching();
-
-    placeHolderFromBlock = parseInt(latestBlock) + 1;
   }
 }
 

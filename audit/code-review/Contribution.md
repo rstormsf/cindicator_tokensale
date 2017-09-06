@@ -18,21 +18,30 @@ import "./CND.sol";
 
 // BK Ok
 contract Contribution is Controlled, TokenController {
+  // BK Ok
   using SafeMath for uint256;
 
+  // BK Next block Ok
   struct WhitelistedInvestor {
     uint256 tier;
     bool status;
     uint256 contributedAmount;
   }
 
+  // BK Ok
   mapping(address => WhitelistedInvestor) investors;
+  // BK Ok
   Tier[4] public tiers;
+  // BK Ok
   uint256 public tierCount;
 
+  // BK Ok
   MiniMeToken public cnd;
+  // BK Ok
   bool public transferable = false;
+  // BK Ok
   uint256 public October12_2017 = 1507830400;
+  // BK Next 4 Ok
   address public contributionWallet;
   address public foundersWallet;
   address public advisorsWallet;
@@ -40,6 +49,7 @@ contract Contribution is Controlled, TokenController {
   // BK Ok
   bool public finalAllocation;
 
+  // BK Ok
   uint256 public totalTokensSold;
 
   // BK Ok
@@ -61,14 +71,21 @@ contract Contribution is Controlled, TokenController {
     _;
   }
 
+  // BK Ok
   modifier initialized() {
+    // BK Ok
     Tier tier = tiers[tierCount];
+    // BK Ok
     assert(tier.initializedTime() != 0);
+    // BK Ok
     _;
   }
 
+  // BK Ok
   function contributionOpen() public constant returns(bool) {
+    // BK Ok
     Tier tier = tiers[tierCount];
+    // BK Ok
     return (getBlockTimestamp() >= tier.startTime() && 
            getBlockTimestamp() <= tier.endTime() &&
            tier.finalizedTime() == 0);
@@ -82,18 +99,25 @@ contract Contribution is Controlled, TokenController {
     _;
   }
 
+  // BK Ok - Constructor
   function Contribution(address _cnd, address _contributionWallet, address _foundersWallet, address _advisorsWallet, address _bountyWallet) {
+    // BK Next 4 Ok
     require(_contributionWallet != 0x0);
     require(_foundersWallet != 0x0);
     require(_advisorsWallet != 0x0);
     require(_bountyWallet != 0x0);
+    // BK Ok
     assert(CND(_cnd).IS_CND_CONTRACT_MAGIC_NUMBER() == 0x1338);
+    // BK Ok - The following statement should be before the previous statement
     require(_cnd != 0x0);
+    // BK Next 4 Ok
     contributionWallet = _contributionWallet;
     foundersWallet = _foundersWallet;
     advisorsWallet =_advisorsWallet;
     bountyWallet = _bountyWallet;
+    // BK Ok
     cnd = CND(_cnd);
+    // BK Ok
     tierCount = 0;
   }
 
@@ -130,23 +154,36 @@ contract Contribution is Controlled, TokenController {
     require(false);
   }
 
+  // BK Ok - Constant function
   function investorAmountTokensToBuy(address _investor) public constant returns(uint256) {
+    // BK Ok
     WhitelistedInvestor memory investor = investors[_investor];
+    // BK Ok
     Tier tier = tiers[tierCount];
 
+    // BK Ok
     uint256 leftToBuy = tier.maxInvestorCap().sub(investor.contributedAmount).mul(tier.exchangeRate());
+    // BK Ok
     return leftToBuy;
   }
 
+  // BK Ok - Constant function
   function isWhitelisted(address _investor, uint256 _tier) public constant returns(bool) {
+    // BK Ok
     WhitelistedInvestor memory investor = investors[_investor];
+    // BK Ok
     return (investor.tier <= _tier && investor.status);
   }
 
+  // BK Ok - Only controller can execute to add whitelisted addresses
   function whitelistAddresses(address[] _addresses, uint256 _tier, bool _status) public onlyController {
+    // BK Ok
     for (uint256 i = 0; i < _addresses.length; i++) {
+        // BK Ok
         address investorAddress = _addresses[i];
+        // BK Ok
         require(investors[investorAddress].contributedAmount == 0);
+        // BK Ok
         investors[investorAddress] = WhitelistedInvestor(_tier, _status, 0);
     }
    }
@@ -157,7 +194,7 @@ contract Contribution is Controlled, TokenController {
     initialized
     returns (bool) 
   {
-    // BK CHECK - Normally the sender should not be overwritten
+    // BK NOTE - Normally the sender should not be overwritten
     _sender = msg.sender;
     // BK Ok
     assert(isCurrentTierCapReached() == false);
@@ -177,6 +214,7 @@ contract Contribution is Controlled, TokenController {
     /// @return False if the controller does not authorize the transfer
   // BK Ok
   function onTransfer(address /* _from */, address /* _to */, uint256 /* _amount */) returns(bool) {
+    // BK Ok
     return (transferable || getBlockTimestamp() >= October12_2017 );
   } 
 
@@ -190,7 +228,6 @@ contract Contribution is Controlled, TokenController {
   }
 
 
-  // BK NOTE - The controller can suspend and resume token transfers anytime
   // BK Ok - Only the controller can execute this
   function allowTransfers(bool _transferable) onlyController {
     // BK Ok
@@ -211,56 +248,84 @@ contract Contribution is Controlled, TokenController {
     return tokensLeft;
   }
 
-  // BK CHECK - What happens when tierCount = 4
   // BK Ok - Internal so cannot be called directly
   function doBuy() internal {
+    // BK Ok
     Tier tier = tiers[tierCount];
+    // BK Ok
     assert(msg.value >= tier.minInvestorCap() && msg.value <= tier.maxInvestorCap());
+    // BK Ok
     address caller = msg.sender;
+    // BK Ok
     WhitelistedInvestor storage investor = investors[caller];
+    // BK Ok
     uint256 investorTokenBP = investorAmountTokensToBuy(caller);
 
+    // BK Ok
     require(investorTokenBP > 0);
 
-    uint256 toFund = msg.value;  
+    // BK Ok
+    uint256 toFund = msg.value;
+    // BK Ok  
     uint256 tokensGenerated = toFund.mul(tier.exchangeRate());
+    // BK Ok
     uint256 tokensleftForSale = leftForSale();    
 
+    // BK Ok
     if(tokensleftForSale > investorTokenBP ) {
+      // BK Ok
       if(tokensGenerated > investorTokenBP) {
+        // BK Ok
         tokensGenerated = investorTokenBP;
+        // BK Ok
         toFund = investorTokenBP.div(tier.exchangeRate());
       }
     }
 
+    // BK Ok
     if(investorTokenBP > tokensleftForSale) {
+      // BK Ok
       if(tokensGenerated > tokensleftForSale) {
+        // BK Ok
         tokensGenerated = tokensleftForSale;
+        // BK Ok
         toFund = tokensleftForSale.div(tier.exchangeRate());
       }
     }
 
+    // BK Ok
     investor.contributedAmount = investor.contributedAmount.add(toFund);
+    // BK Ok
     tier.increaseInvestedWei(toFund);
+    // BK Ok
     if (tokensGenerated == tokensleftForSale) {
+      // BK Ok - Automatic tier finalisation
       tier.finalize();
     }
     
+    // BK Ok
     assert(cnd.generateTokens(caller, tokensGenerated));
+    // BK Ok
     totalTokensSold = totalTokensSold.add(tokensGenerated);
 
+    // BK Ok
     contributionWallet.transfer(toFund);
 
+    // BK Ok
     NewSale(caller, toFund, tokensGenerated);
 
+    // BK Ok
     uint256 toReturn = msg.value.sub(toFund);
+    // BK Ok
     if (toReturn > 0) {
+      // BK Ok
       caller.transfer(toReturn);
+      // BK Ok
       Refund(toReturn);
     }
   }
 
-  // BK Ok - Anyone can call
+  // BK Ok - Anyone can call when tiers finalised
   function allocate() public notAllocated endedSale returns(bool) {
     // BK Ok
     finalAllocation = true;
