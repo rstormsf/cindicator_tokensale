@@ -1,5 +1,7 @@
 # Cindicator Crowdsale Contract Audit
 
+Status: Work in progress
+
 ## Summary
 
 Commits [4f9ea74](https://github.com/rstormsf/cindicator_backup/commit/4f9ea745087665f626d0305f45ababa2962f380c),

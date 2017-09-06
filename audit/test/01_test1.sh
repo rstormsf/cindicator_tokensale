@@ -47,10 +47,10 @@ if [ "$MODE" == "dev" ]; then
   STARTTIME=`echo "$CURRENTTIME" | bc`
 else
   # Start time 1m 10s in the future
-  STARTTIME=`echo "$CURRENTTIME+90" | bc`
+  STARTTIME=`echo "$CURRENTTIME+60*2" | bc`
 fi
 STARTTIME_S=`date -r $STARTTIME -u`
-ENDTIME=`echo "$CURRENTTIME+60*5" | bc`
+ENDTIME=`echo "$CURRENTTIME+60*6" | bc`
 ENDTIME_S=`date -r $ENDTIME -u`
 
 printf "MODE                 = '$MODE'\n" | tee $TEST1OUTPUT
@@ -231,7 +231,7 @@ var contrib = contribContract.new(cndAddress, multisig, foundersWallet, advisors
       } else {
         contribAddress = contract.address;
         addAccount(contribAddress, "Contribution");
-        addCrowdsaleContractAddressAndAbi(contribAddress, contribAbi);
+        addCrowdsaleContractAddressAndAbi(contribAddress, contribAbi, tierAbi);
         printTxData("contribAddress=" + contribAddress, contribTx);
       }
     }
@@ -241,6 +241,30 @@ while (txpool.status.pending > 0) {
 }
 printBalances();
 failIfGasEqualsGasUsed(contribTx, contribMessage);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var whitelistAddressesMessage = "Whitelist Addresses";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + whitelistAddressesMessage);
+var whitelistAddresse0Tx = contrib.whitelistAddresses([account3], 0, true, {from: contractOwnerAccount, gas: 2000000});
+var whitelistAddresse1Tx = contrib.whitelistAddresses([account4], 1, true, {from: contractOwnerAccount, gas: 2000000});
+var whitelistAddresse2Tx = contrib.whitelistAddresses([account5], 2, true, {from: contractOwnerAccount, gas: 2000000});
+var whitelistAddresse3Tx = contrib.whitelistAddresses([account6], 3, true, {from: contractOwnerAccount, gas: 2000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("whitelistAddresse0Tx", whitelistAddresse0Tx);
+printTxData("whitelistAddresse1Tx", whitelistAddresse1Tx);
+printTxData("whitelistAddresse2Tx", whitelistAddresse2Tx);
+printTxData("whitelistAddresse3Tx", whitelistAddresse3Tx);
+printBalances();
+failIfGasEqualsGasUsed(whitelistAddresse0Tx, whitelistAddressesMessage + " - Tier0 - ac3");
+failIfGasEqualsGasUsed(whitelistAddresse1Tx, whitelistAddressesMessage + " - Tier1 - ac3+ac4");
+failIfGasEqualsGasUsed(whitelistAddresse2Tx, whitelistAddressesMessage + " - Tier2 - ac3+ac4+ac5");
+failIfGasEqualsGasUsed(whitelistAddresse3Tx, whitelistAddressesMessage + " - Tier3 - ac4+ac4+ac5+ac6");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
@@ -338,24 +362,27 @@ console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
-var changeTierControllerMessage = "Change Tier Controller";
+var changeControllerMessage = "Change Controller";
 // -----------------------------------------------------------------------------
-console.log("RESULT: " + changeTierControllerMessage);
+console.log("RESULT: " + changeControllerMessage);
 var changeTier0ControllerTx = tier0.changeController(contribAddress, {from: contractOwnerAccount, gas: 2000000});
 var changeTier1ControllerTx = tier1.changeController(contribAddress, {from: contractOwnerAccount, gas: 2000000});
 var changeTier2ControllerTx = tier2.changeController(contribAddress, {from: contractOwnerAccount, gas: 2000000});
 var changeTier3ControllerTx = tier3.changeController(contribAddress, {from: contractOwnerAccount, gas: 2000000});
+var changeCndControllerTx = cnd.changeController(contribAddress, {from: contractOwnerAccount, gas: 2000000});
 while (txpool.status.pending > 0) {
 }
 printTxData("changeTier0ControllerTx", changeTier0ControllerTx);
 printTxData("changeTier1ControllerTx", changeTier1ControllerTx);
 printTxData("changeTier2ControllerTx", changeTier2ControllerTx);
 printTxData("changeTier3ControllerTx", changeTier3ControllerTx);
+printTxData("changeCndControllerTx", changeCndControllerTx);
 printBalances();
-failIfGasEqualsGasUsed(changeTier0ControllerTx, changeTierControllerMessage + " - Tier0");
-failIfGasEqualsGasUsed(changeTier1ControllerTx, changeTierControllerMessage + " - Tier1");
-failIfGasEqualsGasUsed(changeTier2ControllerTx, changeTierControllerMessage + " - Tier2");
-failIfGasEqualsGasUsed(changeTier3ControllerTx, changeTierControllerMessage + " - Tier3");
+failIfGasEqualsGasUsed(changeTier0ControllerTx, changeControllerMessage + " - Tier0");
+failIfGasEqualsGasUsed(changeTier1ControllerTx, changeControllerMessage + " - Tier1");
+failIfGasEqualsGasUsed(changeTier2ControllerTx, changeControllerMessage + " - Tier2");
+failIfGasEqualsGasUsed(changeTier3ControllerTx, changeControllerMessage + " - Tier3");
+failIfGasEqualsGasUsed(changeCndControllerTx, changeControllerMessage + " - CND");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
@@ -380,6 +407,193 @@ failIfGasEqualsGasUsed(initialiseTier0Tx, initialiseTiersMessage + " - Tier0");
 failIfGasEqualsGasUsed(initialiseTier1Tx, initialiseTiersMessage + " - Tier1");
 failIfGasEqualsGasUsed(initialiseTier2Tx, initialiseTiersMessage + " - Tier2");
 failIfGasEqualsGasUsed(initialiseTier3Tx, initialiseTiersMessage + " - Tier3");
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+// Wait for crowdsale start
+// -----------------------------------------------------------------------------
+var startTime = $STARTTIME;
+var startTimeDate = new Date(startTime * 1000);
+console.log("RESULT: Waiting until startTime at " + startTime + " " + startTimeDate +
+  " currentDate=" + new Date());
+while ((new Date()).getTime() <= startTimeDate.getTime()) {
+}
+console.log("RESULT: Waited until startTime at " + startTime + " " + startTimeDate +
+  " currentDate=" + new Date());
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var contribute0Message = "Contribute Tier0";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + contribute0Message);
+var contribute0_1Tx = contrib.proxyPayment(account3, {from: account3, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute0_2Tx = contrib.proxyPayment(account4, {from: account4, gas: 400000, value: web3.toWei("100", "ether")});
+while (txpool.status.pending > 0) {
+}
+printTxData("contribute0_1Tx", contribute0_1Tx);
+printTxData("contribute0_2Tx", contribute0_2Tx);
+printBalances();
+failIfGasEqualsGasUsed(contribute0_1Tx, contribute0Message + " ac3 100 ETH");
+passIfGasEqualsGasUsed(contribute0_2Tx, contribute0Message + " ac4 100 ETH - Expecting failure");
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var finalise0Message = "Finalise Tier0";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + finalise0Message);
+var finalise0Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("finalise0Tx", finalise0Tx);
+printBalances();
+failIfGasEqualsGasUsed(finalise0Tx, finalise0Message);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var contribute1Message = "Contribute Tier1";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + contribute1Message);
+var contribute1_1Tx = contrib.proxyPayment(account4, {from: account4, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute1_2Tx = contrib.proxyPayment(account5, {from: account5, gas: 400000, value: web3.toWei("100", "ether")});
+while (txpool.status.pending > 0) {
+}
+printTxData("contribute1_1Tx", contribute1_1Tx);
+printTxData("contribute1_2Tx", contribute1_2Tx);
+printBalances();
+failIfGasEqualsGasUsed(contribute1_1Tx, contribute1Message + " ac4 100 ETH");
+passIfGasEqualsGasUsed(contribute1_2Tx, contribute1Message + " ac5 100 ETH - Expecting failure");
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var finalise1Message = "Finalise Tier1";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + finalise1Message);
+var finalise1Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("finalise1Tx", finalise1Tx);
+printBalances();
+failIfGasEqualsGasUsed(finalise1Tx, finalise1Message);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var contribute2Message = "Contribute Tier2";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + contribute2Message);
+var contribute2_1Tx = contrib.proxyPayment(account5, {from: account5, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute2_2Tx = contrib.proxyPayment(account6, {from: account6, gas: 400000, value: web3.toWei("100", "ether")});
+while (txpool.status.pending > 0) {
+}
+printTxData("contribute2_1Tx", contribute2_1Tx);
+printTxData("contribute2_2Tx", contribute2_2Tx);
+printBalances();
+failIfGasEqualsGasUsed(contribute2_1Tx, contribute2Message + " ac5 100 ETH");
+passIfGasEqualsGasUsed(contribute2_2Tx, contribute2Message + " ac6 100 ETH - Expecting failure");
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var finalise2Message = "Finalise Tier2";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + finalise2Message);
+var finalise2Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("finalise2Tx", finalise2Tx);
+printBalances();
+failIfGasEqualsGasUsed(finalise2Tx, finalise2Message);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var contribute3Message = "Contribute Tier3";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + contribute3Message);
+var contribute3_1Tx = contrib.proxyPayment(account6, {from: account6, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute3_2Tx = contrib.proxyPayment(account7, {from: account7, gas: 400000, value: web3.toWei("100", "ether")});
+while (txpool.status.pending > 0) {
+}
+printTxData("contribute3_1Tx", contribute3_1Tx);
+printTxData("contribute3_2Tx", contribute3_2Tx);
+printBalances();
+failIfGasEqualsGasUsed(contribute3_1Tx, contribute3Message + " ac6 100 ETH");
+passIfGasEqualsGasUsed(contribute3_2Tx, contribute3Message + " ac7 100 ETH - Expecting failure");
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var finalise3Message = "Finalise Tier3";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + finalise3Message);
+var finalise3Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("finalise3Tx", finalise3Tx);
+printBalances();
+failIfGasEqualsGasUsed(finalise3Tx, finalise3Message);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var closeMessage = "Close Crowdsale";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + closeMessage);
+var allocateTx = contrib.allocate({from: contractOwnerAccount, gas: 4000000});
+var allowTransfersTx = contrib.allowTransfers(true, {from: contractOwnerAccount, gas: 4000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("allocateTx", allocateTx);
+printTxData("allowTransfersTx", allowTransfersTx);
+printBalances();
+failIfGasEqualsGasUsed(allocateTx, closeMessage + " - Allocate Tokens");
+failIfGasEqualsGasUsed(allowTransfersTx, closeMessage + " - Allow Transfers");
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var transferMessage = "Transfers";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + transferMessage);
+var transfer1Tx = cnd.transfer(account6, "1000000000000", {from: account4, gas: 100000});
+var transfer2Tx = cnd.approve(account7,  "30000000000000000", {from: account5, gas: 100000});
+while (txpool.status.pending > 0) {
+}
+var transfer3Tx = cnd.transferFrom(account5, account8, "30000000000000000", {from: account7, gas: 200000});
+while (txpool.status.pending > 0) {
+}
+printTxData("transfer1Tx", transfer1Tx);
+printTxData("transfer2Tx", transfer2Tx);
+printTxData("transfer3Tx", transfer3Tx);
+printBalances();
+failIfGasEqualsGasUsed(transfer1Tx, transferMessage + " - transfer 0.000001 tokens ac4 -> ac6. CHECK for movement");
+failIfGasEqualsGasUsed(transfer2Tx, transferMessage + " - approve 0.03 tokens ac5 -> ac7");
+failIfGasEqualsGasUsed(transfer3Tx, transferMessage + " - transferFrom 0.03 tokens ac5 -> ac8 by ac7. CHECK for movement");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
@@ -454,16 +668,6 @@ failIfGasEqualsGasUsed(initialisePresaleTx, initialisePresaleMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-// Wait until startBlock 
-// -----------------------------------------------------------------------------
-console.log("RESULT: Waiting until startBlock #" + startBlock + " currentBlock=" + eth.blockNumber);
-while (eth.blockNumber <= startBlock) {
-}
-console.log("RESULT: Waited until startBlock #" + startBlock + " currentBlock=" + eth.blockNumber);
 console.log("RESULT: ");
 
 

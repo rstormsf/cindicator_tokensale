@@ -10,10 +10,10 @@ var accountNames = {};
 addAccount(eth.accounts[0], "Account #0 - Miner");
 addAccount(eth.accounts[1], "Account #1 - Contract Owner");
 addAccount(eth.accounts[2], "Account #2 - Multisig");
-addAccount(eth.accounts[3], "Account #3");
-addAccount(eth.accounts[4], "Account #4");
-addAccount(eth.accounts[5], "Account #5");
-addAccount(eth.accounts[6], "Account #6");
+addAccount(eth.accounts[3], "Account #3 - Tier0-3");
+addAccount(eth.accounts[4], "Account #4 - Tier1-3");
+addAccount(eth.accounts[5], "Account #5 - Tier2-3");
+addAccount(eth.accounts[6], "Account #6 - Tier3-3");
 addAccount(eth.accounts[7], "Account #7");
 addAccount(eth.accounts[8], "Account #8");
 addAccount(eth.accounts[9], "Account #9");
@@ -187,10 +187,12 @@ function failIfGasEqualsGasUsedOrContractAddressNull(contractAddress, tx, msg) {
 //-----------------------------------------------------------------------------
 var crowdsaleContractAddress = null;
 var crowdsaleContractAbi = null;
+var tierAbi = null;
 
-function addCrowdsaleContractAddressAndAbi(address, abi) {
+function addCrowdsaleContractAddressAndAbi(address, abi, _tierAbi) {
   crowdsaleContractAddress = address;
   crowdsaleContractAbi = abi;
+  tierAbi = _tierAbi;
 }
 
 var crowdsaleFromBlock = 0;
@@ -200,10 +202,10 @@ function printCrowdsaleContractDetails() {
   if (crowdsaleContractAddress != null && crowdsaleContractAbi != null) {
     var contract = eth.contract(crowdsaleContractAbi).at(crowdsaleContractAddress);
     console.log("RESULT: crowdsale.controller=" + contract.controller());
-    console.log("RESULT: crowdsale.tiers[0]=" + contract.tiers(0));
-    console.log("RESULT: crowdsale.tiers[1]=" + contract.tiers(1));
-    console.log("RESULT: crowdsale.tiers[2]=" + contract.tiers(2));
-    console.log("RESULT: crowdsale.tiers[3]=" + contract.tiers(3));
+    // console.log("RESULT: crowdsale.tiers[0]=" + contract.tiers(0));
+    // console.log("RESULT: crowdsale.tiers[1]=" + contract.tiers(1));
+    // console.log("RESULT: crowdsale.tiers[2]=" + contract.tiers(2));
+    // console.log("RESULT: crowdsale.tiers[3]=" + contract.tiers(3));
     console.log("RESULT: crowdsale.tierCount=" + contract.tierCount());
     console.log("RESULT: crowdsale.cnd=" + contract.cnd());
     console.log("RESULT: crowdsale.transferable=" + contract.transferable());
@@ -218,6 +220,23 @@ function printCrowdsaleContractDetails() {
 
     var latestBlock = eth.blockNumber;
     var i;
+
+    for (i = 0; i < 4; i++) {
+      var tierAddress = contract.tiers(i);
+      console.log("RESULT: tiers[" + i + "]=" + tierAddress);
+      if (tierAddress != "0x0000000000000000000000000000000000000000") {
+        var tier = eth.contract(tierAbi).at(tierAddress);
+        console.log("RESULT:   .cap=" + tier.cap().shift(-18));
+        console.log("RESULT:   .exchangeRate=" + tier.exchangeRate());
+        console.log("RESULT:   .minInvestorCap=" + tier.minInvestorCap().shift(-18));
+        console.log("RESULT:   .maxInvestorCap=" + tier.maxInvestorCap().shift(-18));
+        console.log("RESULT:   .totalInvestedWei=" + tier.totalInvestedWei().shift(-18));
+        console.log("RESULT:   .startTime=" + tier.startTime() + " " + new Date(tier.startTime() * 1000).toUTCString());
+        console.log("RESULT:   .endTime=" + tier.endTime() + " " + new Date(tier.endTime() * 1000).toUTCString());
+        console.log("RESULT:   .initializedTime=" + tier.initializedTime() + " " + new Date(tier.initializedTime() * 1000).toUTCString());
+        console.log("RESULT:   .finalizedTime=" + tier.finalizedTime() + " " + new Date(tier.finalizedTime() * 1000).toUTCString());
+      }
+    }
 
     var newSaleEvents = contract.NewSale({}, { fromBlock: crowdsaleFromBlock, toBlock: latestBlock });
     i = 0;
@@ -322,6 +341,12 @@ function printTokenContractDetails() {
     for (i = 0; i < balanceHistoryLength; i++) {
       var e = contract.balanceHistory(account5, i);
       console.log("RESULT: balanceHistory(" + account5 + ", " + i + ") = " + e[0] + " => " + e[1].shift(-decimals));
+    }
+
+    var balanceHistoryLength = contract.balanceHistoryLength(account6);
+    for (i = 0; i < balanceHistoryLength; i++) {
+      var e = contract.balanceHistory(account6, i);
+      console.log("RESULT: balanceHistory(" + account6 + ", " + i + ") = " + e[0] + " => " + e[1].shift(-decimals));
     }
 
     var approvalEvents = contract.Approval({}, { fromBlock: tokenFromBlock, toBlock: latestBlock });
