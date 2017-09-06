@@ -1,6 +1,8 @@
 # Cindicator Crowdsale Contract Audit
 
-Status: Work in progress
+Status: Some outstanding improvements to the contract that will need to be tested and checked.
+
+<br />
 
 ## Summary
 
@@ -40,6 +42,9 @@ ETH contributed by participants to the *Contribution* crowdsale contract will re
 participant's account in the token contract. The contributed ETHs are immediately transferred to the `contributionWallet`
 multisig wallet, reducing the risk of the loss of ETHs in this bespoke smart contract.
 
+The crowdsale contract will generate `Transfer(0x0, participantAddress, tokens)` events during the crowdsale period and this
+event is used by token explorers to recognise the token contract and to display the ongoing token minting progress.
+
 <br />
 
 ### Token Contract
@@ -58,6 +63,8 @@ The token contract is built on the *MiniMeToken* token contract that stores snap
 the `totalSupply()` in history. One side effect of this snapshot feature is that regular transfer operations consume a
 little more gas in transaction fees when compared to non-*MiniMeToken* token contracts.
 
+The *MiniMeToken* does not use *SafeMath* but has the checks to handle unsigned integer math overflows and underflows.
+
 This *MiniMeToken* token contract generally has a few features that will reduce the trustlessness of this token contract
 such as:
 
@@ -68,8 +75,8 @@ such as:
 
 In this implementation of the *CND* *MiniMeToken* token contract, the developer has assigned the ownership of the
 *CND* token contract to the *Contribution* crowdsale contract, even after the crowdsale has completed. This means that
-the Cindicator will be **unable** to freeze or unfreeze token transfers, transfer any account's tokens, mint new tokens or
-burn any account's tokens. 
+Cindicator will be **unable** to freeze or unfreeze token transfers, transfer any account's tokens, mint new tokens or
+burn any account's tokens, as the functions to control these actions has not been built into the *Contribution* contract.
 
 <br />
 
@@ -97,6 +104,9 @@ burn any account's tokens.
 
 ## Recommendations
 
+* **MEDIUM IMPORTANCE** `Contribution.proxyPayment(...)` overwrites the `_sender` parameter with `_sender = msg.sender;`
+  and alters the general meaning of this function. Consider removing the `_sender = msg.sender;` overwrite and add another
+  function like `function buy() payable { ... } ` that will call `proxyPayment(msg.sender)`
 * **MEDIUM IMPORTANCE** The Tier constructor does not need the `onlyController` modifier
   * [x] Fixed in [199b13d](https://github.com/rstormsf/cindicator_backup/commit/199b13de72d589599b150f7f1c967a7fd0889361)
 * **LOW IMPORTANCE** Use the same Solidity version number `pragma solidity ^0.4.15;` across the different .sol files
@@ -175,7 +185,8 @@ matches the audited source code, and that the deployment parameters are correctl
 
 ## Testing
 
-The following functions were tested using the script [test/01_test1.sh](test/01_test1.sh) with the results saved in [test/test1results.txt](test/test1results.txt):
+The following functions were tested using the script [test/01_test1.sh](test/01_test1.sh) with the summary results saved
+in [test/test1results.txt](test/test1results.txt) and the detailed output saved in [test/test1output.txt](test/test1output.txt):
 
 * [x] Deploy *MiniMeTokenFactory* contract
 * [x] Deploy *CND* *MiniMeToken* contract
@@ -199,12 +210,12 @@ Details of the testing environment can be found in [test](test).
   * [x] contract CND is MiniMeToken
 * [x] [code-review/Contribution.md](code-review/Contribution.md)
   * [x] contract Contribution is Controlled, TokenController
-* [ ] [code-review/MiniMeToken.md](code-review/MiniMeToken.md)
-  * [ ] contract TokenController
+* [x] [code-review/MiniMeToken.md](code-review/MiniMeToken.md)
+  * [x] contract TokenController
   * [x] contract Controlled
-  * [ ] contract ApproveAndCallFallBack
-  * [ ] contract MiniMeToken is Controlled
-  * [ ] contract MiniMeTokenFactory
+  * [x] contract ApproveAndCallFallBack
+  * [x] contract MiniMeToken is Controlled
+  * [x] contract MiniMeTokenFactory
 * [x] [code-review/SafeMath.md](code-review/SafeMath.md)
   * [x] library SafeMath
 * [x] [code-review/Tier.md](code-review/Tier.md)
@@ -214,12 +225,77 @@ Details of the testing environment can be found in [test](test).
 
 ### Not Reviewed
 
-* [ ] [code-review/Migrations.md](code-review/Migrations.md)
-  * [ ] contract Migrations
-* [ ] [code-review/DebugContribution.md](code-review/DebugContribution.md)
-  * [ ] contract DebugContribution is Contribution
-* [ ] [code-review/MultiSigWallet.md](code-review/MultiSigWallet.md)
-  * [ ] contract MultiSigWallet
+#### ConsenSys Multisig Wallet
+
+[../contracts/MultiSigWallet.sol](../contracts/MultiSigWallet.sol) is outside the scope of this review.
+
+The following are the differences between the version in this repository and the original ConsenSys
+[MultiSigWallet.sol](https://raw.githubusercontent.com/ConsenSys/MultiSigWallet/e3240481928e9d2b57517bd192394172e31da487/contracts/solidity/MultiSigWallet.sol):
+
+    $ diff -w OriginalConsenSysMultisigWallet.sol MultiSigWallet.sol
+    1c1
+    < pragma solidity 0.4.15;
+    ---
+    > pragma solidity 0.4.4;
+
+The only difference is in the Solidity version number.
+
+<br />
+
+The following are the differences between the version in this repository and the ConsenSys MultiSigWallet deployed 
+at [0xa646e29877d52b9e2de457eca09c724ff16d0a2b](https://etherscan.io/address/0xa646e29877d52b9e2de457eca09c724ff16d0a2b#code)
+by Status.im and is currently holding 284,732.64 Ether:
+
+    $ diff -w MultiSigWallet.sol StatusConsenSysMultisigWallet.sol 
+    1c1
+    < pragma solidity 0.4.15;
+    ---
+    > pragma solidity ^0.4.11;
+    10,18c10,18
+    <     event Confirmation(address indexed sender, uint indexed transactionId);
+    <     event Revocation(address indexed sender, uint indexed transactionId);
+    <     event Submission(uint indexed transactionId);
+    <     event Execution(uint indexed transactionId);
+    <     event ExecutionFailure(uint indexed transactionId);
+    <     event Deposit(address indexed sender, uint value);
+    <     event OwnerAddition(address indexed owner);
+    <     event OwnerRemoval(address indexed owner);
+    <     event RequirementChange(uint required);
+    ---
+    >     event Confirmation(address indexed _sender, uint indexed _transactionId);
+    >     event Revocation(address indexed _sender, uint indexed _transactionId);
+    >     event Submission(uint indexed _transactionId);
+    >     event Execution(uint indexed _transactionId);
+    >     event ExecutionFailure(uint indexed _transactionId);
+    >     event Deposit(address indexed _sender, uint _value);
+    >     event OwnerAddition(address indexed _owner);
+    >     event OwnerRemoval(address indexed _owner);
+    >     event RequirementChange(uint _required);
+    295c295
+    <     /// @dev Returns total number of transactions after filers are applied.
+    ---
+    >     /// @dev Returns total number of transactions after filters are applied.
+
+The only differences are in the Solidity version number and the prefixing of the event variables with `_`s.
+
+This [link](https://etherscan.io/find-similiar-contracts?a=0xa646e29877d52b9e2de457eca09c724ff16d0a2b) will display
+79 (currently) other multisig wallet contracts with high similarity to the ConsenSys MultiSigWallet deployed by Status.im .
+
+Some further information on the ConsenSys multisig wallet:
+
+* [The Gnosis MultiSig Wallet and our Commitment to Security](https://blog.gnosis.pm/the-gnosis-multisig-wallet-and-our-commitment-to-security-ce9aca0d17f6)
+* [Release of new Multisig Wallet](https://blog.gnosis.pm/release-of-new-multisig-wallet-59b6811f7edc)
+
+An audit on a previous version of this multisig has already been done by [Martin Holst Swende](https://gist.github.com/holiman/77dfe5addab521bf28ea552591ef8ac4).
+
+<br />
+
+#### Unused Testing Framework
+
+The following files are used for the testing framework are is outside the scope of this review:
+
+* [../contracts/DebugContribution.sol](../contracts/DebugContribution.sol)
+* [../contracts/Migrations.sol](../contracts/Migrations.sol)
 
 <br />
 
