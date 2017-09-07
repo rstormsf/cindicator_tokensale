@@ -96,7 +96,7 @@ contract Tier is Controlled {
 
   // BK NOTE - Anyone can call this is the cap is reached or we are past the crowdsale end date, or the controller calls this
   // BK Ok
-  function finalize() public {
+  function finalize() public onlyController {
     // BK Ok
     require(finalizedTime == 0);
     // BK Ok

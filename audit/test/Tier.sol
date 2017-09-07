@@ -58,7 +58,7 @@ contract Tier is Controlled {
     return totalInvestedWei == cap;
   }
 
-  function finalize() public {
+  function finalize() public onlyController {
     require(finalizedTime == 0);
     uint256 currentTime = getBlockTimestamp();
     assert(cap == totalInvestedWei || currentTime > endTime || msg.sender == controller);

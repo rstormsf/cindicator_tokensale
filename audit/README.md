@@ -1,7 +1,5 @@
 # Cindicator Crowdsale Contract Audit
 
-Status: Some outstanding improvements to the contract that will need to be tested and checked.
-
 <br />
 
 ## Summary
@@ -11,20 +9,14 @@ Status: Some outstanding improvements to the contract that will need to be teste
 Bok Consulting Pty Ltd was commissioned to perform an audit on the Ethereum smart contracts for Cindicator's crowdsale.
 
 This audit has been conducted on Cindicator's source code in commits [4f9ea74](https://github.com/rstormsf/cindicator_backup/commit/4f9ea745087665f626d0305f45ababa2962f380c),
-[ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd) and
-[199b13d](https://github.com/rstormsf/cindicator_backup/commit/199b13de72d589599b150f7f1c967a7fd0889361).
-
-No potential vulnerabilities have been identified in the presale and token contract.
-
-HOWEVER, there is a logic problem with when tiers get automatically finalised.
-
-<br />
-
-### New Changes
-
-The new changes [ded989d](https://github.com/rstormsf/cindicator_backup/commit/ded989ddf12c28980b7f6df839afdd75656993aa),
+[ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd),
+[199b13d](https://github.com/rstormsf/cindicator_backup/commit/199b13de72d589599b150f7f1c967a7fd0889361),
+[ded989d](https://github.com/rstormsf/cindicator_backup/commit/ded989ddf12c28980b7f6df839afdd75656993aa),
 [d09e018](https://github.com/rstormsf/cindicator_backup/commit/d09e0181e8e3d913cc8def3988f81e43c79b1ce9) and
-[b1a0a78](https://github.com/rstormsf/cindicator_backup/commit/b1a0a78bd8c26fe1b3ba2189ec5dd8f7968f1679) are to be tested and checked.
+[b1a0a78](https://github.com/rstormsf/cindicator_backup/commit/b1a0a78bd8c26fe1b3ba2189ec5dd8f7968f1679) plus
+[5b3f9b6](https://github.com/rstormsf/cindicator_backup/commit/5b3f9b6120f4a1fd3c040894f8b3efc927c9c6fb).
+
+No potential vulnerabilities have been identified in the crowdsale and token contract.
 
 <br />
 
@@ -119,6 +111,7 @@ burn any account's tokens, as the functions to control these actions has not bee
 * **HIGH IMPORTANCE** If a tier is automatically finalised in `Contribution.doBuy()`, the `tierCount` variable is not automatically
   incremented to move to the next tier. Attempts to call `Contribution.finalize()` will always fail as the current tier is already
   finalised. The crowdsale contract will be stuck forever in the tier that was automatically finalised
+  * [x] Fixed in [5b3f9b6](https://github.com/rstormsf/cindicator_backup/commit/5b3f9b6120f4a1fd3c040894f8b3efc927c9c6fb)
 * **MEDIUM IMPORTANCE** `Contribution.proxyPayment(...)` overwrites the `_sender` parameter with `_sender = msg.sender;`
   and alters the general meaning of this function. Consider removing the `_sender = msg.sender;` overwrite and add another
   function like `function buy() payable { ... } ` that will call `proxyPayment(msg.sender)`
@@ -193,7 +186,7 @@ matches the audited source code, and that the deployment parameters are correctl
 
 * This set of contracts have some complexity in the linkages between the separate *CND* (*MiniMeToken*), *Contribution* and
   *Tier* contracts. The set up of these contracts will need to be carefully verified after deployment to confirm that
-  the contracts have been linked correctly.
+  the contracts have been linked and permissioned correctly.
 
 <br />
 
@@ -221,11 +214,8 @@ in [test/test1results.txt](test/test1results.txt) and the detailed output saved 
 The following functions were tested using the script [test/02_test2.sh](test/02_test2.sh) with the summary results saved
 in [test/test2results.txt](test/test2results.txt) and the detailed output saved in [test/test2output.txt](test/test2output.txt):
 
-* [ ] As in [Test 1](#test-1) above, but with different caps and contributions hitting the caps in each tier, with the last tier cap being
-  exceeded
-
-  **NOTE** A fix for the `tierCount++` has been added to this test. Results show that the last contribution exceeding the last tier cap
-  fails
+* [x] As in [Test 1](#test-1) above, but with different caps and contributions hitting the caps in each tier, with the last tier cap
+  contribution being exceeded
 
 <br />
 
@@ -323,7 +313,7 @@ An audit on a previous version of this multisig has already been done by [Martin
 
 #### Unused Testing Framework
 
-The following files are used for the testing framework are is outside the scope of this review:
+The following files are used for the testing framework and are outside the scope of this review:
 
 * [../contracts/DebugContribution.sol](../contracts/DebugContribution.sol)
 * [../contracts/Migrations.sol](../contracts/Migrations.sol)
@@ -340,4 +330,4 @@ The following files are used for the testing framework are is outside the scope 
 
 <br />
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for Cindicator - Sep 6 2017. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for Cindicator - Sep 8 2017. The MIT Licence.

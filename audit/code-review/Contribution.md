@@ -314,7 +314,7 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     if (tokensGenerated == tokensleftForSale) {
       // BK Ok - Automatic tier finalisation
-      tier.finalize();
+      finalize();
     }
     
     // BK Ok
