@@ -36,3 +36,18 @@ for every contract to flatten them out.
 etherscan.io
 
 7. Enjoy!
+
+
+## Encoded buy method to use for crowdsale:
+`0xa6f2ae3a` used from: web3 1.0 version:
+
+```
+ web3.eth.abi.encodeFunctionCall({
+      "constant": false,
+      "inputs": [],
+      "name": "buy",
+      "outputs": [],
+      "payable": true,
+      "type": "function"
+    }, [])
+ ```
