@@ -231,7 +231,7 @@ contract("Contribution", (
       })
     });
 
-    describe('#proxyBuy', async function () {
+    describe('#proxyPayment', async function () {
 
       beforeEach(async function () {
         await contribution.initializeToken(cnd.address);
@@ -243,6 +243,22 @@ contract("Contribution", (
         const isWhitelisted = await contribution.isWhitelisted(owner, 0);
         assert.equal(isWhitelisted, true, 'whitelisting did not go thru');
       });
+
+      it('sends any amount after minimum was received', async function(){
+        await contribution.buy({from: owner, value: tier1_params.minimum});
+        await contribution.buy({from: owner, value: 1});
+        const expectedBalance = tier1_params.minimum.add(1).mul(tier1_params.exchangeRate).toString();
+        const balanceAfter = await cnd.balanceOf(owner);;
+        assert.equal(balanceAfter.toString(), expectedBalance);
+      })
+
+      it('sends any amount after minimum was received', async function(){
+        await contribution.buy({from: owner, value: tier1_params.maxInvestorCap.sub(1)});
+        await contribution.buy({from: owner, value: tier1_params.maxInvestorCap});
+        const balanceAfter = await cnd.balanceOf(owner);
+        const expectedBalance = tier1_params.maxInvestorCap.mul(tier1_params.exchangeRate).toString();
+        assert.equal(balanceAfter.toString(), expectedBalance);
+      })
 
       it('allows to buy 1 whiteslited investor', async function () {
         const pre = await web3.eth.getBalance(owner);

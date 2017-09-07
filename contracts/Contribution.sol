@@ -170,15 +170,20 @@ contract Contribution is Controlled, TokenController {
 
   function doBuy() internal {
     Tier tier = tiers[tierCount];
-    assert(msg.value >= tier.minInvestorCap() && msg.value <= tier.maxInvestorCap());
+    assert(msg.value <= tier.maxInvestorCap());
     address caller = msg.sender;
     WhitelistedInvestor storage investor = investors[caller];
     uint256 investorTokenBP = investorAmountTokensToBuy(caller);
-
     require(investorTokenBP > 0);
+
+    if(investor.contributedAmount == 0) {
+      assert(msg.value >= tier.minInvestorCap());  
+    }
 
     uint256 toFund = msg.value;  
     uint256 tokensGenerated = toFund.mul(tier.exchangeRate());
+    // check that at least 1 token will be generated
+    require(tokensGenerated >= 1);
     uint256 tokensleftForSale = leftForSale();    
 
     if(tokensleftForSale > investorTokenBP ) {
