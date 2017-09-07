@@ -33,8 +33,8 @@ TIERJS=`grep ^TIERJS= settings.txt | sed "s/^.*=//"`
 
 DEPLOYMENTDATA=`grep ^DEPLOYMENTDATA= settings.txt | sed "s/^.*=//"`
 
-TEST1OUTPUT=`grep ^TEST1OUTPUT= settings.txt | sed "s/^.*=//"`
-TEST1RESULTS=`grep ^TEST1RESULTS= settings.txt | sed "s/^.*=//"`
+TEST2OUTPUT=`grep ^TEST2OUTPUT= settings.txt | sed "s/^.*=//"`
+TEST2RESULTS=`grep ^TEST2RESULTS= settings.txt | sed "s/^.*=//"`
 
 CURRENTTIME=`date +%s`
 CURRENTTIMES=`date -r $CURRENTTIME -u`
@@ -47,47 +47,48 @@ if [ "$MODE" == "dev" ]; then
   STARTTIME=`echo "$CURRENTTIME" | bc`
 else
   # Start time 1m 10s in the future
-  STARTTIME=`echo "$CURRENTTIME+60*2" | bc`
+  STARTTIME=`echo "$CURRENTTIME+60*2+10" | bc`
 fi
 STARTTIME_S=`date -r $STARTTIME -u`
 ENDTIME=`echo "$CURRENTTIME+60*6" | bc`
 ENDTIME_S=`date -r $ENDTIME -u`
 
-printf "MODE                 = '$MODE'\n" | tee $TEST1OUTPUT
-printf "GETHATTACHPOINT      = '$GETHATTACHPOINT'\n" | tee -a $TEST1OUTPUT
-printf "PASSWORD             = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
+printf "MODE                 = '$MODE'\n" | tee $TEST2OUTPUT
+printf "GETHATTACHPOINT      = '$GETHATTACHPOINT'\n" | tee -a $TEST2OUTPUT
+printf "PASSWORD             = '$PASSWORD'\n" | tee -a $TEST2OUTPUT
 
-printf "CONTRACTSDIR         = '$CONTRACTSDIR'\n" | tee -a $TEST1OUTPUT
+printf "CONTRACTSDIR         = '$CONTRACTSDIR'\n" | tee -a $TEST2OUTPUT
 
-printf "CNDSOL               = '$CNDSOL'\n" | tee -a $TEST1OUTPUT
-printf "CNDTEMPSOL           = '$CNDTEMPSOL'\n" | tee -a $TEST1OUTPUT
-printf "CNDJS                = '$CNDJS'\n" | tee -a $TEST1OUTPUT
+printf "CNDSOL               = '$CNDSOL'\n" | tee -a $TEST2OUTPUT
+printf "CNDTEMPSOL           = '$CNDTEMPSOL'\n" | tee -a $TEST2OUTPUT
+printf "CNDJS                = '$CNDJS'\n" | tee -a $TEST2OUTPUT
 
-printf "CONTRIBUTIONSOL      = '$CONTRIBUTIONSOL'\n" | tee -a $TEST1OUTPUT
-printf "CONTRIBUTIONTEMPSOL  = '$CONTRIBUTIONTEMPSOL'\n" | tee -a $TEST1OUTPUT
-printf "CONTRIBUTIONJS       = '$CONTRIBUTIONJS'\n" | tee -a $TEST1OUTPUT
+printf "CONTRIBUTIONSOL      = '$CONTRIBUTIONSOL'\n" | tee -a $TEST2OUTPUT
+printf "CONTRIBUTIONTEMPSOL  = '$CONTRIBUTIONTEMPSOL'\n" | tee -a $TEST2OUTPUT
+printf "CONTRIBUTIONJS       = '$CONTRIBUTIONJS'\n" | tee -a $TEST2OUTPUT
 
-printf "MINIMETOKENSOL       = '$MINIMETOKENSOL'\n" | tee -a $TEST1OUTPUT
-printf "MINIMETOKENTEMPSOL   = '$MINIMETOKENTEMPSOL'\n" | tee -a $TEST1OUTPUT
-printf "MINIMETOKENJS        = '$MINIMETOKENJS'\n" | tee -a $TEST1OUTPUT
+printf "MINIMETOKENSOL       = '$MINIMETOKENSOL'\n" | tee -a $TEST2OUTPUT
+printf "MINIMETOKENTEMPSOL   = '$MINIMETOKENTEMPSOL'\n" | tee -a $TEST2OUTPUT
+printf "MINIMETOKENJS        = '$MINIMETOKENJS'\n" | tee -a $TEST2OUTPUT
 
-printf "SAFEMATHSOL          = '$SAFEMATHSOL'\n" | tee -a $TEST1OUTPUT
-printf "SAFEMATHTEMPSOL      = '$SAFEMATHTEMPSOL'\n" | tee -a $TEST1OUTPUT
+printf "SAFEMATHSOL          = '$SAFEMATHSOL'\n" | tee -a $TEST2OUTPUT
+printf "SAFEMATHTEMPSOL      = '$SAFEMATHTEMPSOL'\n" | tee -a $TEST2OUTPUT
 
-printf "TIERSOL             = '$TIERSOL'\n" | tee -a $TEST1OUTPUT
-printf "TIERTEMPSOL         = '$TIERTEMPSOL'\n" | tee -a $TEST1OUTPUT
-printf "TIERJS              = '$TIERJS'\n" | tee -a $TEST1OUTPUT
+printf "TIERSOL             = '$TIERSOL'\n" | tee -a $TEST2OUTPUT
+printf "TIERTEMPSOL         = '$TIERTEMPSOL'\n" | tee -a $TEST2OUTPUT
+printf "TIERJS              = '$TIERJS'\n" | tee -a $TEST2OUTPUT
 
-printf "DEPLOYMENTDATA       = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
-printf "TEST1OUTPUT          = '$TEST1OUTPUT'\n" | tee -a $TEST1OUTPUT
-printf "TEST1RESULTS         = '$TEST1RESULTS'\n" | tee -a $TEST1OUTPUT
-printf "CURRENTTIME          = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST1OUTPUT
-printf "STARTTIME            = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST1OUTPUT
-printf "ENDTIME              = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
+printf "DEPLOYMENTDATA       = '$DEPLOYMENTDATA'\n" | tee -a $TEST2OUTPUT
+printf "TEST2OUTPUT          = '$TEST2OUTPUT'\n" | tee -a $TEST2OUTPUT
+printf "TEST2RESULTS         = '$TEST2RESULTS'\n" | tee -a $TEST2OUTPUT
+printf "CURRENTTIME          = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST2OUTPUT
+printf "STARTTIME            = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST2OUTPUT
+printf "ENDTIME              = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST2OUTPUT
 
 # Make copy of SOL file and modify start and end times ---
 `cp $CONTRACTSDIR/$CNDSOL $CNDTEMPSOL`
-`cp $CONTRACTSDIR/$CONTRIBUTIONSOL $CONTRIBUTIONTEMPSOL`
+#`cp $CONTRACTSDIR/$CONTRIBUTIONSOL $CONTRIBUTIONTEMPSOL`
+`cp modifiedContracts/$CONTRIBUTIONSOL $CONTRIBUTIONTEMPSOL`
 # `cp $CONTRACTSDIR/$MINIMETOKENSOL $MINIMETOKENTEMPSOL`
 `cp modifiedContracts/$MINIMETOKENSOL $MINIMETOKENTEMPSOL`
 `cp $CONTRACTSDIR/$SAFEMATHSOL $SAFEMATHTEMPSOL`
@@ -100,20 +101,20 @@ printf "ENDTIME              = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
 #`perl -pi -e "s/BLOCKS_IN_DAY \= 5256;*$/BLOCKS_IN_DAY \= $BLOCKSINDAY;/" $DAOCASINOICOTEMPSOL`
 
 DIFFS1=`diff $CONTRACTSDIR/$CNDSOL $CNDTEMPSOL`
-echo "--- Differences $CONTRACTSDIR/$CNDSOL $CNDTEMPSOL ---" | tee -a $TEST1OUTPUT
-echo "$DIFFS1" | tee -a $TEST1OUTPUT
+echo "--- Differences $CONTRACTSDIR/$CNDSOL $CNDTEMPSOL ---" | tee -a $TEST2OUTPUT
+echo "$DIFFS1" | tee -a $TEST2OUTPUT
 
 DIFFS1=`diff $CONTRACTSDIR/$CONTRIBUTIONSOL $CONTRIBUTIONTEMPSOL`
-echo "--- Differences $CONTRACTSDIR/$CONTRIBUTIONSOL $CONTRIBUTIONTEMPSOL ---" | tee -a $TEST1OUTPUT
-echo "$DIFFS1" | tee -a $TEST1OUTPUT
+echo "--- Differences $CONTRACTSDIR/$CONTRIBUTIONSOL $CONTRIBUTIONTEMPSOL ---" | tee -a $TEST2OUTPUT
+echo "$DIFFS1" | tee -a $TEST2OUTPUT
 
 DIFFS1=`diff $CONTRACTSDIR/$MINIMETOKENSOL $MINIMETOKENTEMPSOL`
-echo "--- Differences $CONTRACTSDIR/$MINIMETOKENSOL $MINIMETOKENTEMPSOL ---" | tee -a $TEST1OUTPUT
-echo "$DIFFS1" | tee -a $TEST1OUTPUT
+echo "--- Differences $CONTRACTSDIR/$MINIMETOKENSOL $MINIMETOKENTEMPSOL ---" | tee -a $TEST2OUTPUT
+echo "$DIFFS1" | tee -a $TEST2OUTPUT
 
 DIFFS1=`diff $CONTRACTSDIR/$TIERSOL $TIERTEMPSOL`
-echo "--- Differences $CONTRACTSDIR/$TIERSOL $TIERTEMPSOL ---" | tee -a $TEST1OUTPUT
-echo "$DIFFS1" | tee -a $TEST1OUTPUT
+echo "--- Differences $CONTRACTSDIR/$TIERSOL $TIERTEMPSOL ---" | tee -a $TEST2OUTPUT
+echo "$DIFFS1" | tee -a $TEST2OUTPUT
 
 echo "var cndOutput=`solc --optimize --combined-json abi,bin,interface $CNDTEMPSOL`;" > $CNDJS
 
@@ -124,7 +125,7 @@ echo "var mmOutput=`solc --optimize --combined-json abi,bin,interface $MINIMETOK
 echo "var tierOutput=`solc --optimize --combined-json abi,bin,interface $TIERTEMPSOL`;" > $TIERJS
 
 
-geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
+geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST2OUTPUT
 loadScript("$CNDJS");
 loadScript("$CONTRIBUTIONJS");
 loadScript("$MINIMETOKENJS");
@@ -280,10 +281,10 @@ console.log("RESULT: ");
 var whitelistAddressesMessage = "Whitelist Addresses";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + whitelistAddressesMessage);
-var whitelistAddresse0Tx = contrib.whitelistAddresses([account3], 0, true, {from: contractOwnerAccount, gas: 2000000});
-var whitelistAddresse1Tx = contrib.whitelistAddresses([account4], 1, true, {from: contractOwnerAccount, gas: 2000000});
-var whitelistAddresse2Tx = contrib.whitelistAddresses([account5], 2, true, {from: contractOwnerAccount, gas: 2000000});
-var whitelistAddresse3Tx = contrib.whitelistAddresses([account6], 3, true, {from: contractOwnerAccount, gas: 2000000});
+var whitelistAddresse0Tx = contrib.whitelistAddresses([account3, account7], 0, true, {from: contractOwnerAccount, gas: 2000000});
+var whitelistAddresse1Tx = contrib.whitelistAddresses([account4, account8], 1, true, {from: contractOwnerAccount, gas: 2000000});
+var whitelistAddresse2Tx = contrib.whitelistAddresses([account5, account9], 2, true, {from: contractOwnerAccount, gas: 2000000});
+var whitelistAddresse3Tx = contrib.whitelistAddresses([account6, account10], 3, true, {from: contractOwnerAccount, gas: 2000000});
 while (txpool.status.pending > 0) {
 }
 printTxData("whitelistAddresse0Tx", whitelistAddresse0Tx);
@@ -291,10 +292,10 @@ printTxData("whitelistAddresse1Tx", whitelistAddresse1Tx);
 printTxData("whitelistAddresse2Tx", whitelistAddresse2Tx);
 printTxData("whitelistAddresse3Tx", whitelistAddresse3Tx);
 printBalances();
-failIfGasEqualsGasUsed(whitelistAddresse0Tx, whitelistAddressesMessage + " - Tier0 - ac3");
-failIfGasEqualsGasUsed(whitelistAddresse1Tx, whitelistAddressesMessage + " - Tier1 - ac3+ac4");
-failIfGasEqualsGasUsed(whitelistAddresse2Tx, whitelistAddressesMessage + " - Tier2 - ac3+ac4+ac5");
-failIfGasEqualsGasUsed(whitelistAddresse3Tx, whitelistAddressesMessage + " - Tier3 - ac4+ac4+ac5+ac6");
+failIfGasEqualsGasUsed(whitelistAddresse0Tx, whitelistAddressesMessage + " - Tier0 - ac3 + ac7");
+failIfGasEqualsGasUsed(whitelistAddresse1Tx, whitelistAddressesMessage + " - Tier1 - ac3+ac4 + ac7+ac8");
+failIfGasEqualsGasUsed(whitelistAddresse2Tx, whitelistAddressesMessage + " - Tier2 - ac3+ac4+ac5 + ac7+ac8+ac9");
+failIfGasEqualsGasUsed(whitelistAddresse3Tx, whitelistAddressesMessage + " - Tier3 - ac4+ac4+ac5+ac6 + ac7+ac8+ac9+ac10");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
@@ -302,12 +303,15 @@ console.log("RESULT: ");
 
 // -----------------------------------------------------------------------------
 var deployTiersMessage = "Deploy Tiers";
-var _cap = "1000000000000000000000"; // 1000
-var _minInvestorCap = "1000000000000000000"; // 1
-var _maxInvestorCap0 = "500000000000000000000"; // 500
-var _maxInvestorCap1 = "200000000000000000000"; // 200
-var _maxInvestorCap2 = "200000000000000000000"; // 200
-var _maxInvestorCap3 = "200000000000000000000"; // 200
+var _cap0 = web3.toWei("100", "ether");
+var _cap1 = web3.toWei("350", "ether");
+var _cap2 = web3.toWei("450", "ether");
+var _cap3 = web3.toWei("600", "ether");
+var _minInvestorCap = web3.toWei("10", "ether");
+var _maxInvestorCap0 = web3.toWei("50", "ether");
+var _maxInvestorCap1 = web3.toWei("200", "ether"); // Note 175 from Yuri
+var _maxInvestorCap2 = web3.toWei("230", "ether"); // Note 225 from Yuri
+var _maxInvestorCap3 = web3.toWei("450", "ether"); // Note 400 from Yuri
 var _exchangeRate0 = "400";
 var _exchangeRate1 = "300";
 var _exchangeRate2 = "200";
@@ -323,7 +327,7 @@ var tier0Address = null;
 var tier1Address = null;
 var tier2Address = null;
 var tier3Address = null;
-var tier0 = tierContract.new(_cap, _minInvestorCap, _maxInvestorCap0, _exchangeRate0, $STARTTIME, $ENDTIME, {from: contractOwnerAccount, data: tierBin, gas: 4000000},
+var tier0 = tierContract.new(_cap0, _minInvestorCap, _maxInvestorCap0, _exchangeRate0, $STARTTIME, $ENDTIME, {from: contractOwnerAccount, data: tierBin, gas: 4000000},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -337,7 +341,7 @@ var tier0 = tierContract.new(_cap, _minInvestorCap, _maxInvestorCap0, _exchangeR
     }
   }
 );
-var tier1 = tierContract.new(_cap, _minInvestorCap, _maxInvestorCap1, _exchangeRate1, $STARTTIME, $ENDTIME, {from: contractOwnerAccount, data: tierBin, gas: 4000000},
+var tier1 = tierContract.new(_cap1, _minInvestorCap, _maxInvestorCap1, _exchangeRate1, $STARTTIME, $ENDTIME, {from: contractOwnerAccount, data: tierBin, gas: 4000000},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -351,7 +355,7 @@ var tier1 = tierContract.new(_cap, _minInvestorCap, _maxInvestorCap1, _exchangeR
     }
   }
 );
-var tier2 = tierContract.new(_cap, _minInvestorCap, _maxInvestorCap2, _exchangeRate2, $STARTTIME, $ENDTIME, {from: contractOwnerAccount, data: tierBin, gas: 4000000},
+var tier2 = tierContract.new(_cap2, _minInvestorCap, _maxInvestorCap2, _exchangeRate2, $STARTTIME, $ENDTIME, {from: contractOwnerAccount, data: tierBin, gas: 4000000},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -365,7 +369,7 @@ var tier2 = tierContract.new(_cap, _minInvestorCap, _maxInvestorCap2, _exchangeR
     }
   }
 );
-var tier3 = tierContract.new(_cap, _minInvestorCap, _maxInvestorCap3, _exchangeRate3, $STARTTIME, $ENDTIME, {from: contractOwnerAccount, data: tierBin, gas: 4000000},
+var tier3 = tierContract.new(_cap3, _minInvestorCap, _maxInvestorCap3, _exchangeRate3, $STARTTIME, $ENDTIME, {from: contractOwnerAccount, data: tierBin, gas: 4000000},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -457,15 +461,18 @@ console.log("RESULT: ");
 var contribute0Message = "Contribute Tier0";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + contribute0Message);
-var contribute0_1Tx = contrib.proxyPayment(account3, {from: account3, gas: 400000, value: web3.toWei("100", "ether")});
-var contribute0_2Tx = contrib.proxyPayment(account4, {from: account4, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute0_1Tx = contrib.proxyPayment(account3, {from: account3, gas: 400000, value: web3.toWei("50", "ether")});
+// var contribute0_2Tx = contrib.proxyPayment(account4, {from: account4, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute0_3Tx = contrib.proxyPayment(account7, {from: account7, gas: 400000, value: web3.toWei("50", "ether")});
 while (txpool.status.pending > 0) {
 }
 printTxData("contribute0_1Tx", contribute0_1Tx);
-printTxData("contribute0_2Tx", contribute0_2Tx);
+// printTxData("contribute0_2Tx", contribute0_2Tx);
+printTxData("contribute0_3Tx", contribute0_3Tx);
 printBalances();
-failIfGasEqualsGasUsed(contribute0_1Tx, contribute0Message + " ac3 100 ETH");
-passIfGasEqualsGasUsed(contribute0_2Tx, contribute0Message + " ac4 100 ETH - Expecting failure");
+failIfGasEqualsGasUsed(contribute0_1Tx, contribute0Message + " ac3 50 ETH");
+// passIfGasEqualsGasUsed(contribute0_2Tx, contribute0Message + " ac4 100 ETH - Expecting failure");
+failIfGasEqualsGasUsed(contribute0_3Tx, contribute0Message + " ac7 50 ETH");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
@@ -474,15 +481,19 @@ console.log("RESULT: ");
 // -----------------------------------------------------------------------------
 var finalise0Message = "Finalise Tier0";
 // -----------------------------------------------------------------------------
-console.log("RESULT: " + finalise0Message);
-var finalise0Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
-while (txpool.status.pending > 0) {
+if (tier0.finalizedTime() != 0) {
+  console.log("RESULT: " + finalise0Message + " - ALREADY AUTOMATICALLY FINALISED");
+} else {
+  console.log("RESULT: " + finalise0Message);
+  var finalise0Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
+  while (txpool.status.pending > 0) {
+  }
+  printTxData("finalise0Tx", finalise0Tx);
+  printBalances();
+  failIfGasEqualsGasUsed(finalise0Tx, finalise0Message);
+  printCrowdsaleContractDetails();
+  printTokenContractDetails();
 }
-printTxData("finalise0Tx", finalise0Tx);
-printBalances();
-failIfGasEqualsGasUsed(finalise0Tx, finalise0Message);
-printCrowdsaleContractDetails();
-printTokenContractDetails();
 console.log("RESULT: ");
 
 
@@ -490,15 +501,18 @@ console.log("RESULT: ");
 var contribute1Message = "Contribute Tier1";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + contribute1Message);
-var contribute1_1Tx = contrib.proxyPayment(account4, {from: account4, gas: 400000, value: web3.toWei("100", "ether")});
-var contribute1_2Tx = contrib.proxyPayment(account5, {from: account5, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute1_1Tx = contrib.proxyPayment(account4, {from: account4, gas: 400000, value: web3.toWei("160", "ether")});
+// var contribute1_2Tx = contrib.proxyPayment(account5, {from: account5, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute1_3Tx = contrib.proxyPayment(account8, {from: account8, gas: 400000, value: web3.toWei("190", "ether")});
 while (txpool.status.pending > 0) {
 }
 printTxData("contribute1_1Tx", contribute1_1Tx);
-printTxData("contribute1_2Tx", contribute1_2Tx);
+// printTxData("contribute1_2Tx", contribute1_2Tx);
+printTxData("contribute1_3Tx", contribute1_3Tx);
 printBalances();
-failIfGasEqualsGasUsed(contribute1_1Tx, contribute1Message + " ac4 100 ETH");
-passIfGasEqualsGasUsed(contribute1_2Tx, contribute1Message + " ac5 100 ETH - Expecting failure");
+failIfGasEqualsGasUsed(contribute1_1Tx, contribute1Message + " ac4 160 ETH");
+// passIfGasEqualsGasUsed(contribute1_2Tx, contribute1Message + " ac5 100 ETH - Expecting failure");
+failIfGasEqualsGasUsed(contribute1_3Tx, contribute1Message + " ac8 190 ETH");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
@@ -507,15 +521,19 @@ console.log("RESULT: ");
 // -----------------------------------------------------------------------------
 var finalise1Message = "Finalise Tier1";
 // -----------------------------------------------------------------------------
-console.log("RESULT: " + finalise1Message);
-var finalise1Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
-while (txpool.status.pending > 0) {
+if (tier1.finalizedTime() != 0) {
+  console.log("RESULT: " + finalise1Message + " - ALREADY AUTOMATICALLY FINALISED");
+} else {
+  console.log("RESULT: " + finalise1Message);
+  var finalise1Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
+  while (txpool.status.pending > 0) {
+  }
+  printTxData("finalise1Tx", finalise1Tx);
+  printBalances();
+  failIfGasEqualsGasUsed(finalise1Tx, finalise1Message);
+  printCrowdsaleContractDetails();
+  printTokenContractDetails();
 }
-printTxData("finalise1Tx", finalise1Tx);
-printBalances();
-failIfGasEqualsGasUsed(finalise1Tx, finalise1Message);
-printCrowdsaleContractDetails();
-printTokenContractDetails();
 console.log("RESULT: ");
 
 
@@ -523,15 +541,18 @@ console.log("RESULT: ");
 var contribute2Message = "Contribute Tier2";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + contribute2Message);
-var contribute2_1Tx = contrib.proxyPayment(account5, {from: account5, gas: 400000, value: web3.toWei("100", "ether")});
-var contribute2_2Tx = contrib.proxyPayment(account6, {from: account6, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute2_1Tx = contrib.proxyPayment(account5, {from: account5, gas: 400000, value: web3.toWei("230", "ether")});
+// var contribute2_2Tx = contrib.proxyPayment(account6, {from: account6, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute2_3Tx = contrib.proxyPayment(account9, {from: account9, gas: 400000, value: web3.toWei("230", "ether")});
 while (txpool.status.pending > 0) {
 }
 printTxData("contribute2_1Tx", contribute2_1Tx);
-printTxData("contribute2_2Tx", contribute2_2Tx);
+// printTxData("contribute2_2Tx", contribute2_2Tx);
+printTxData("contribute2_3Tx", contribute2_3Tx);
 printBalances();
-failIfGasEqualsGasUsed(contribute2_1Tx, contribute2Message + " ac5 100 ETH");
-passIfGasEqualsGasUsed(contribute2_2Tx, contribute2Message + " ac6 100 ETH - Expecting failure");
+failIfGasEqualsGasUsed(contribute2_1Tx, contribute2Message + " ac5 230 ETH");
+// passIfGasEqualsGasUsed(contribute2_2Tx, contribute2Message + " ac6 100 ETH - Expecting failure");
+failIfGasEqualsGasUsed(contribute2_3Tx, contribute2Message + " ac9 210 ETH");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
@@ -540,15 +561,19 @@ console.log("RESULT: ");
 // -----------------------------------------------------------------------------
 var finalise2Message = "Finalise Tier2";
 // -----------------------------------------------------------------------------
-console.log("RESULT: " + finalise2Message);
-var finalise2Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
-while (txpool.status.pending > 0) {
+if (tier2.finalizedTime() != 0) {
+  console.log("RESULT: " + finalise2Message + " - ALREADY AUTOMATICALLY FINALISED");
+} else {
+  console.log("RESULT: " + finalise2Message);
+  var finalise2Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
+  while (txpool.status.pending > 0) {
+  }
+  printTxData("finalise2Tx", finalise2Tx);
+  printBalances();
+  failIfGasEqualsGasUsed(finalise2Tx, finalise2Message);
+  printCrowdsaleContractDetails();
+  printTokenContractDetails();
 }
-printTxData("finalise2Tx", finalise2Tx);
-printBalances();
-failIfGasEqualsGasUsed(finalise2Tx, finalise2Message);
-printCrowdsaleContractDetails();
-printTokenContractDetails();
 console.log("RESULT: ");
 
 
@@ -556,15 +581,18 @@ console.log("RESULT: ");
 var contribute3Message = "Contribute Tier3";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + contribute3Message);
-var contribute3_1Tx = contrib.proxyPayment(account6, {from: account6, gas: 400000, value: web3.toWei("100", "ether")});
-var contribute3_2Tx = contrib.proxyPayment(account7, {from: account7, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute3_1Tx = contrib.proxyPayment(account6, {from: account6, gas: 400000, value: web3.toWei("350", "ether")});
+// var contribute3_2Tx = contrib.proxyPayment(account7, {from: account7, gas: 400000, value: web3.toWei("100", "ether")});
+var contribute3_3Tx = contrib.proxyPayment(account10, {from: account10, gas: 400000, value: web3.toWei("450", "ether")});
 while (txpool.status.pending > 0) {
 }
 printTxData("contribute3_1Tx", contribute3_1Tx);
-printTxData("contribute3_2Tx", contribute3_2Tx);
+// printTxData("contribute3_2Tx", contribute3_2Tx);
+printTxData("contribute3_3Tx", contribute3_3Tx);
 printBalances();
-failIfGasEqualsGasUsed(contribute3_1Tx, contribute3Message + " ac6 100 ETH");
-passIfGasEqualsGasUsed(contribute3_2Tx, contribute3Message + " ac7 100 ETH - Expecting failure");
+failIfGasEqualsGasUsed(contribute3_1Tx, contribute3Message + " ac6 350 ETH");
+// passIfGasEqualsGasUsed(contribute3_2Tx, contribute3Message + " ac7 100 ETH - Expecting failure");
+failIfGasEqualsGasUsed(contribute3_3Tx, contribute3Message + " ac10 450 ETH");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
@@ -573,15 +601,19 @@ console.log("RESULT: ");
 // -----------------------------------------------------------------------------
 var finalise3Message = "Finalise Tier3";
 // -----------------------------------------------------------------------------
-console.log("RESULT: " + finalise3Message);
-var finalise3Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
-while (txpool.status.pending > 0) {
+if (tier3.finalizedTime() != 0) {
+  console.log("RESULT: " + finalise3Message + " - ALREADY AUTOMATICALLY FINALISED");
+} else {
+  console.log("RESULT: " + finalise3Message);
+  var finalise3Tx = contrib.finalize({from: contractOwnerAccount, gas: 4000000});
+  while (txpool.status.pending > 0) {
+  }
+  printTxData("finalise3Tx", finalise3Tx);
+  printBalances();
+  failIfGasEqualsGasUsed(finalise3Tx, finalise3Message);
+  printCrowdsaleContractDetails();
+  printTokenContractDetails();
 }
-printTxData("finalise3Tx", finalise3Tx);
-printBalances();
-failIfGasEqualsGasUsed(finalise3Tx, finalise3Message);
-printCrowdsaleContractDetails();
-printTokenContractDetails();
 console.log("RESULT: ");
 
 
@@ -627,7 +659,7 @@ console.log("RESULT: ");
 
 
 EOF
-grep "DATA: " $TEST1OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
+grep "DATA: " $TEST2OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
 cat $DEPLOYMENTDATA
-grep "RESULT: " $TEST1OUTPUT | sed "s/RESULT: //" > $TEST1RESULTS
-cat $TEST1RESULTS
+grep "RESULT: " $TEST2OUTPUT | sed "s/RESULT: //" > $TEST2RESULTS
+cat $TEST2RESULTS

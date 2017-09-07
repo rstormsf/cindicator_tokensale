@@ -71,6 +71,11 @@ contract Contribution is Controlled, TokenController {
     _;
   }
 
+  modifier tokenInitialized() {
+    assert(address(cnd) != 0x0);
+    _;
+  }
+
   // BK Ok
   modifier initialized() {
     // BK Ok
@@ -100,32 +105,33 @@ contract Contribution is Controlled, TokenController {
   }
 
   // BK Ok - Constructor
-  function Contribution(address _cnd, address _contributionWallet, address _foundersWallet, address _advisorsWallet, address _bountyWallet) {
+  function Contribution(address _contributionWallet, address _foundersWallet, address _advisorsWallet, address _bountyWallet) {
     // BK Next 4 Ok
     require(_contributionWallet != 0x0);
     require(_foundersWallet != 0x0);
     require(_advisorsWallet != 0x0);
     require(_bountyWallet != 0x0);
-    // BK Ok
-    assert(CND(_cnd).IS_CND_CONTRACT_MAGIC_NUMBER() == 0x1338);
-    // BK Ok - The following statement should be before the previous statement
-    require(_cnd != 0x0);
     // BK Next 4 Ok
     contributionWallet = _contributionWallet;
     foundersWallet = _foundersWallet;
     advisorsWallet =_advisorsWallet;
     bountyWallet = _bountyWallet;
     // BK Ok
-    cnd = CND(_cnd);
-    // BK Ok
     tierCount = 0;
+  }
+
+  function initializeToken(address _cnd) public onlyController {
+    assert(CND(_cnd).controller() == address(this));
+    assert(CND(_cnd).IS_CND_CONTRACT_MAGIC_NUMBER() == 0x1338);
+    require(_cnd != 0x0);
+    cnd = CND(_cnd);
   }
 
   // BK Ok - Only controller can execute
   function initializeTier(
     uint256 _tierNumber,
     address _tierAddress
-  ) public onlyController 
+  ) public onlyController tokenInitialized
   {
     // BK Ok
     Tier tier = Tier(_tierAddress);
@@ -187,6 +193,10 @@ contract Contribution is Controlled, TokenController {
         investors[investorAddress] = WhitelistedInvestor(_tier, _status, 0);
     }
    }
+
+   function buy() public payable {
+     proxyPayment(msg.sender);
+   }
 // since we disable fallback functions, we have to have this param in order to satisfy TokenController inheritance
   // BK Ok
   function proxyPayment(address _sender) public payable 
@@ -232,8 +242,6 @@ contract Contribution is Controlled, TokenController {
   function allowTransfers(bool _transferable) onlyController {
     // BK Ok
     transferable = _transferable;
-    // BK Ok
-    cnd.enableTransfers(_transferable);
   }
 
   // BK Ok - Constant function
@@ -253,7 +261,7 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     Tier tier = tiers[tierCount];
     // BK Ok
-    assert(msg.value >= tier.minInvestorCap() && msg.value <= tier.maxInvestorCap());
+    assert(msg.value <= tier.maxInvestorCap());
     // BK Ok
     address caller = msg.sender;
     // BK Ok
@@ -264,10 +272,16 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     require(investorTokenBP > 0);
 
+    if(investor.contributedAmount == 0) {
+      assert(msg.value >= tier.minInvestorCap());  
+    }
+
     // BK Ok
-    uint256 toFund = msg.value;
+    uint256 toFund = msg.value;  
     // BK Ok  
     uint256 tokensGenerated = toFund.mul(tier.exchangeRate());
+    // check that at least 1 token will be generated
+    require(tokensGenerated >= 1);
     // BK Ok
     uint256 tokensleftForSale = leftForSale();    
 
@@ -347,6 +361,7 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     return true;
   }
+
   /// @notice This method will can be called by the controller before the contribution period
   ///  end or by anybody after the `endTime`. This method finalizes the contribution period
   ///  by creating the remaining tokens and transferring the controller to the configured
@@ -442,5 +457,4 @@ contract Contribution is Controlled, TokenController {
   event Refund(uint256 _amount);
   
 }
-
 ```

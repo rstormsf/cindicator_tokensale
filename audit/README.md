@@ -16,6 +16,16 @@ This audit has been conducted on Cindicator's source code in commits [4f9ea74](h
 
 No potential vulnerabilities have been identified in the presale and token contract.
 
+HOWEVER, there is a logic problem with when tiers get automatically finalised.
+
+<br />
+
+### New Changes
+
+The new changes [ded989d](https://github.com/rstormsf/cindicator_backup/commit/ded989ddf12c28980b7f6df839afdd75656993aa),
+[d09e018](https://github.com/rstormsf/cindicator_backup/commit/d09e0181e8e3d913cc8def3988f81e43c79b1ce9) and
+[b1a0a78](https://github.com/rstormsf/cindicator_backup/commit/b1a0a78bd8c26fe1b3ba2189ec5dd8f7968f1679) are to be tested and checked.
+
 <br />
 
 ### Crowdsale Mainnet Addresses
@@ -95,6 +105,8 @@ burn any account's tokens, as the functions to control these actions has not bee
 * [Due Diligence](#due-diligence)
 * [Risks](#risks)
 * [Testing](#testing)
+  * [Test 1](#test-1)
+  * [Test 2](#test-2)
 * [Code Review](#code-review)
 * [References](#references)
 
@@ -104,9 +116,13 @@ burn any account's tokens, as the functions to control these actions has not bee
 
 ## Recommendations
 
+* **HIGH IMPORTANCE** If a tier is automatically finalised in `Contribution.doBuy()`, the `tierCount` variable is not automatically
+  incremented to move to the next tier. Attempts to call `Contribution.finalize()` will always fail as the current tier is already
+  finalised. The crowdsale contract will be stuck forever in the tier that was automatically finalised
 * **MEDIUM IMPORTANCE** `Contribution.proxyPayment(...)` overwrites the `_sender` parameter with `_sender = msg.sender;`
   and alters the general meaning of this function. Consider removing the `_sender = msg.sender;` overwrite and add another
   function like `function buy() payable { ... } ` that will call `proxyPayment(msg.sender)`
+  * [x] Fixed in [ded989d](https://github.com/rstormsf/cindicator_backup/commit/ded989ddf12c28980b7f6df839afdd75656993aa)
 * **MEDIUM IMPORTANCE** The Tier constructor does not need the `onlyController` modifier
   * [x] Fixed in [199b13d](https://github.com/rstormsf/cindicator_backup/commit/199b13de72d589599b150f7f1c967a7fd0889361)
 * **LOW IMPORTANCE** Use the same Solidity version number `pragma solidity ^0.4.15;` across the different .sol files
@@ -185,6 +201,7 @@ matches the audited source code, and that the deployment parameters are correctl
 
 ## Testing
 
+### Test 1
 The following functions were tested using the script [test/01_test1.sh](test/01_test1.sh) with the summary results saved
 in [test/test1results.txt](test/test1results.txt) and the detailed output saved in [test/test1output.txt](test/test1output.txt):
 
@@ -197,6 +214,20 @@ in [test/test1results.txt](test/test1results.txt) and the detailed output saved 
 * [x] Contribute to each of the 4 tiers
 * [x] Finalise the crowdsale, including generating the token allocations for the various stakeholders
 * [x] `transfer(...)` and `transferFrom(...)` the *CND* tokens
+
+<br />
+
+### Test 2
+The following functions were tested using the script [test/02_test2.sh](test/02_test2.sh) with the summary results saved
+in [test/test2results.txt](test/test2results.txt) and the detailed output saved in [test/test2output.txt](test/test2output.txt):
+
+* [ ] As in [Test 1](#test-1) above, but with different caps and contributions hitting the caps in each tier, with the last tier cap being
+  exceeded
+
+  **NOTE** A fix for the `tierCount++` has been added to this test. Results show that the last contribution exceeding the last tier cap
+  fails
+
+<br />
 
 Details of the testing environment can be found in [test](test).
 

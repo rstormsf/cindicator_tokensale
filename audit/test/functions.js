@@ -14,12 +14,13 @@ addAccount(eth.accounts[3], "Account #3 - Tier0-3");
 addAccount(eth.accounts[4], "Account #4 - Tier1-3");
 addAccount(eth.accounts[5], "Account #5 - Tier2-3");
 addAccount(eth.accounts[6], "Account #6 - Tier3-3");
-addAccount(eth.accounts[7], "Account #7");
-addAccount(eth.accounts[8], "Account #8");
-addAccount(eth.accounts[9], "Account #9");
-addAccount(eth.accounts[10], "Account #10 - Founders");
-addAccount(eth.accounts[11], "Account #11 - Advisors");
-addAccount(eth.accounts[12], "Account #12 - Bounty");
+addAccount(eth.accounts[7], "Account #7 - Tier0-3 Test2");
+addAccount(eth.accounts[8], "Account #8 - Tier1-3 Test2");
+addAccount(eth.accounts[9], "Account #9 - Tier2-3 Test2");
+addAccount(eth.accounts[10], "Account #10 - Tier3-3 Test2");
+addAccount(eth.accounts[11], "Account #10 - Founders");
+addAccount(eth.accounts[12], "Account #11 - Advisors");
+addAccount(eth.accounts[13], "Account #12 - Bounty");
 
 var minerAccount = eth.accounts[0];
 var contractOwnerAccount = eth.accounts[1];
@@ -31,9 +32,10 @@ var account6 = eth.accounts[6];
 var account7 = eth.accounts[7];
 var account8 = eth.accounts[8];
 var account9 = eth.accounts[9];
-var foundersWallet = eth.accounts[10];
-var advisorsWallet = eth.accounts[11];
-var bountyWallet = eth.accounts[12];
+var account10 = eth.accounts[10];
+var foundersWallet = eth.accounts[11];
+var advisorsWallet = eth.accounts[12];
+var bountyWallet = eth.accounts[13];
 
 var baseBlock = eth.blockNumber;
 
@@ -122,7 +124,7 @@ function printTxData(name, txId) {
   var gasCostUSD = gasCostETH.mul(ethPriceUSD);
   console.log("RESULT: " + name + " gas=" + tx.gas + " gasUsed=" + txReceipt.gasUsed + " costETH=" + gasCostETH +
     " costUSD=" + gasCostUSD + " @ ETH/USD=" + ethPriceUSD + " gasPrice=" + gasPrice + " block=" + 
-    txReceipt.blockNumber + " txId=" + txId);
+    txReceipt.blockNumber + " txIx=" + tx.transactionIndex + " txId=" + txId);
 }
 
 function assertEtherBalance(account, expectedBalance) {

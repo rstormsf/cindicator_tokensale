@@ -26,3 +26,6 @@ DEPLOYMENTDATA=deploymentData.txt
 
 TEST1OUTPUT=test1output.txt
 TEST1RESULTS=test1results.txt
+
+TEST2OUTPUT=test2output.txt
+TEST2RESULTS=test2results.txt
