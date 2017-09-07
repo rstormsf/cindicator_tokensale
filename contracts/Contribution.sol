@@ -41,6 +41,11 @@ contract Contribution is Controlled, TokenController {
     _;
   }
 
+  modifier tokenInitialized() {
+    assert(address(cnd) != 0x0);
+    _;
+  }
+
   modifier initialized() {
     Tier tier = tiers[tierCount];
     assert(tier.initializedTime() != 0);
@@ -59,25 +64,29 @@ contract Contribution is Controlled, TokenController {
     _;
   }
 
-  function Contribution(address _cnd, address _contributionWallet, address _foundersWallet, address _advisorsWallet, address _bountyWallet) {
+  function Contribution(address _contributionWallet, address _foundersWallet, address _advisorsWallet, address _bountyWallet) {
     require(_contributionWallet != 0x0);
     require(_foundersWallet != 0x0);
     require(_advisorsWallet != 0x0);
     require(_bountyWallet != 0x0);
-    assert(CND(_cnd).IS_CND_CONTRACT_MAGIC_NUMBER() == 0x1338);
-    require(_cnd != 0x0);
     contributionWallet = _contributionWallet;
     foundersWallet = _foundersWallet;
     advisorsWallet =_advisorsWallet;
     bountyWallet = _bountyWallet;
-    cnd = CND(_cnd);
     tierCount = 0;
+  }
+
+  function initializeToken(address _cnd) public onlyController {
+    assert(CND(_cnd).controller() == address(this));
+    assert(CND(_cnd).IS_CND_CONTRACT_MAGIC_NUMBER() == 0x1338);
+    require(_cnd != 0x0);
+    cnd = CND(_cnd);
   }
 
   function initializeTier(
     uint256 _tierNumber,
     address _tierAddress
-  ) public onlyController 
+  ) public onlyController tokenInitialized
   {
     Tier tier = Tier(_tierAddress);
     assert(tier.controller() == address(this));
@@ -116,6 +125,10 @@ contract Contribution is Controlled, TokenController {
         investors[investorAddress] = WhitelistedInvestor(_tier, _status, 0);
     }
    }
+
+   function buy() public payable {
+     proxyPayment(msg.sender);
+   }
 // since we disable fallback functions, we have to have this param in order to satisfy TokenController inheritance
   function proxyPayment(address _sender) public payable 
     notPaused
@@ -146,7 +159,6 @@ contract Contribution is Controlled, TokenController {
 
   function allowTransfers(bool _transferable) onlyController {
     transferable = _transferable;
-    cnd.enableTransfers(_transferable);
   }
 
   function leftForSale() public constant returns(uint256) {
@@ -215,6 +227,7 @@ contract Contribution is Controlled, TokenController {
     assert(cnd.generateTokens(bountyWallet, bountyAllocation));
     return true;
   }
+
   /// @notice This method will can be called by the controller before the contribution period
   ///  end or by anybody after the `endTime`. This method finalizes the contribution period
   ///  by creating the remaining tokens and transferring the controller to the configured
