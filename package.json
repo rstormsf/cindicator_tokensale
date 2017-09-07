@@ -9,7 +9,8 @@
   "scripts": {
     "build": "yarn truffle compile",
     "deploy": "yarn truffle migrate",
-    "test": "gethPrivate/01_runTruffleGeth.sh"
+    "testGeth": "gethPrivate/01_runTruffleGeth.sh",
+    "test": "ci_test.sh"
   },
   "repository": "git+https://github.com/",
   "author": "Roman Storm <rstormsf@gmail.com>",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "chai-as-promised": "^7.1.1",
-    "chai-bignumber": "^2.0.1"
+    "chai-bignumber": "^2.0.1",
+    "solidity-coverage": "^0.2.2"
   }
 }

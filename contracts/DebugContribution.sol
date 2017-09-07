@@ -16,8 +16,8 @@ contract DebugContribution is Contribution {
       }
   }
   
-  function DebugContribution(address _cnd, address _contributionWallet, address _foundersWallet, address _advisorsWallet, address _bountyWallet) 
-    Contribution(_cnd, _contributionWallet, _foundersWallet, _advisorsWallet, _bountyWallet)
+  function DebugContribution(address _contributionWallet, address _foundersWallet, address _advisorsWallet, address _bountyWallet) 
+    Contribution(_contributionWallet, _foundersWallet, _advisorsWallet, _bountyWallet)
   {
   }
 

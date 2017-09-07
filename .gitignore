@@ -3,7 +3,6 @@ gethPrivate/testchain/
 !gethPrivate/testchain/keystore
 .node-xml*
 build/
-
 .DS_Store
 .project
 .settings
@@ -12,3 +11,8 @@ audit/test/testchain/geth.ipc
 audit/test/testchain/history
 audit/test/contracts
 private
+/coverage
+coverage.json
+allFiredEvents
+scTopics
+coverageEnv
