@@ -108,7 +108,6 @@ contract Contribution is Controlled, TokenController {
   function investorAmountTokensToBuy(address _investor) public constant returns(uint256) {
     WhitelistedInvestor memory investor = investors[_investor];
     Tier tier = tiers[tierCount];
-
     uint256 leftToBuy = tier.maxInvestorCap().sub(investor.contributedAmount).mul(tier.exchangeRate());
     return leftToBuy;
   }
@@ -203,7 +202,7 @@ contract Contribution is Controlled, TokenController {
     investor.contributedAmount = investor.contributedAmount.add(toFund);
     tier.increaseInvestedWei(toFund);
     if (tokensGenerated == tokensleftForSale) {
-      tier.finalize();
+      finalize();
     }
     
     assert(cnd.generateTokens(caller, tokensGenerated));
