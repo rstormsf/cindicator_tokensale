@@ -130,7 +130,7 @@ contract("Contribution", (
         }
       }
       const networkId = web3.version.network;
-      if (networkId !== '123' && networkId === '321') {
+      if (networkId !== '123' && networkId !== '321') {
         unlockAccounts('testtest');
       }
 
