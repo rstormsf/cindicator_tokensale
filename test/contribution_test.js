@@ -239,9 +239,23 @@ contract("Contribution", (
           0, tier1_deployed.address
         );
         await contribution.setBlockTimestamp(tier1_params.startTime);
-        await contribution.whitelistAddresses([owner], 0, true);
+        await contribution.whitelistAddresses([owner, miner], 0, true);
         const isWhitelisted = await contribution.isWhitelisted(owner, 0);
         assert.equal(isWhitelisted, true, 'whitelisting did not go thru');
+      });
+
+      it('increments tierCount when tier is bought out', async function(){
+        const tierCount = await contribution.tierCount();
+        await contribution.buy({from: owner, value: tier1_params.maxInvestorCap});
+        await contribution.buy({from: miner, value: tier1_params.maxInvestorCap});
+        const isCapReached = await contribution.isCurrentTierCapReached();
+        assert.equal(isCapReached, true);
+        const tierCountAfter = await contribution.tierCount();
+        assert.equal(tierCount.toNumber() + 1, tierCountAfter.toNumber());
+        const totalSold = await contribution.totalTokensSold();
+        assert.equal(totalSold.toNumber(), tier1_params.totalCap.mul(tier1_params.exchangeRate).toNumber());
+        const investedWei = await tier1_deployed.totalInvestedWei();
+        assert.equal(investedWei.toNumber(), tier1_params.totalCap.toNumber());
       });
 
       it('sends any amount after minimum was received', async function(){
@@ -364,29 +378,6 @@ contract("Contribution", (
         const totalInvestedAfter = await tier1_deployed.totalInvestedWei();
         assert.equal(totalInvestedAfter.toNumber(), totalInvestedBefore.toNumber());
       });
-
-      it('reach totalCap happy path', async function () {
-        await contribution.whitelistAddresses([advisorsWallet], 0, true);
-
-        await contribution.proxyPayment(owner, { from: owner, value: tier1_params.maxInvestorCap });
-        await contribution.proxyPayment(advisorsWallet, { from: advisorsWallet, value: tier1_params.maxInvestorCap });
-        let totalNow = await tier1_deployed.totalInvestedWei();
-        assert.equal(totalNow.toNumber(), tier1_params.totalCap.toNumber());
-
-        let tokensLeftOwner = await contribution.investorAmountTokensToBuy(owner);
-        assert.equal(tokensLeftOwner.toNumber(), 0);
-
-        let tokensLeftAdvisor = await contribution.investorAmountTokensToBuy(advisorsWallet);
-        // tier cap is 2 eth, we should only process 0.5 eth, so 1 eth * exchangeRate = 3 * 10**18 tokens
-        assert.equal(tokensLeftAdvisor.toNumber(), new BigNumber(10 ** 18 * 3));
-
-        const isCapReached = await contribution.isCurrentTierCapReached();
-        assert.equal(isCapReached, true);
-        const totalSold = await contribution.totalTokensSold();
-        assert.equal(totalSold, tier1_params.totalCap.mul(tier1_params.exchangeRate).toNumber());
-        const investedWei = await tier1_deployed.totalInvestedWei();
-        assert.equal(investedWei.toNumber(), tier1_params.totalCap.toNumber());
-      })
     });
 
     describe('#finalize', async function () {
@@ -400,6 +391,15 @@ contract("Contribution", (
         const isWhitelisted = await contribution.isWhitelisted(owner, 0);
         assert.equal(isWhitelisted, true, 'whitelisting did not go thru');
       });
+
+      it('onlyController can call tier.finalize', async function(){
+        await shouldThrow(tier1_deployed.finalize,[]);
+        let finalized = await tier1_deployed.finalizedTime();
+        assert.equal(finalized.toNumber(), 0);
+        await contribution.finalize();
+        finalized = await tier1_deployed.finalizedTime();
+        assert(finalized.toNumber() > 0);
+      })
 
       it('increases tierCount', async function () {
         let tierCount = await contribution.tierCount();

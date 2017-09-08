@@ -1,7 +1,7 @@
 {
   "name": "cindicator-contracts",
   "version": "1.0.0",
-  "description": "Contribution Sale Tokens",
+  "description": "Cindicator Contribution Sale Tokens",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -13,12 +13,12 @@
     "test": "ci_test.sh"
   },
   "repository": "git+https://github.com/",
-  "author": "Roman Storm <rstormsf@gmail.com>",
-  "license": "ISC",
+  "author": "Roman Storm <roman@blockchainlabs.nz>",
+  "license": "private",
   "bugs": {
-    "url": "https://github.com/"
+    "url": "https://cindicator.com/"
   },
-  "homepage": "https://github.com/",
+  "homepage": "https://cindicator.com/",
   "dependencies": {
     "chai": "^4.1.1",
     "ethereumjs-abi": "^0.6.4",
