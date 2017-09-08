@@ -168,7 +168,7 @@ contract Contribution is Controlled, TokenController {
     return (transferable || getBlockTimestamp() >= October12_2017);
   }
   /// @notice Allows founders to set transfers before October12_2017
-  /// @param _transferable 
+  /// @param _transferable set True if founders want to let people make transfers
   function allowTransfers(bool _transferable) onlyController {
     transferable = _transferable;
   }
