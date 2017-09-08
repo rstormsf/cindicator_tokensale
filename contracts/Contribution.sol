@@ -141,12 +141,11 @@ contract Contribution is Controlled, TokenController {
      proxyPayment(msg.sender);
    }
 
-  function proxyPayment(address _sender) public payable 
+  function proxyPayment(address) public payable 
     notPaused
     initialized
     returns (bool) 
   {
-    _sender = msg.sender;
     assert(isCurrentTierCapReached() == false);
     assert(contributionOpen());
     require(isWhitelisted(msg.sender, tierCount));
@@ -168,7 +167,7 @@ contract Contribution is Controlled, TokenController {
     return (transferable || getBlockTimestamp() >= October12_2017);
   }
   /// @notice Allows founders to set transfers before October12_2017
-  /// @param _transferable 
+  /// @param _transferable set True if founders want to let people make transfers
   function allowTransfers(bool _transferable) onlyController {
     transferable = _transferable;
   }

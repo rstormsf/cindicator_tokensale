@@ -21,9 +21,10 @@ const duration = {
 };
 
 
+const CONTRIBUTION_WALLET_ADDRESS = "0x0039F22efB07A647557C7C5d17854CFD6D489eF3";
 const FOUNDERS_WALLET_ADDRESS = "0x0039F22efB07A647557C7C5d17854CFD6D489eF3";
-const ADVISORS_WALLET_ADDRESS = "0x456";
-const BOUNTY_WALLET_ADDRESS = "0x321";
+const ADVISORS_WALLET_ADDRESS = "0x0039F22efB07A647557C7C5d17854CFD6D489eF3";
+const BOUNTY_WALLET_ADDRESS = "0x0039F22efB07A647557C7C5d17854CFD6D489eF3";
 module.exports = function(deployer, chain, accounts) {
   if(chain === "debug") {
     let Contribution = artifacts.require("DebugContribution");
@@ -36,11 +37,11 @@ module.exports = function(deployer, chain, accounts) {
     
     const cnd = await CND.deployed();
     
-    await deployMultisig(deployer, accounts);
-    const contributionWallet = await MultiSigWallet.deployed();
+    // await deployMultisig(deployer, accounts);
+    // const contributionWallet = await MultiSigWallet.deployed();
     
-    await deployer.deploy(Contribution, contributionWallet.address, FOUNDERS_WALLET_ADDRESS, ADVISORS_WALLET_ADDRESS, BOUNTY_WALLET_ADDRESS);
-    const encodedParamsContribution = abiEncoder.rawEncode(['address', 'address', 'address', 'address'], [contributionWallet.address, FOUNDERS_WALLET_ADDRESS, ADVISORS_WALLET_ADDRESS, BOUNTY_WALLET_ADDRESS]);
+    await deployer.deploy(Contribution, CONTRIBUTION_WALLET_ADDRESS, FOUNDERS_WALLET_ADDRESS, ADVISORS_WALLET_ADDRESS, BOUNTY_WALLET_ADDRESS);
+    const encodedParamsContribution = abiEncoder.rawEncode(['address', 'address', 'address', 'address'], [CONTRIBUTION_WALLET_ADDRESS, FOUNDERS_WALLET_ADDRESS, ADVISORS_WALLET_ADDRESS, BOUNTY_WALLET_ADDRESS]);
     console.log('CONTRIBUTION ENCODED: \n', encodedParamsContribution.toString('hex'));
 
     const contribution = await Contribution.deployed();
