@@ -146,7 +146,6 @@ contract Contribution is Controlled, TokenController {
     initialized
     returns (bool) 
   {
-    _sender = msg.sender;
     assert(isCurrentTierCapReached() == false);
     assert(contributionOpen());
     require(isWhitelisted(msg.sender, tierCount));
