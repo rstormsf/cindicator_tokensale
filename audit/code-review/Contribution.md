@@ -85,7 +85,8 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     _;
   }
-
+  /// @notice Provides information if contribution is open
+  /// @return False if the contribuion is closed
   // BK Ok
   function contributionOpen() public constant returns(bool) {
     // BK Ok
@@ -119,14 +120,17 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     tierCount = 0;
   }
-
+  /// @notice Initializes CND token to contribution
+  /// @param _cnd The address of the token contract that you want to set
   function initializeToken(address _cnd) public onlyController {
     assert(CND(_cnd).controller() == address(this));
     assert(CND(_cnd).IS_CND_CONTRACT_MAGIC_NUMBER() == 0x1338);
     require(_cnd != 0x0);
     cnd = CND(_cnd);
   }
-
+  /// @notice Initializes Tier contribution
+  /// @param _tierNumber number of tier to initialize
+  /// @param _tierAddress address of deployed tier
   // BK Ok - Only controller can execute
   function initializeTier(
     uint256 _tierNumber,
@@ -159,7 +163,9 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     require(false);
   }
-
+  /// @notice Amount of tokens an investor can purchase
+  /// @param _investor investor address
+  /// @return number of tokens  
   // BK Ok - Constant function
   function investorAmountTokensToBuy(address _investor) public constant returns(uint256) {
     // BK Ok
@@ -172,7 +178,10 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     return leftToBuy;
   }
-
+  /// @notice Notifies if an investor is whitelisted for contribution
+  /// @param _investor investor address
+  /// @param _tier tier Number
+  /// @return number of tokens 
   // BK Ok - Constant function
   function isWhitelisted(address _investor, uint256 _tier) public constant returns(bool) {
     // BK Ok
@@ -180,7 +189,10 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     return (investor.tier <= _tier && investor.status);
   }
-
+  /// @notice interface for founders to whitelist investors
+  /// @param _addresses array of investors
+  /// @param _tier tier Number
+  /// @param _status enable or disable
   // BK Ok - Only controller can execute to add whitelisted addresses
   function whitelistAddresses(address[] _addresses, uint256 _tier, bool _status) public onlyController {
     // BK Ok
@@ -193,19 +205,17 @@ contract Contribution is Controlled, TokenController {
         investors[investorAddress] = WhitelistedInvestor(_tier, _status, 0);
     }
    }
-
+  /// @notice Public function to buy tokens
    function buy() public payable {
      proxyPayment(msg.sender);
    }
-// since we disable fallback functions, we have to have this param in order to satisfy TokenController inheritance
+
   // BK Ok
-  function proxyPayment(address _sender) public payable 
+  function proxyPayment(address) public payable 
     notPaused
     initialized
     returns (bool) 
   {
-    // BK NOTE - Normally the sender should not be overwritten
-    _sender = msg.sender;
     // BK Ok
     assert(isCurrentTierCapReached() == false);
     // BK Ok
@@ -219,31 +229,32 @@ contract Contribution is Controlled, TokenController {
   }
 
 
-    /// @notice Notifies the controller about a token transfer allowing the
-    ///  controller to react if desired
-    /// @return False if the controller does not authorize the transfer
+  /// @notice Notifies the controller about a token transfer allowing the
+  ///  controller to react if desired
+  /// @return False if the controller does not authorize the transfer
   // BK Ok
   function onTransfer(address /* _from */, address /* _to */, uint256 /* _amount */) returns(bool) {
     // BK Ok
     return (transferable || getBlockTimestamp() >= October12_2017 );
   } 
 
-    /// @notice Notifies the controller about an approval allowing the
-    ///  controller to react if desired
-    /// @return False if the controller does not authorize the approval
+  /// @notice Notifies the controller about an approval allowing the
+  ///  controller to react if desired
+  /// @return False if the controller does not authorize the approval
   // BK Ok
   function onApprove(address /* _owner */, address /* _spender */, uint /* _amount */) returns(bool) {
     // BK Ok
     return (transferable || getBlockTimestamp() >= October12_2017);
   }
-
-
+  /// @notice Allows founders to set transfers before October12_2017
+  /// @param _transferable set True if founders want to let people make transfers
   // BK Ok - Only the controller can execute this
   function allowTransfers(bool _transferable) onlyController {
     // BK Ok
     transferable = _transferable;
   }
-
+  /// @notice calculates how many tokens left for sale
+  /// @return Number of tokens left for tier
   // BK Ok - Constant function
   function leftForSale() public constant returns(uint256) {
     // BK Ok
@@ -255,7 +266,7 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     return tokensLeft;
   }
-
+  /// @notice actual method that funds investor and contribution wallet
   // BK Ok - Internal so cannot be called directly
   function doBuy() internal {
     // BK Ok
@@ -268,7 +279,6 @@ contract Contribution is Controlled, TokenController {
     WhitelistedInvestor storage investor = investors[caller];
     // BK Ok
     uint256 investorTokenBP = investorAmountTokensToBuy(caller);
-
     // BK Ok
     require(investorTokenBP > 0);
 
@@ -339,6 +349,8 @@ contract Contribution is Controlled, TokenController {
     }
   }
 
+  /// @notice This method will can be called by the anybody to make final allocation
+  /// @return result if everything went succesfully
   // BK Ok - Anyone can call when tiers finalised
   function allocate() public notAllocated endedSale returns(bool) {
     // BK Ok
@@ -362,10 +374,8 @@ contract Contribution is Controlled, TokenController {
     return true;
   }
 
-  /// @notice This method will can be called by the controller before the contribution period
+  /// @notice This method will can be called by the controller after the contribution period
   ///  end or by anybody after the `endTime`. This method finalizes the contribution period
-  ///  by creating the remaining tokens and transferring the controller to the configured
-  ///  controller.
   // BK NOTE - Each tier has to be finalised
   function finalize() public initialized {
     // BK Ok
@@ -387,7 +397,8 @@ contract Contribution is Controlled, TokenController {
     // BK Ok - Log event
     FinalizedTier(tierCount, tier.finalizedTime());
   }
-
+  /// @notice check if tier cap has reached
+  /// @return False if it's still open
   // BK Ok
   function isCurrentTierCapReached() public constant returns(bool) {
     // BK Ok

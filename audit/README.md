@@ -115,7 +115,7 @@ burn any account's tokens, as the functions to control these actions has not bee
 * **MEDIUM IMPORTANCE** `Contribution.proxyPayment(...)` overwrites the `_sender` parameter with `_sender = msg.sender;`
   and alters the general meaning of this function. Consider removing the `_sender = msg.sender;` overwrite and add another
   function like `function buy() payable { ... } ` that will call `proxyPayment(msg.sender)`
-  * [x] Fixed in [ded989d](https://github.com/rstormsf/cindicator_backup/commit/ded989ddf12c28980b7f6df839afdd75656993aa)
+  * [ ] Partially fixed in [ded989d](https://github.com/rstormsf/cindicator_backup/commit/ded989ddf12c28980b7f6df839afdd75656993aa)
 * **MEDIUM IMPORTANCE** The Tier constructor does not need the `onlyController` modifier
   * [x] Fixed in [199b13d](https://github.com/rstormsf/cindicator_backup/commit/199b13de72d589599b150f7f1c967a7fd0889361)
 * **LOW IMPORTANCE** Use the same Solidity version number `pragma solidity ^0.4.15;` across the different .sol files
