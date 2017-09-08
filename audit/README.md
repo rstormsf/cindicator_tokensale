@@ -20,6 +20,16 @@ No potential vulnerabilities have been identified in the crowdsale and token con
 
 <br />
 
+### Note
+
+Crowdsale participants should call the `buy()` function to contribute to the crowdsale.
+
+Crowdsale participants should **NOT** call the `proxyPayment(...)` function to contribute to the crowdsale. This function normally allows
+one account to purchase tokens on behalf of another account, but in this crowdsale contract, the tokens will always be assigned to the
+account calling this function.
+
+<br />
+
 ### Crowdsale Mainnet Addresses
 
 `{TBA}`
@@ -108,14 +118,19 @@ burn any account's tokens, as the functions to control these actions has not bee
 
 ## Recommendations
 
-* **HIGH IMPORTANCE** If a tier is automatically finalised in `Contribution.doBuy()`, the `tierCount` variable is not automatically
-  incremented to move to the next tier. Attempts to call `Contribution.finalize()` will always fail as the current tier is already
-  finalised. The crowdsale contract will be stuck forever in the tier that was automatically finalised
-  * [x] Fixed in [5b3f9b6](https://github.com/rstormsf/cindicator_backup/commit/5b3f9b6120f4a1fd3c040894f8b3efc927c9c6fb)
 * **MEDIUM IMPORTANCE** `Contribution.proxyPayment(...)` overwrites the `_sender` parameter with `_sender = msg.sender;`
   and alters the general meaning of this function. Consider removing the `_sender = msg.sender;` overwrite and add another
   function like `function buy() payable { ... } ` that will call `proxyPayment(msg.sender)`
   * [ ] Partially fixed in [ded989d](https://github.com/rstormsf/cindicator_backup/commit/ded989ddf12c28980b7f6df839afdd75656993aa)
+
+<br />
+
+### Completed Recommendation
+
+* **HIGH IMPORTANCE** If a tier is automatically finalised in `Contribution.doBuy()`, the `tierCount` variable is not automatically
+  incremented to move to the next tier. Attempts to call `Contribution.finalize()` will always fail as the current tier is already
+  finalised. The crowdsale contract will be stuck forever in the tier that was automatically finalised
+  * [x] Fixed in [5b3f9b6](https://github.com/rstormsf/cindicator_backup/commit/5b3f9b6120f4a1fd3c040894f8b3efc927c9c6fb)
 * **MEDIUM IMPORTANCE** The Tier constructor does not need the `onlyController` modifier
   * [x] Fixed in [199b13d](https://github.com/rstormsf/cindicator_backup/commit/199b13de72d589599b150f7f1c967a7fd0889361)
 * **LOW IMPORTANCE** Use the same Solidity version number `pragma solidity ^0.4.15;` across the different .sol files
