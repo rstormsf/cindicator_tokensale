@@ -141,7 +141,7 @@ contract Contribution is Controlled, TokenController {
      proxyPayment(msg.sender);
    }
 
-  function proxyPayment(address _sender) public payable 
+  function proxyPayment(address) public payable 
     notPaused
     initialized
     returns (bool) 
