@@ -24,7 +24,8 @@
     "chai": "^4.1.1",
     "ethereumjs-abi": "^0.6.4",
     "mochawesome": "^2.3.0",
-    "truffle": "^3.4.9"
+    "truffle": "^3.4.9",
+    "truffle-contract": "^2.0.5"
   },
   "devDependencies": {
     "chai-as-promised": "^7.1.1",
