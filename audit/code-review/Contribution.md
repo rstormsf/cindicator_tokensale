@@ -210,6 +210,10 @@ contract Contribution is Controlled, TokenController {
      proxyPayment(msg.sender);
    }
 
+  /// use buy function instead of proxyPayment
+  /// the param address is useless, it always reassigns to msg.sender
+  // BK NOTE - Normally this function allows the sending account to pay ETH to buy
+  // BK NOTE - tokens on behalf of the address specified in the parameter
   // BK Ok
   function proxyPayment(address) public payable 
     notPaused

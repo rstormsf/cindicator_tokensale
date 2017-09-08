@@ -12,21 +12,14 @@ This audit has been conducted on Cindicator's source code in commits [4f9ea74](h
 [ab90a34](https://github.com/rstormsf/cindicator_backup/commit/ab90a3474e6e7493ec1fdc13885e4641af769ddd),
 [199b13d](https://github.com/rstormsf/cindicator_backup/commit/199b13de72d589599b150f7f1c967a7fd0889361),
 [ded989d](https://github.com/rstormsf/cindicator_backup/commit/ded989ddf12c28980b7f6df839afdd75656993aa),
-[d09e018](https://github.com/rstormsf/cindicator_backup/commit/d09e0181e8e3d913cc8def3988f81e43c79b1ce9) and
-[b1a0a78](https://github.com/rstormsf/cindicator_backup/commit/b1a0a78bd8c26fe1b3ba2189ec5dd8f7968f1679) plus
-[5b3f9b6](https://github.com/rstormsf/cindicator_backup/commit/5b3f9b6120f4a1fd3c040894f8b3efc927c9c6fb).
+[d09e018](https://github.com/rstormsf/cindicator_backup/commit/d09e0181e8e3d913cc8def3988f81e43c79b1ce9),
+[b1a0a78](https://github.com/rstormsf/cindicator_backup/commit/b1a0a78bd8c26fe1b3ba2189ec5dd8f7968f1679),
+[5b3f9b6](https://github.com/rstormsf/cindicator_backup/commit/5b3f9b6120f4a1fd3c040894f8b3efc927c9c6fb) and
+[26387dd](https://github.com/rstormsf/cindicator_tokensale/commit/26387ddefd8dbc844ec0789ed56c1d387362d1a5).
 
 No potential vulnerabilities have been identified in the crowdsale and token contract.
 
-<br />
-
-### Note
-
-Crowdsale participants should call the `buy()` function to contribute to the crowdsale.
-
-Crowdsale participants should **NOT** call the `proxyPayment(...)` function to contribute to the crowdsale. This function normally allows
-one account to purchase tokens on behalf of another account, but in this crowdsale contract, the tokens will always be assigned to the
-account calling this function.
+Note that crowdsale participants should only call the `buy()` function to contribute to the crowdsale.
 
 <br />
 
@@ -121,12 +114,9 @@ burn any account's tokens, as the functions to control these actions has not bee
 * **MEDIUM IMPORTANCE** `Contribution.proxyPayment(...)` overwrites the `_sender` parameter with `_sender = msg.sender;`
   and alters the general meaning of this function. Consider removing the `_sender = msg.sender;` overwrite and add another
   function like `function buy() payable { ... } ` that will call `proxyPayment(msg.sender)`
-  * [ ] Partially fixed in [ded989d](https://github.com/rstormsf/cindicator_backup/commit/ded989ddf12c28980b7f6df839afdd75656993aa)
-
-<br />
-
-### Completed Recommendation
-
+  * [x] Comment added in [26387dd](https://github.com/rstormsf/cindicator_tokensale/commit/26387ddefd8dbc844ec0789ed56c1d387362d1a5) to
+    inform any users not to call `proxyPayment(...)` specifying a different address parameter from the sending account address as the
+    generated tokens will be assigned to the sending account address
 * **HIGH IMPORTANCE** If a tier is automatically finalised in `Contribution.doBuy()`, the `tierCount` variable is not automatically
   incremented to move to the next tier. Attempts to call `Contribution.finalize()` will always fail as the current tier is already
   finalised. The crowdsale contract will be stuck forever in the tier that was automatically finalised
