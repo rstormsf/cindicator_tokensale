@@ -140,7 +140,8 @@ contract Contribution is Controlled, TokenController {
    function buy() public payable {
      proxyPayment(msg.sender);
    }
-
+  /// use buy function instead of proxyPayment
+  /// the param address is useless, it always reassigns to msg.sender
   function proxyPayment(address) public payable 
     notPaused
     initialized
