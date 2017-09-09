@@ -29,6 +29,10 @@ The *Contribution* crowdsale contract has been deployed to [0xc22462d4bc50952b06
 
 The *CND* token contract has been deployed to [0xd4c435f5b09f855c3317c8524cb1f586e42795fa](https://etherscan.io/address/0xd4c435f5b09f855c3317c8524cb1f586e42795fa#code).
 
+*CND* Token explorer [0xd4c435f5b09f855c3317c8524cb1f586e42795fa](https://etherscan.io/token/0xd4c435f5b09f855c3317c8524cb1f586e42795fa).
+
+`contributionWallet` is at [0x45fde77ff768aa83df468fb1c6ebc5f2bb21dcea](https://etherscan.io/address/0x45fde77ff768aa83df468fb1c6ebc5f2bb21dcea#internaltx)
+
 <br />
 
 ### Crowdsale Contract
