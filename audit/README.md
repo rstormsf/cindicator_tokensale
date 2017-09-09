@@ -226,6 +226,15 @@ in [test/test2results.txt](test/test2results.txt) and the detailed output saved 
 
 <br />
 
+### Test 3
+The following functions were tested using the script [test/03_test3.sh](test/03_test3.sh) with the summary results saved
+in [test/test3results.txt](test/test3results.txt) and the detailed output saved in [test/test3output.txt](test/test3output.txt):
+
+* [x] As in [Test 2](#test-2) above, but with only the first tier set up. Shows that `tierCount` moves to the second tier. The
+  sale does not progress any further, as expected.
+
+<br />
+
 Details of the testing environment can be found in [test](test).
 
 <br />
