@@ -25,7 +25,9 @@ Note that crowdsale participants should only call the `buy()` function to contri
 
 ### Crowdsale Mainnet Addresses
 
-`{TBA}`
+The *Contribution* crowdsale contract has been deployed to [0xc22462d4bc50952b061c9e6c585fdd9a04d0d75a](https://etherscan.io/address/0xc22462d4bc50952b061c9e6c585fdd9a04d0d75a#code).
+
+The *CND* token contract has been deployed to [0xd4c435f5b09f855c3317c8524cb1f586e42795fa](https://etherscan.io/address/0xd4c435f5b09f855c3317c8524cb1f586e42795fa#code).
 
 <br />
 
