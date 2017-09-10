@@ -2,6 +2,10 @@
 
 cindicator Ethereum smart contracts
 
+## Mainnet addresses:
+Contribution: https://etherscan.io/address/0xc22462d4bc50952b061c9e6c585fdd9a04d0d75a#readContract
+CND Token: https://etherscan.io/address/0xd4c435f5b09f855c3317c8524cb1f586e42795fa
+Tier-1: https://etherscan.io/address/0x0cf3da2058c228328a2427abbcb25f3dc5c14db3
 
 ## To Run tests:
 
