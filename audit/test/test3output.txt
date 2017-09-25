@@ -1,0 +1,53 @@
+MODE                 = 'test'
+GETHATTACHPOINT      = 'ipc:./testchain/geth.ipc'
+PASSWORD             = 'testtest'
+CONTRACTSDIR         = '../../contracts'
+CNDSOL               = 'CND.sol'
+CNDTEMPSOL           = 'CND.sol'
+CNDJS                = 'CND.js'
+CONTRIBUTIONSOL      = 'Contribution.sol'
+CONTRIBUTIONTEMPSOL  = 'Contribution.sol'
+CONTRIBUTIONJS       = 'Contribution.js'
+MINIMETOKENSOL       = 'MiniMeToken.sol'
+MINIMETOKENTEMPSOL   = 'MiniMeToken.sol'
+MINIMETOKENJS        = 'MiniMeToken.js'
+SAFEMATHSOL          = 'SafeMath.sol'
+SAFEMATHTEMPSOL      = 'SafeMath.sol'
+TIERSOL             = 'Tier.sol'
+TIERTEMPSOL         = 'Tier.sol'
+TIERJS              = 'Tier.js'
+DEPLOYMENTDATA       = 'deploymentData.txt'
+TEST3OUTPUT          = 'test3output.txt'
+TEST3RESULTS         = 'test3results.txt'
+CURRENTTIME          = '1504973116' 'Sat  9 Sep 2017 16:05:16 UTC'
+STARTTIME            = '1504973246' 'Sat  9 Sep 2017 16:07:26 UTC'
+ENDTIME              = '1504973476' 'Sat  9 Sep 2017 16:11:16 UTC'
+--- Differences ../../contracts/CND.sol CND.sol ---
+
+--- Differences ../../contracts/Contribution.sol Contribution.sol ---
+
+--- Differences ../../contracts/MiniMeToken.sol MiniMeToken.sol ---
+117c117,134
+<     Checkpoint[] totalSupplyHistory;
+---
+>     // BK Instrumentation
+>     Checkpoint[] public totalSupplyHistory;
+> 
+>     // BK Instrumentation
+>     function totalSupplyHistoryLength() constant returns (uint) {
+>         return totalSupplyHistory.length;
+>     }
+> 
+>     // BK Instrumentation
+>     function balanceHistoryLength(address addr) constant returns (uint) {
+>         return balances[addr].length;
+>     }
+> 
+>     // BK Instrumentation
+>     function balanceHistory(address addr, uint i) constant returns (uint, uint) {
+>         Checkpoint storage c = balances[addr][i];
+>         return (c.fromBlock, c.value);
+>     }
+--- Differences ../../contracts/Tier.sol Tier.sol ---
+
+Fatal: Unable to attach to remote geth: dial unix ./testchain/geth.ipc: connect: no such file or directory
